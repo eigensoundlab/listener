@@ -1,0 +1,15 @@
+listener
+Copyright 2026 Daniel Sandner
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project calls, and does not copy, the following:
+- pyloudnorm (MIT): ITU-R BS.1770 K-weighting, gating and loudness range.
+- MoSQITo (Apache-2.0): ISO 532-1 loudness and DIN 45692 sharpness.
+
+One file is under another licence: external/ecma418_2_worker.py imports sottek-hearing-model (AGPL-3.0-only) and is
+offered under AGPL-3.0-only. listener starts it as a separate process and does not import it. See external/README.md.
+
+Test signals and reference values of ISO 532-1, DIN 45692 and the EBU loudness test set are not part of this
+repository. The conformance suite reads them from folders you name, and builds from their published descriptions the
+cases that are defined by a formula.

@@ -1,0 +1,36 @@
+{
+  "upload_type": "software",
+  "title": "listener: verified loudness measures, conformance fixtures and a benchmark of published loudness phenomena for sound effects",
+  "version": "0.1.0",
+  "creators": [
+    {
+      "name": "Sandner, Daniel",
+      "orcid": "0000-0002-1041-814X"
+    }
+  ],
+  "description": "<p>listener supports research on how loud sound effects are heard. No published study tests a loudness measure against listeners on sound effects, and the standard measures part by many dB where effects live: short, low, or with long tails.</p><p>It computes ITU-R BS.1770 (integrated, maximum momentary and short-term loudness, true peak), ISO 532-1 (maximum and N5), DIN 45692 sharpness and ECMA-418-2 (loudness, tonality, roughness) per file and per sound event at stated playback levels; checks them against EBU Tech 3341 and 3342, ISO 532-1 Annex B, DIN 45692 and the tones that define each unit; reports where the measures disagree on a corpus in dB of gain, to choose listening-test stimuli; and scores every measure against eleven published results on the loudness of short and changing sounds.</p><p>The release holds the results of the first run on 56 CC0 sound effects, a draft protocol for a loudness-matching test, and the plan for an event-level loudness model fitted to its data. Python 3.11 or later.</p>",
+  "access_right": "open",
+  "license": "apache-2.0",
+  "language": "eng",
+  "keywords": [
+    "loudness",
+    "psychoacoustics",
+    "sound effects",
+    "ITU-R BS.1770",
+    "ISO 532-1",
+    "ECMA-418-2",
+    "listening tests",
+    "game audio",
+    "sound design",
+    "conformance testing"
+  ],
+  "notes": "Test signals and reference values of ISO 532-1, DIN 45692 and the EBU loudness test set are not included, nor is third-party audio: the 56 CC0 Sonic Pi samples are fetched as described in docs/FIRST_CHECKS.md. ECMA-418-2 comes from a separately licensed tool run as its own process (external/README.md).",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/eigensoundlab/playhead",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}

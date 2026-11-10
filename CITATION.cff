@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use listener in your work, please cite it as below."
+type: software
+title: "listener: verified loudness measures, conformance fixtures and a benchmark of published loudness phenomena for sound effects"
+abstract: >-
+  listener supports research on how loud sound effects are heard. It computes
+  ITU-R BS.1770, ISO 532-1, DIN 45692 and ECMA-418-2 measures per file and per
+  sound event at stated playback levels, checks them against the standards'
+  test signals, reports where the measures disagree on a corpus in dB of gain,
+  and scores every measure against published results on the loudness of short
+  and changing sounds. It prepares a listening test and an event-level
+  loudness model fitted to its data.
+authors:
+  - family-names: Sandner
+    given-names: Daniel
+    orcid: "https://orcid.org/0000-0002-1041-814X"
+version: 0.1.0
+license: Apache-2.0
+repository-code: "https://github.com/eigensoundlab/listener"
+keywords:
+  - loudness
+  - psychoacoustics
+  - sound effects
+  - ITU-R BS.1770
+  - ISO 532-1
+  - ECMA-418-2
+  - listening tests
+  - game audio
+  - sound design
+  - conformance testing

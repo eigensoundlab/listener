@@ -1,0 +1,3243 @@
+{
+ "format": "listener-disagreement",
+ "version": 1,
+ "generator": {
+  "name": "listener",
+  "version": "0.1.0"
+ },
+ "created": "2026-11-10T19:40:19Z",
+ "implementations": {
+  "bs1770": "pyloudnorm 0.2.0 (K-weighting filter, loudness range); listener 0.1.0 (gating on complete blocks, 0.4 s and 3 s windows, true peak, spans)",
+  "iso532_1": "MoSQITo 1.2.1 loudness_zwtv stages (ISO 532-1:2017 time-varying, free field)",
+  "din45692": "MoSQITo 1.2.1 sharpness_din_from_loudness on the ISO 532-1 specific loudness",
+  "ecma418_2": null,
+  "iso532_3": null
+ },
+ "calibration": {
+  "levels": [
+   {
+    "id": "spl60",
+    "refSpl": 60.0,
+    "refLufs": -23.0,
+    "fullScaleSineSpl": 79.99,
+    "paPerFullScale": 0.282508,
+    "text": "A 1 kHz sine at -23 LUFS (one channel) plays at 60 dB SPL; a full-scale sine plays at 80.0 dB SPL."
+   },
+   {
+    "id": "spl80",
+    "refSpl": 80.0,
+    "refLufs": -23.0,
+    "fullScaleSineSpl": 99.99,
+    "paPerFullScale": 2.825075,
+    "text": "A 1 kHz sine at -23 LUFS (one channel) plays at 80 dB SPL; a full-scale sine plays at 100.0 dB SPL."
+   }
+  ]
+ },
+ "conventions": {
+  "gains": "dB each measure would give the file to make the corpus equally loud, corpus median removed",
+  "ears": "mono files: BS.1770 values +3.01 dB (heard in both ears); stereo files as measured",
+  "operatingPoint": "ISO 532-1 runs on each file after bringing its Max M to the reference loudness of the calibration",
+  "iso532_1": "gain solved so that every file's maximum loudness level equals the corpus median (phon): spl60 69.5, spl80 88.5",
+  "strata": {
+   "duration": "of the loudest Playhead event (to its decay end); the file without a document",
+   "lowFrequency": "at least 40% of the power below 150 Hz",
+   "longTail": "ISO 532-1 loudness stays above a quarter of its maximum for 1 s or more after it"
+  }
+ },
+ "measures": [
+  "peak",
+  "rms",
+  "integrated",
+  "momentaryMax",
+  "shortTermMax",
+  "momentaryMax@event",
+  "iso532_1.max@spl60",
+  "iso532_1.max@spl80"
+ ],
+ "pairs": [
+  {
+   "a": "peak",
+   "b": "rms",
+   "range": 17.4,
+   "p5to95": 12.7,
+   "sd": 3.94,
+   "aWantsLouder": "bass_woodsy_c.flac",
+   "aWantsQuieter": "ambi_lunar_land.flac"
+  },
+  {
+   "a": "peak",
+   "b": "integrated",
+   "range": 22.4,
+   "p5to95": 9.0,
+   "sd": 3.51,
+   "aWantsLouder": "elec_cymbal.flac",
+   "aWantsQuieter": "vinyl_hiss.flac"
+  },
+  {
+   "a": "peak",
+   "b": "momentaryMax",
+   "range": 20.9,
+   "p5to95": 10.8,
+   "sd": 3.74,
+   "aWantsLouder": "elec_cymbal.flac",
+   "aWantsQuieter": "vinyl_hiss.flac"
+  },
+  {
+   "a": "peak",
+   "b": "shortTermMax",
+   "range": 22.3,
+   "p5to95": 16.4,
+   "sd": 5.01,
+   "aWantsLouder": "bass_woodsy_c.flac",
+   "aWantsQuieter": "elec_blip.flac"
+  },
+  {
+   "a": "peak",
+   "b": "momentaryMax@event",
+   "range": 23.5,
+   "p5to95": 10.8,
+   "sd": 4.13,
+   "aWantsLouder": "elec_cymbal.flac",
+   "aWantsQuieter": "vinyl_hiss.flac"
+  },
+  {
+   "a": "peak",
+   "b": "iso532_1.max@spl60",
+   "range": 19.2,
+   "p5to95": 13.9,
+   "sd": 4.63,
+   "aWantsLouder": "vinyl_rewind.flac",
+   "aWantsQuieter": "bass_hit_c.flac"
+  },
+  {
+   "a": "peak",
+   "b": "iso532_1.max@spl80",
+   "range": 19.6,
+   "p5to95": 14.2,
+   "sd": 4.59,
+   "aWantsLouder": "vinyl_rewind.flac",
+   "aWantsQuieter": "bass_hit_c.flac"
+  },
+  {
+   "a": "rms",
+   "b": "integrated",
+   "range": 17.1,
+   "p5to95": 7.7,
+   "sd": 2.73,
+   "aWantsLouder": "perc_bell.flac",
+   "aWantsQuieter": "vinyl_hiss.flac"
+  },
+  {
+   "a": "rms",
+   "b": "momentaryMax",
+   "range": 22.3,
+   "p5to95": 13.8,
+   "sd": 4.31,
+   "aWantsLouder": "perc_bell.flac",
+   "aWantsQuieter": "vinyl_hiss.flac"
+  },
+  {
+   "a": "rms",
+   "b": "shortTermMax",
+   "range": 20.3,
+   "p5to95": 15.1,
+   "sd": 4.94,
+   "aWantsLouder": "perc_bell.flac",
+   "aWantsQuieter": "drum_heavy_kick.flac"
+  },
+  {
+   "a": "rms",
+   "b": "momentaryMax@event",
+   "range": 24.9,
+   "p5to95": 15.8,
+   "sd": 4.77,
+   "aWantsLouder": "perc_bell.flac",
+   "aWantsQuieter": "vinyl_hiss.flac"
+  },
+  {
+   "a": "rms",
+   "b": "iso532_1.max@spl60",
+   "range": 26.4,
+   "p5to95": 19.9,
+   "sd": 6.0,
+   "aWantsLouder": "perc_till.flac",
+   "aWantsQuieter": "drum_heavy_kick.flac"
+  },
+  {
+   "a": "rms",
+   "b": "iso532_1.max@spl80",
+   "range": 26.1,
+   "p5to95": 19.5,
+   "sd": 5.86,
+   "aWantsLouder": "perc_till.flac",
+   "aWantsQuieter": "drum_heavy_kick.flac"
+  },
+  {
+   "a": "integrated",
+   "b": "momentaryMax",
+   "range": 12.9,
+   "p5to95": 8.0,
+   "sd": 2.58,
+   "aWantsLouder": "ambi_lunar_land.flac",
+   "aWantsQuieter": "elec_blip.flac"
+  },
+  {
+   "a": "integrated",
+   "b": "shortTermMax",
+   "range": 15.6,
+   "p5to95": 12.5,
+   "sd": 4.12,
+   "aWantsLouder": "ambi_lunar_land.flac",
+   "aWantsQuieter": "elec_blip.flac"
+  },
+  {
+   "a": "integrated",
+   "b": "momentaryMax@event",
+   "range": 14.0,
+   "p5to95": 9.4,
+   "sd": 2.9,
+   "aWantsLouder": "ambi_lunar_land.flac",
+   "aWantsQuieter": "vinyl_scratch.flac"
+  },
+  {
+   "a": "integrated",
+   "b": "iso532_1.max@spl60",
+   "range": 19.5,
+   "p5to95": 14.9,
+   "sd": 4.75,
+   "aWantsLouder": "misc_cineboom.flac",
+   "aWantsQuieter": "drum_heavy_kick.flac"
+  },
+  {
+   "a": "integrated",
+   "b": "iso532_1.max@spl80",
+   "range": 19.4,
+   "p5to95": 14.7,
+   "sd": 4.66,
+   "aWantsLouder": "misc_cineboom.flac",
+   "aWantsQuieter": "drum_heavy_kick.flac"
+  },
+  {
+   "a": "momentaryMax",
+   "b": "shortTermMax",
+   "range": 7.9,
+   "p5to95": 6.9,
+   "sd": 2.74,
+   "aWantsLouder": "ambi_drone.flac",
+   "aWantsQuieter": "bass_hit_c.flac"
+  },
+  {
+   "a": "momentaryMax",
+   "b": "momentaryMax@event",
+   "range": 4.5,
+   "p5to95": 2.7,
+   "sd": 1.03,
+   "aWantsLouder": "ambi_dark_woosh.flac",
+   "aWantsQuieter": "loop_breakbeat.flac"
+  },
+  {
+   "a": "momentaryMax",
+   "b": "iso532_1.max@spl60",
+   "range": 16.9,
+   "p5to95": 14.3,
+   "sd": 4.64,
+   "aWantsLouder": "drum_snare_hard.flac",
+   "aWantsQuieter": "ambi_piano.flac"
+  },
+  {
+   "a": "momentaryMax",
+   "b": "iso532_1.max@spl80",
+   "range": 15.5,
+   "p5to95": 14.6,
+   "sd": 4.53,
+   "aWantsLouder": "drum_snare_hard.flac",
+   "aWantsQuieter": "bass_woodsy_c.flac"
+  },
+  {
+   "a": "shortTermMax",
+   "b": "momentaryMax@event",
+   "range": 10.6,
+   "p5to95": 8.1,
+   "sd": 3.08,
+   "aWantsLouder": "misc_crow.flac",
+   "aWantsQuieter": "loop_breakbeat.flac"
+  },
+  {
+   "a": "shortTermMax",
+   "b": "iso532_1.max@spl60",
+   "range": 22.9,
+   "p5to95": 18.7,
+   "sd": 5.61,
+   "aWantsLouder": "drum_snare_hard.flac",
+   "aWantsQuieter": "bass_woodsy_c.flac"
+  },
+  {
+   "a": "shortTermMax",
+   "b": "iso532_1.max@spl80",
+   "range": 22.6,
+   "p5to95": 18.5,
+   "sd": 5.41,
+   "aWantsLouder": "drum_snare_hard.flac",
+   "aWantsQuieter": "bass_woodsy_c.flac"
+  },
+  {
+   "a": "momentaryMax@event",
+   "b": "iso532_1.max@spl60",
+   "range": 19.7,
+   "p5to95": 15.5,
+   "sd": 4.98,
+   "aWantsLouder": "vinyl_scratch.flac",
+   "aWantsQuieter": "ambi_piano.flac"
+  },
+  {
+   "a": "momentaryMax@event",
+   "b": "iso532_1.max@spl80",
+   "range": 18.7,
+   "p5to95": 15.6,
+   "sd": 4.9,
+   "aWantsLouder": "vinyl_scratch.flac",
+   "aWantsQuieter": "bass_woodsy_c.flac"
+  },
+  {
+   "a": "iso532_1.max@spl60",
+   "b": "iso532_1.max@spl80",
+   "range": 2.1,
+   "p5to95": 1.4,
+   "sd": 0.4,
+   "aWantsLouder": "ambi_piano.flac",
+   "aWantsQuieter": "perc_snap.flac"
+  }
+ ],
+ "files": [
+  {
+   "path": "drum_heavy_kick.flac",
+   "duration": 0.27,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.229,
+   "lowShare": 0.984,
+   "tail": 0.194,
+   "events": 1,
+   "asFile": {
+    "peak": -0.0,
+    "rms": -11.34,
+    "integrated": -14.35,
+    "momentaryMax": -16.06,
+    "shortTermMax": -24.81,
+    "momentaryMax@event": -16.06
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -7.75,
+    "integrated": -3.57,
+    "momentaryMax": 1.39,
+    "shortTermMax": 4.41,
+    "momentaryMax@event": 0.91,
+    "iso532_1.max@spl60": 9.82,
+    "iso532_1.max@spl80": 10.12
+   },
+   "spread": 17.87,
+   "isoMinusMaxM": {
+    "spl60": 8.43,
+    "spl80": 8.73
+   },
+   "isoMinusIntegrated": {
+    "spl60": 13.39,
+    "spl80": 13.69
+   },
+   "phonPerDb": {
+    "spl60": 0.96,
+    "spl80": 0.99
+   },
+   "converged": true,
+   "levelSensitivity": 0.3
+  },
+  {
+   "path": "vinyl_hiss.flac",
+   "duration": 8.0,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "impulse"
+   },
+   "eventDuration": 0.186,
+   "lowShare": 0.479,
+   "tail": 3.452,
+   "events": 11,
+   "asFile": {
+    "peak": -9.53,
+    "rms": -31.08,
+    "integrated": -37.63,
+    "momentaryMax": -34.94,
+    "shortTermMax": -37.3,
+    "momentaryMax@event": -37.48
+   },
+   "gains": {
+    "peak": 8.22,
+    "rms": 11.99,
+    "integrated": 22.72,
+    "momentaryMax": 23.28,
+    "shortTermMax": 19.91,
+    "momentaryMax@event": 25.34,
+    "iso532_1.max@spl60": 16.83,
+    "iso532_1.max@spl80": 17.43
+   },
+   "spread": 17.12,
+   "isoMinusMaxM": {
+    "spl60": -6.45,
+    "spl80": -5.85
+   },
+   "isoMinusIntegrated": {
+    "spl60": -5.89,
+    "spl80": -5.29
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.89
+   },
+   "converged": true,
+   "levelSensitivity": 0.6
+  },
+  {
+   "path": "bass_woodsy_c.flac",
+   "duration": 3.252,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 3.233,
+   "lowShare": 0.956,
+   "tail": 2.438,
+   "events": 1,
+   "asFile": {
+    "peak": -0.47,
+    "rms": -7.95,
+    "integrated": -7.04,
+    "momentaryMax": -5.5,
+    "shortTermMax": -7.19,
+    "momentaryMax@event": -5.5
+   },
+   "gains": {
+    "peak": -0.84,
+    "rms": -11.14,
+    "integrated": -7.87,
+    "momentaryMax": -6.16,
+    "shortTermMax": -10.2,
+    "momentaryMax@event": -6.64,
+    "iso532_1.max@spl60": 2.71,
+    "iso532_1.max@spl80": 3.25
+   },
+   "spread": 14.38,
+   "isoMinusMaxM": {
+    "spl60": 8.87,
+    "spl80": 9.41
+   },
+   "isoMinusIntegrated": {
+    "spl60": 10.58,
+    "spl80": 11.12
+   },
+   "phonPerDb": {
+    "spl60": 1.05,
+    "spl80": 0.94
+   },
+   "converged": true,
+   "levelSensitivity": 0.54
+  },
+  {
+   "path": "ambi_piano.flac",
+   "duration": 2.812,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 0.74,
+   "lowShare": 0.982,
+   "tail": 1.702,
+   "events": 2,
+   "asFile": {
+    "peak": -3.4,
+    "rms": -12.35,
+    "integrated": -11.28,
+    "momentaryMax": -9.14,
+    "shortTermMax": -12.93,
+    "momentaryMax@event": -9.14
+   },
+   "gains": {
+    "peak": 2.09,
+    "rms": -6.74,
+    "integrated": -3.63,
+    "momentaryMax": -2.52,
+    "shortTermMax": -4.46,
+    "momentaryMax@event": -3.0,
+    "iso532_1.max@spl60": 7.36,
+    "iso532_1.max@spl80": 6.86
+   },
+   "spread": 14.09,
+   "isoMinusMaxM": {
+    "spl60": 9.88,
+    "spl80": 9.38
+   },
+   "isoMinusIntegrated": {
+    "spl60": 10.99,
+    "spl80": 10.49
+   },
+   "phonPerDb": {
+    "spl60": 1.09,
+    "spl80": 0.99
+   },
+   "converged": true,
+   "levelSensitivity": -0.5
+  },
+  {
+   "path": "bass_hit_c.flac",
+   "duration": 0.609,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "iterative"
+   },
+   "eventDuration": 0.255,
+   "lowShare": 0.825,
+   "tail": 0.248,
+   "events": 4,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -15.95,
+    "integrated": -16.78,
+    "momentaryMax": -14.94,
+    "shortTermMax": -23.69,
+    "momentaryMax@event": -14.98
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -3.14,
+    "integrated": 1.87,
+    "momentaryMax": 3.28,
+    "shortTermMax": 6.3,
+    "momentaryMax@event": 2.84,
+    "iso532_1.max@spl60": 9.84,
+    "iso532_1.max@spl80": 10.8
+   },
+   "spread": 13.93,
+   "isoMinusMaxM": {
+    "spl60": 6.56,
+    "spl80": 7.52
+   },
+   "isoMinusIntegrated": {
+    "spl60": 7.97,
+    "spl80": 8.93
+   },
+   "phonPerDb": {
+    "spl60": 0.93,
+    "spl80": 0.93
+   },
+   "converged": true,
+   "levelSensitivity": 0.96
+  },
+  {
+   "path": "elec_blip.flac",
+   "duration": 0.158,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.16,
+   "lowShare": 0.003,
+   "tail": 0.068,
+   "events": 1,
+   "asFile": {
+    "peak": -6.61,
+    "rms": -27.84,
+    "integrated": -25.83,
+    "momentaryMax": -29.86,
+    "shortTermMax": -38.61,
+    "momentaryMax@event": -29.86
+   },
+   "gains": {
+    "peak": 5.3,
+    "rms": 8.75,
+    "integrated": 7.91,
+    "momentaryMax": 15.19,
+    "shortTermMax": 18.21,
+    "momentaryMax@event": 14.71,
+    "iso532_1.max@spl60": 10.13,
+    "iso532_1.max@spl80": 10.96
+   },
+   "spread": 12.9,
+   "isoMinusMaxM": {
+    "spl60": -5.06,
+    "spl80": -4.23
+   },
+   "isoMinusIntegrated": {
+    "spl60": 2.22,
+    "spl80": 3.05
+   },
+   "phonPerDb": {
+    "spl60": 0.98,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.83
+  },
+  {
+   "path": "loop_breakbeat.flac",
+   "duration": 1.905,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.125,
+   "lowShare": 0.975,
+   "tail": 0.244,
+   "events": 10,
+   "asFile": {
+    "peak": -0.18,
+    "rms": -9.28,
+    "integrated": -10.4,
+    "momentaryMax": -9.81,
+    "shortTermMax": -12.46,
+    "momentaryMax@event": -14.29
+   },
+   "gains": {
+    "peak": -1.13,
+    "rms": -9.81,
+    "integrated": -4.51,
+    "momentaryMax": -1.85,
+    "shortTermMax": -4.93,
+    "momentaryMax@event": 2.15,
+    "iso532_1.max@spl60": 0.33,
+    "iso532_1.max@spl80": 0.01
+   },
+   "spread": 11.96,
+   "isoMinusMaxM": {
+    "spl60": 2.18,
+    "spl80": 1.86
+   },
+   "isoMinusIntegrated": {
+    "spl60": 4.84,
+    "spl80": 4.52
+   },
+   "phonPerDb": {
+    "spl60": 1.08,
+    "spl80": 0.96
+   },
+   "converged": true,
+   "levelSensitivity": -0.32
+  },
+  {
+   "path": "elec_ping.flac",
+   "duration": 0.212,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.206,
+   "lowShare": 0.001,
+   "tail": 0.194,
+   "events": 1,
+   "asFile": {
+    "peak": -6.75,
+    "rms": -19.71,
+    "integrated": -19.97,
+    "momentaryMax": -22.72,
+    "shortTermMax": -31.47,
+    "momentaryMax@event": -22.72
+   },
+   "gains": {
+    "peak": 5.45,
+    "rms": 0.62,
+    "integrated": 2.05,
+    "momentaryMax": 8.05,
+    "shortTermMax": 11.07,
+    "momentaryMax@event": 7.57,
+    "iso532_1.max@spl60": 11.53,
+    "iso532_1.max@spl80": 12.2
+   },
+   "spread": 11.58,
+   "isoMinusMaxM": {
+    "spl60": 3.48,
+    "spl80": 4.15
+   },
+   "isoMinusIntegrated": {
+    "spl60": 9.48,
+    "spl80": 10.15
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.93
+   },
+   "converged": true,
+   "levelSensitivity": 0.67
+  },
+  {
+   "path": "perc_bell.flac",
+   "duration": 6.719,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 1.335,
+   "lowShare": 0.002,
+   "tail": 0.666,
+   "events": 2,
+   "asFile": {
+    "peak": -1.3,
+    "rms": -25.32,
+    "integrated": -14.73,
+    "momentaryMax": -6.85,
+    "shortTermMax": -15.52,
+    "momentaryMax@event": -6.85
+   },
+   "gains": {
+    "peak": -0.01,
+    "rms": 6.23,
+    "integrated": -0.18,
+    "momentaryMax": -4.81,
+    "shortTermMax": -1.87,
+    "momentaryMax@event": -5.29,
+    "iso532_1.max@spl60": 2.87,
+    "iso532_1.max@spl80": 3.27
+   },
+   "spread": 11.52,
+   "isoMinusMaxM": {
+    "spl60": 7.68,
+    "spl80": 8.08
+   },
+   "isoMinusIntegrated": {
+    "spl60": 3.05,
+    "spl80": 3.45
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.94
+   },
+   "converged": true,
+   "levelSensitivity": 0.4
+  },
+  {
+   "path": "ambi_drone.flac",
+   "duration": 4.408,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 3.126,
+   "lowShare": 0.0,
+   "tail": 3.244,
+   "events": 3,
+   "asFile": {
+    "peak": -6.67,
+    "rms": -18.49,
+    "integrated": -16.16,
+    "momentaryMax": -15.07,
+    "shortTermMax": -15.95,
+    "momentaryMax@event": -15.07
+   },
+   "gains": {
+    "peak": 5.37,
+    "rms": -0.6,
+    "integrated": 1.25,
+    "momentaryMax": 3.41,
+    "shortTermMax": -1.44,
+    "momentaryMax@event": 2.93,
+    "iso532_1.max@spl60": 9.87,
+    "iso532_1.max@spl80": 9.81
+   },
+   "spread": 11.31,
+   "isoMinusMaxM": {
+    "spl60": 6.46,
+    "spl80": 6.4
+   },
+   "isoMinusIntegrated": {
+    "spl60": 8.62,
+    "spl80": 8.56
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.98
+   },
+   "converged": true,
+   "levelSensitivity": -0.06
+  },
+  {
+   "path": "vinyl_scratch.flac",
+   "duration": 0.274,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.11,
+   "lowShare": 0.549,
+   "tail": 0.084,
+   "events": 2,
+   "asFile": {
+    "peak": -2.1,
+    "rms": -12.8,
+    "integrated": -14.08,
+    "momentaryMax": -15.73,
+    "shortTermMax": -24.48,
+    "momentaryMax@event": -19.27
+   },
+   "gains": {
+    "peak": 0.79,
+    "rms": -6.29,
+    "integrated": -3.84,
+    "momentaryMax": 1.06,
+    "shortTermMax": 4.08,
+    "momentaryMax@event": 4.12,
+    "iso532_1.max@spl60": -5.19,
+    "iso532_1.max@spl80": -4.65
+   },
+   "spread": 10.4,
+   "isoMinusMaxM": {
+    "spl60": -6.25,
+    "spl80": -5.71
+   },
+   "isoMinusIntegrated": {
+    "spl60": -1.35,
+    "spl80": -0.81
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.54
+  },
+  {
+   "path": "ambi_glass_hum.flac",
+   "duration": 10.0,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 9.404,
+   "lowShare": 0.0,
+   "tail": 4.514,
+   "events": 1,
+   "asFile": {
+    "peak": -10.06,
+    "rms": -23.21,
+    "integrated": -19.21,
+    "momentaryMax": -14.98,
+    "shortTermMax": -17.15,
+    "momentaryMax@event": -14.98
+   },
+   "gains": {
+    "peak": 8.76,
+    "rms": 4.12,
+    "integrated": 4.3,
+    "momentaryMax": 3.32,
+    "shortTermMax": -0.24,
+    "momentaryMax@event": 2.84,
+    "iso532_1.max@spl60": 9.09,
+    "iso532_1.max@spl80": 9.89
+   },
+   "spread": 10.13,
+   "isoMinusMaxM": {
+    "spl60": 5.77,
+    "spl80": 6.57
+   },
+   "isoMinusIntegrated": {
+    "spl60": 4.79,
+    "spl80": 5.59
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.93
+   },
+   "converged": true,
+   "levelSensitivity": 0.8
+  },
+  {
+   "path": "drum_snare_hard.flac",
+   "duration": 0.445,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.221,
+   "lowShare": 0.014,
+   "tail": 0.182,
+   "events": 1,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -13.77,
+    "integrated": -13.18,
+    "momentaryMax": -13.18,
+    "shortTermMax": -21.93,
+    "momentaryMax@event": -13.18
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -5.32,
+    "integrated": -4.74,
+    "momentaryMax": -1.49,
+    "shortTermMax": 1.53,
+    "momentaryMax@event": -1.97,
+    "iso532_1.max@spl60": -8.5,
+    "iso532_1.max@spl80": -7.6
+   },
+   "spread": 10.03,
+   "isoMinusMaxM": {
+    "spl60": -7.01,
+    "spl80": -6.11
+   },
+   "isoMinusIntegrated": {
+    "spl60": -3.76,
+    "spl80": -2.86
+   },
+   "phonPerDb": {
+    "spl60": 0.96,
+    "spl80": 0.88
+   },
+   "converged": true,
+   "levelSensitivity": 0.9
+  },
+  {
+   "path": "elec_bell.flac",
+   "duration": 0.278,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.276,
+   "lowShare": 0.0,
+   "tail": 0.246,
+   "events": 1,
+   "asFile": {
+    "peak": -0.0,
+    "rms": -11.79,
+    "integrated": -12.61,
+    "momentaryMax": -14.18,
+    "shortTermMax": -22.93,
+    "momentaryMax@event": -14.18
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -7.3,
+    "integrated": -5.31,
+    "momentaryMax": -0.49,
+    "shortTermMax": 2.53,
+    "momentaryMax@event": -0.97,
+    "iso532_1.max@spl60": 0.73,
+    "iso532_1.max@spl80": 1.08
+   },
+   "spread": 9.82,
+   "isoMinusMaxM": {
+    "spl60": 1.22,
+    "spl80": 1.57
+   },
+   "isoMinusIntegrated": {
+    "spl60": 6.04,
+    "spl80": 6.39
+   },
+   "phonPerDb": {
+    "spl60": 1.01,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.35
+  },
+  {
+   "path": "ambi_lunar_land.flac",
+   "duration": 7.394,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 7.396,
+   "lowShare": 0.001,
+   "tail": 4.716,
+   "events": 1,
+   "asFile": {
+    "peak": -0.96,
+    "rms": -25.83,
+    "integrated": -18.94,
+    "momentaryMax": -10.11,
+    "shortTermMax": -16.14,
+    "momentaryMax@event": -10.11
+   },
+   "gains": {
+    "peak": -0.35,
+    "rms": 6.74,
+    "integrated": 4.03,
+    "momentaryMax": -1.55,
+    "shortTermMax": -1.25,
+    "momentaryMax@event": -2.03,
+    "iso532_1.max@spl60": 6.33,
+    "iso532_1.max@spl80": 7.56
+   },
+   "spread": 9.59,
+   "isoMinusMaxM": {
+    "spl60": 7.88,
+    "spl80": 9.11
+   },
+   "isoMinusIntegrated": {
+    "spl60": 2.3,
+    "spl80": 3.53
+   },
+   "phonPerDb": {
+    "spl60": 1.02,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 1.23
+  },
+  {
+   "path": "elec_fuzz_tom.flac",
+   "duration": 0.372,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.371,
+   "lowShare": 0.908,
+   "tail": 0.322,
+   "events": 1,
+   "asFile": {
+    "peak": -1.31,
+    "rms": -11.19,
+    "integrated": -9.92,
+    "momentaryMax": -10.23,
+    "shortTermMax": -18.98,
+    "momentaryMax@event": -10.23
+   },
+   "gains": {
+    "peak": 0.0,
+    "rms": -7.9,
+    "integrated": -4.99,
+    "momentaryMax": -1.43,
+    "shortTermMax": 1.59,
+    "momentaryMax@event": -1.91,
+    "iso532_1.max@spl60": -1.51,
+    "iso532_1.max@spl80": -0.26
+   },
+   "spread": 9.49,
+   "isoMinusMaxM": {
+    "spl60": -0.08,
+    "spl80": 1.17
+   },
+   "isoMinusIntegrated": {
+    "spl60": 3.48,
+    "spl80": 4.73
+   },
+   "phonPerDb": {
+    "spl60": 0.98,
+    "spl80": 0.89
+   },
+   "converged": true,
+   "levelSensitivity": 1.25
+  },
+  {
+   "path": "perc_swash.flac",
+   "duration": 0.32,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.27,
+   "lowShare": 0.011,
+   "tail": 0.176,
+   "events": 1,
+   "asFile": {
+    "peak": -0.04,
+    "rms": -17.74,
+    "integrated": -15.58,
+    "momentaryMax": -16.56,
+    "shortTermMax": -25.31,
+    "momentaryMax@event": -16.56
+   },
+   "gains": {
+    "peak": -1.27,
+    "rms": -1.35,
+    "integrated": 0.67,
+    "momentaryMax": 4.9,
+    "shortTermMax": 7.92,
+    "momentaryMax@event": 4.42,
+    "iso532_1.max@spl60": 3.03,
+    "iso532_1.max@spl80": 3.61
+   },
+   "spread": 9.27,
+   "isoMinusMaxM": {
+    "spl60": -1.87,
+    "spl80": -1.29
+   },
+   "isoMinusIntegrated": {
+    "spl60": 2.36,
+    "spl80": 2.94
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 0.58
+  },
+  {
+   "path": "misc_burp.flac",
+   "duration": 0.793,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "iterative"
+   },
+   "eventDuration": 0.427,
+   "lowShare": 0.085,
+   "tail": 0.21,
+   "events": 1,
+   "asFile": {
+    "peak": -3.7,
+    "rms": -19.44,
+    "integrated": -17.79,
+    "momentaryMax": -16.65,
+    "shortTermMax": -25.4,
+    "momentaryMax@event": -16.65
+   },
+   "gains": {
+    "peak": 2.4,
+    "rms": 0.36,
+    "integrated": -0.13,
+    "momentaryMax": 1.98,
+    "shortTermMax": 5.0,
+    "momentaryMax@event": 1.5,
+    "iso532_1.max@spl60": -4.18,
+    "iso532_1.max@spl80": -3.51
+   },
+   "spread": 9.18,
+   "isoMinusMaxM": {
+    "spl60": -6.16,
+    "spl80": -5.49
+   },
+   "isoMinusIntegrated": {
+    "spl60": -4.05,
+    "spl80": -3.38
+   },
+   "phonPerDb": {
+    "spl60": 0.99,
+    "spl80": 0.91
+   },
+   "converged": true,
+   "levelSensitivity": 0.67
+  },
+  {
+   "path": "loop_amen.flac",
+   "duration": 1.753,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.209,
+   "lowShare": 0.397,
+   "tail": 0.408,
+   "events": 10,
+   "asFile": {
+    "peak": -0.27,
+    "rms": -17.55,
+    "integrated": -13.71,
+    "momentaryMax": -12.11,
+    "shortTermMax": -16.16,
+    "momentaryMax@event": -15.26
+   },
+   "gains": {
+    "peak": -1.04,
+    "rms": -1.54,
+    "integrated": -1.2,
+    "momentaryMax": 0.45,
+    "shortTermMax": -1.23,
+    "momentaryMax@event": 3.12,
+    "iso532_1.max@spl60": -5.99,
+    "iso532_1.max@spl80": -5.59
+   },
+   "spread": 9.11,
+   "isoMinusMaxM": {
+    "spl60": -6.44,
+    "spl80": -6.04
+   },
+   "isoMinusIntegrated": {
+    "spl60": -4.79,
+    "spl80": -4.39
+   },
+   "phonPerDb": {
+    "spl60": 1.01,
+    "spl80": 0.92
+   },
+   "converged": true,
+   "levelSensitivity": 0.4
+  },
+  {
+   "path": "ambi_glass_rub.flac",
+   "duration": 3.149,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 2.003,
+   "lowShare": 0.0,
+   "tail": 1.586,
+   "events": 3,
+   "asFile": {
+    "peak": -1.05,
+    "rms": -11.46,
+    "integrated": -8.78,
+    "momentaryMax": -6.8,
+    "shortTermMax": -8.74,
+    "momentaryMax@event": -6.96
+   },
+   "gains": {
+    "peak": -0.26,
+    "rms": -7.62,
+    "integrated": -6.13,
+    "momentaryMax": -4.86,
+    "shortTermMax": -8.65,
+    "momentaryMax@event": -5.18,
+    "iso532_1.max@spl60": 0.42,
+    "iso532_1.max@spl80": -0.01
+   },
+   "spread": 9.07,
+   "isoMinusMaxM": {
+    "spl60": 5.28,
+    "spl80": 4.85
+   },
+   "isoMinusIntegrated": {
+    "spl60": 6.55,
+    "spl80": 6.12
+   },
+   "phonPerDb": {
+    "spl60": 1.03,
+    "spl80": 0.98
+   },
+   "converged": true,
+   "levelSensitivity": -0.43
+  },
+  {
+   "path": "perc_snap.flac",
+   "duration": 0.308,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.18,
+   "lowShare": 0.1,
+   "tail": 0.164,
+   "events": 1,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -20.78,
+    "integrated": -15.04,
+    "momentaryMax": -16.18,
+    "shortTermMax": -24.93,
+    "momentaryMax@event": -16.18
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": 1.7,
+    "integrated": 0.13,
+    "momentaryMax": 4.52,
+    "shortTermMax": 7.54,
+    "momentaryMax@event": 4.04,
+    "iso532_1.max@spl60": 1.81,
+    "iso532_1.max@spl80": 3.36
+   },
+   "spread": 8.85,
+   "isoMinusMaxM": {
+    "spl60": -2.71,
+    "spl80": -1.16
+   },
+   "isoMinusIntegrated": {
+    "spl60": 1.68,
+    "spl80": 3.23
+   },
+   "phonPerDb": {
+    "spl60": 0.94,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 1.55
+  },
+  {
+   "path": "glitch_perc5.flac",
+   "duration": 0.928,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.525,
+   "lowShare": 0.005,
+   "tail": 0.286,
+   "events": 1,
+   "asFile": {
+    "peak": -3.2,
+    "rms": -22.97,
+    "integrated": -17.31,
+    "momentaryMax": -14.76,
+    "shortTermMax": -23.5,
+    "momentaryMax@event": -14.76
+   },
+   "gains": {
+    "peak": 1.9,
+    "rms": 3.88,
+    "integrated": 2.4,
+    "momentaryMax": 3.1,
+    "shortTermMax": 6.11,
+    "momentaryMax@event": 2.62,
+    "iso532_1.max@spl60": -2.72,
+    "iso532_1.max@spl80": -1.78
+   },
+   "spread": 8.83,
+   "isoMinusMaxM": {
+    "spl60": -5.82,
+    "spl80": -4.88
+   },
+   "isoMinusIntegrated": {
+    "spl60": -5.12,
+    "spl80": -4.18
+   },
+   "phonPerDb": {
+    "spl60": 0.98,
+    "spl80": 0.88
+   },
+   "converged": true,
+   "levelSensitivity": 0.94
+  },
+  {
+   "path": "perc_till.flac",
+   "duration": 2.666,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "iterative"
+   },
+   "eventDuration": 0.56,
+   "lowShare": 0.019,
+   "tail": 0.49,
+   "events": 3,
+   "asFile": {
+    "peak": -1.7,
+    "rms": -25.72,
+    "integrated": -19.61,
+    "momentaryMax": -14.95,
+    "shortTermMax": -23.35,
+    "momentaryMax@event": -14.95
+   },
+   "gains": {
+    "peak": 0.39,
+    "rms": 6.63,
+    "integrated": 1.69,
+    "momentaryMax": 0.28,
+    "shortTermMax": 2.95,
+    "momentaryMax@event": -0.2,
+    "iso532_1.max@spl60": -2.2,
+    "iso532_1.max@spl80": -1.6
+   },
+   "spread": 8.83,
+   "isoMinusMaxM": {
+    "spl60": -2.48,
+    "spl80": -1.88
+   },
+   "isoMinusIntegrated": {
+    "spl60": -3.89,
+    "spl80": -3.29
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.6
+  },
+  {
+   "path": "vinyl_rewind.flac",
+   "duration": 2.68,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "iterative"
+   },
+   "eventDuration": 0.627,
+   "lowShare": 0.11,
+   "tail": 1.538,
+   "events": 3,
+   "asFile": {
+    "peak": -5.03,
+    "rms": -17.91,
+    "integrated": -13.14,
+    "momentaryMax": -11.65,
+    "shortTermMax": -13.94,
+    "momentaryMax@event": -11.66
+   },
+   "gains": {
+    "peak": 3.73,
+    "rms": -1.18,
+    "integrated": -1.77,
+    "momentaryMax": -0.01,
+    "shortTermMax": -3.45,
+    "momentaryMax@event": -0.48,
+    "iso532_1.max@spl60": -4.29,
+    "iso532_1.max@spl80": -3.75
+   },
+   "spread": 8.02,
+   "isoMinusMaxM": {
+    "spl60": -4.28,
+    "spl80": -3.74
+   },
+   "isoMinusIntegrated": {
+    "spl60": -2.52,
+    "spl80": -1.98
+   },
+   "phonPerDb": {
+    "spl60": 1.02,
+    "spl80": 0.91
+   },
+   "converged": true,
+   "levelSensitivity": 0.54
+  },
+  {
+   "path": "glitch_perc4.flac",
+   "duration": 0.928,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.531,
+   "lowShare": 0.003,
+   "tail": 0.348,
+   "events": 1,
+   "asFile": {
+    "peak": -4.57,
+    "rms": -26.43,
+    "integrated": -20.98,
+    "momentaryMax": -17.81,
+    "shortTermMax": -26.56,
+    "momentaryMax@event": -17.81
+   },
+   "gains": {
+    "peak": 3.27,
+    "rms": 7.34,
+    "integrated": 6.07,
+    "momentaryMax": 6.15,
+    "shortTermMax": 9.17,
+    "momentaryMax@event": 5.67,
+    "iso532_1.max@spl60": 1.16,
+    "iso532_1.max@spl80": 2.25
+   },
+   "spread": 8.01,
+   "isoMinusMaxM": {
+    "spl60": -4.99,
+    "spl80": -3.9
+   },
+   "isoMinusIntegrated": {
+    "spl60": -4.91,
+    "spl80": -3.82
+   },
+   "phonPerDb": {
+    "spl60": 0.97,
+    "spl80": 0.88
+   },
+   "converged": true,
+   "levelSensitivity": 1.09
+  },
+  {
+   "path": "elec_cymbal.flac",
+   "duration": 0.563,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.467,
+   "lowShare": 0.0,
+   "tail": 0.274,
+   "events": 1,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -12.24,
+    "integrated": -8.68,
+    "momentaryMax": -7.5,
+    "shortTermMax": -16.24,
+    "momentaryMax@event": -7.5
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -6.85,
+    "integrated": -9.24,
+    "momentaryMax": -7.17,
+    "shortTermMax": -4.16,
+    "momentaryMax@event": -7.65,
+    "iso532_1.max@spl60": -4.97,
+    "iso532_1.max@spl80": -4.16
+   },
+   "spread": 7.94,
+   "isoMinusMaxM": {
+    "spl60": 2.2,
+    "spl80": 3.01
+   },
+   "isoMinusIntegrated": {
+    "spl60": 4.27,
+    "spl80": 5.08
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.91
+   },
+   "converged": true,
+   "levelSensitivity": 0.81
+  },
+  {
+   "path": "vinyl_backspin.flac",
+   "duration": 1.061,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "iterative"
+   },
+   "eventDuration": 0.914,
+   "lowShare": 0.177,
+   "tail": 0.676,
+   "events": 2,
+   "asFile": {
+    "peak": -1.7,
+    "rms": -16.68,
+    "integrated": -12.88,
+    "momentaryMax": -10.48,
+    "shortTermMax": -18.38,
+    "momentaryMax@event": -10.5
+   },
+   "gains": {
+    "peak": 0.39,
+    "rms": -2.41,
+    "integrated": -2.03,
+    "momentaryMax": -1.18,
+    "shortTermMax": 0.99,
+    "momentaryMax@event": -1.64,
+    "iso532_1.max@spl60": -6.68,
+    "iso532_1.max@spl80": -6.03
+   },
+   "spread": 7.67,
+   "isoMinusMaxM": {
+    "spl60": -5.5,
+    "spl80": -4.85
+   },
+   "isoMinusIntegrated": {
+    "spl60": -4.65,
+    "spl80": -4.0
+   },
+   "phonPerDb": {
+    "spl60": 0.99,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.65
+  },
+  {
+   "path": "elec_wood.flac",
+   "duration": 0.478,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.212,
+   "lowShare": 0.343,
+   "tail": 0.282,
+   "events": 3,
+   "asFile": {
+    "peak": -6.58,
+    "rms": -23.58,
+    "integrated": -22.93,
+    "momentaryMax": -22.93,
+    "shortTermMax": -31.68,
+    "momentaryMax@event": -25.26
+   },
+   "gains": {
+    "peak": 5.28,
+    "rms": 4.49,
+    "integrated": 5.01,
+    "momentaryMax": 8.26,
+    "shortTermMax": 11.28,
+    "momentaryMax@event": 10.11,
+    "iso532_1.max@spl60": 3.66,
+    "iso532_1.max@spl80": 4.38
+   },
+   "spread": 7.62,
+   "isoMinusMaxM": {
+    "spl60": -4.6,
+    "spl80": -3.88
+   },
+   "isoMinusIntegrated": {
+    "spl60": -1.35,
+    "spl80": -0.63
+   },
+   "phonPerDb": {
+    "spl60": 0.98,
+    "spl80": 0.93
+   },
+   "converged": true,
+   "levelSensitivity": 0.72
+  },
+  {
+   "path": "ambi_soft_buzz.flac",
+   "duration": 0.782,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.784,
+   "lowShare": 0.185,
+   "tail": 0.334,
+   "events": 1,
+   "asFile": {
+    "peak": -5.01,
+    "rms": -19.67,
+    "integrated": -15.83,
+    "momentaryMax": -15.09,
+    "shortTermMax": -23.52,
+    "momentaryMax@event": -15.09
+   },
+   "gains": {
+    "peak": 3.7,
+    "rms": 0.59,
+    "integrated": 0.92,
+    "momentaryMax": 3.43,
+    "shortTermMax": 6.13,
+    "momentaryMax@event": 2.95,
+    "iso532_1.max@spl60": 7.47,
+    "iso532_1.max@spl80": 7.92
+   },
+   "spread": 7.34,
+   "isoMinusMaxM": {
+    "spl60": 4.04,
+    "spl80": 4.49
+   },
+   "isoMinusIntegrated": {
+    "spl60": 6.55,
+    "spl80": 7.0
+   },
+   "phonPerDb": {
+    "spl60": 1.01,
+    "spl80": 0.94
+   },
+   "converged": true,
+   "levelSensitivity": 0.45
+  },
+  {
+   "path": "drum_splash_hard.flac",
+   "duration": 2.596,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 1.805,
+   "lowShare": 0.0,
+   "tail": 1.02,
+   "events": 1,
+   "asFile": {
+    "peak": -0.14,
+    "rms": -18.96,
+    "integrated": -13.46,
+    "momentaryMax": -9.18,
+    "shortTermMax": -16.44,
+    "momentaryMax@event": -9.18
+   },
+   "gains": {
+    "peak": -1.17,
+    "rms": -0.12,
+    "integrated": -4.46,
+    "momentaryMax": -5.49,
+    "shortTermMax": -3.96,
+    "momentaryMax@event": -5.97,
+    "iso532_1.max@spl60": -7.35,
+    "iso532_1.max@spl80": -6.42
+   },
+   "spread": 7.22,
+   "isoMinusMaxM": {
+    "spl60": -1.86,
+    "spl80": -0.93
+   },
+   "isoMinusIntegrated": {
+    "spl60": -2.89,
+    "spl80": -1.96
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 0.93
+  },
+  {
+   "path": "ambi_sauna.flac",
+   "duration": 9.0,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 8.406,
+   "lowShare": 0.052,
+   "tail": 7.202,
+   "events": 1,
+   "asFile": {
+    "peak": -0.92,
+    "rms": -20.15,
+    "integrated": -14.19,
+    "momentaryMax": -9.58,
+    "shortTermMax": -11.7,
+    "momentaryMax@event": -9.58
+   },
+   "gains": {
+    "peak": -0.39,
+    "rms": 1.06,
+    "integrated": -0.72,
+    "momentaryMax": -2.08,
+    "shortTermMax": -5.69,
+    "momentaryMax@event": -2.56,
+    "iso532_1.max@spl60": -5.92,
+    "iso532_1.max@spl80": -5.38
+   },
+   "spread": 6.98,
+   "isoMinusMaxM": {
+    "spl60": -3.84,
+    "spl80": -3.3
+   },
+   "isoMinusIntegrated": {
+    "spl60": -5.2,
+    "spl80": -4.66
+   },
+   "phonPerDb": {
+    "spl60": 1.02,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.54
+  },
+  {
+   "path": "loop_industrial.flac",
+   "duration": 0.884,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.453,
+   "lowShare": 0.587,
+   "tail": 0.362,
+   "events": 3,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -15.1,
+    "integrated": -11.19,
+    "momentaryMax": -9.47,
+    "shortTermMax": -17.28,
+    "momentaryMax@event": -9.48
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -3.99,
+    "integrated": -3.72,
+    "momentaryMax": -2.19,
+    "shortTermMax": -0.11,
+    "momentaryMax@event": -2.66,
+    "iso532_1.max@spl60": -6.97,
+    "iso532_1.max@spl80": -6.52
+   },
+   "spread": 6.86,
+   "isoMinusMaxM": {
+    "spl60": -4.78,
+    "spl80": -4.33
+   },
+   "isoMinusIntegrated": {
+    "spl60": -3.25,
+    "spl80": -2.8
+   },
+   "phonPerDb": {
+    "spl60": 1.01,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.45
+  },
+  {
+   "path": "glitch_perc2.flac",
+   "duration": 0.928,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.476,
+   "lowShare": 0.842,
+   "tail": 0.258,
+   "events": 2,
+   "asFile": {
+    "peak": -0.1,
+    "rms": -16.81,
+    "integrated": -15.84,
+    "momentaryMax": -13.1,
+    "shortTermMax": -21.82,
+    "momentaryMax@event": -14.76
+   },
+   "gains": {
+    "peak": -1.21,
+    "rms": -2.28,
+    "integrated": 0.93,
+    "momentaryMax": 1.44,
+    "shortTermMax": 4.43,
+    "momentaryMax@event": 2.62,
+    "iso532_1.max@spl60": 0.4,
+    "iso532_1.max@spl80": 0.71
+   },
+   "spread": 6.71,
+   "isoMinusMaxM": {
+    "spl60": -1.04,
+    "spl80": -0.73
+   },
+   "isoMinusIntegrated": {
+    "spl60": -0.53,
+    "spl80": -0.22
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 0.31
+  },
+  {
+   "path": "elec_chime.flac",
+   "duration": 2.278,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 1.544,
+   "lowShare": 0.0,
+   "tail": 0.96,
+   "events": 1,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -19.43,
+    "integrated": -15.24,
+    "momentaryMax": -8.87,
+    "shortTermMax": -17.37,
+    "momentaryMax@event": -8.87
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": 0.34,
+    "integrated": -2.68,
+    "momentaryMax": -5.8,
+    "shortTermMax": -3.03,
+    "momentaryMax@event": -6.28,
+    "iso532_1.max@spl60": -1.25,
+    "iso532_1.max@spl80": -0.66
+   },
+   "spread": 6.63,
+   "isoMinusMaxM": {
+    "spl60": 4.55,
+    "spl80": 5.14
+   },
+   "isoMinusIntegrated": {
+    "spl60": 1.43,
+    "spl80": 2.02
+   },
+   "phonPerDb": {
+    "spl60": 0.98,
+    "spl80": 0.93
+   },
+   "converged": true,
+   "levelSensitivity": 0.59
+  },
+  {
+   "path": "loop_garzul.flac",
+   "duration": 8.0,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 0.244,
+   "lowShare": 0.556,
+   "tail": 3.358,
+   "events": 23,
+   "asFile": {
+    "peak": -0.88,
+    "rms": -14.37,
+    "integrated": -12.12,
+    "momentaryMax": -10.51,
+    "shortTermMax": -11.71,
+    "momentaryMax@event": -12.77
+   },
+   "gains": {
+    "peak": -0.43,
+    "rms": -4.72,
+    "integrated": -2.79,
+    "momentaryMax": -1.15,
+    "shortTermMax": -5.68,
+    "momentaryMax@event": 0.63,
+    "iso532_1.max@spl60": -5.21,
+    "iso532_1.max@spl80": -4.96
+   },
+   "spread": 6.31,
+   "isoMinusMaxM": {
+    "spl60": -4.06,
+    "spl80": -3.81
+   },
+   "isoMinusIntegrated": {
+    "spl60": -2.42,
+    "spl80": -2.17
+   },
+   "phonPerDb": {
+    "spl60": 1.03,
+    "spl80": 0.91
+   },
+   "converged": true,
+   "levelSensitivity": 0.25
+  },
+  {
+   "path": "misc_crow.flac",
+   "duration": 0.481,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.424,
+   "lowShare": 0.0,
+   "tail": 0.256,
+   "events": 1,
+   "asFile": {
+    "peak": -0.11,
+    "rms": -14.09,
+    "integrated": -11.67,
+    "momentaryMax": -11.67,
+    "shortTermMax": -20.42,
+    "momentaryMax@event": -11.67
+   },
+   "gains": {
+    "peak": -1.2,
+    "rms": -5.0,
+    "integrated": -6.25,
+    "momentaryMax": -3.0,
+    "shortTermMax": 0.02,
+    "momentaryMax@event": -3.48,
+    "iso532_1.max@spl60": -4.46,
+    "iso532_1.max@spl80": -3.08
+   },
+   "spread": 6.27,
+   "isoMinusMaxM": {
+    "spl60": -1.46,
+    "spl80": -0.08
+   },
+   "isoMinusIntegrated": {
+    "spl60": 1.79,
+    "spl80": 3.17
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 1.38
+  },
+  {
+   "path": "glitch_perc1.flac",
+   "duration": 1.837,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "impulse"
+   },
+   "eventDuration": 0.189,
+   "lowShare": 0.651,
+   "tail": 0.648,
+   "events": 9,
+   "asFile": {
+    "peak": -0.1,
+    "rms": -20.04,
+    "integrated": -16.44,
+    "momentaryMax": -11.66,
+    "shortTermMax": -20.21,
+    "momentaryMax@event": -13.4
+   },
+   "gains": {
+    "peak": -1.21,
+    "rms": 0.95,
+    "integrated": 1.53,
+    "momentaryMax": 0.0,
+    "shortTermMax": 2.82,
+    "momentaryMax@event": 1.26,
+    "iso532_1.max@spl60": -3.41,
+    "iso532_1.max@spl80": -2.57
+   },
+   "spread": 6.23,
+   "isoMinusMaxM": {
+    "spl60": -3.41,
+    "spl80": -2.57
+   },
+   "isoMinusIntegrated": {
+    "spl60": -4.94,
+    "spl80": -4.1
+   },
+   "phonPerDb": {
+    "spl60": 0.99,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.84
+  },
+  {
+   "path": "ambi_swoosh.flac",
+   "duration": 1.848,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 1.829,
+   "lowShare": 0.308,
+   "tail": 0.618,
+   "events": 1,
+   "asFile": {
+    "peak": -6.26,
+    "rms": -21.46,
+    "integrated": -18.84,
+    "momentaryMax": -15.32,
+    "shortTermMax": -22.42,
+    "momentaryMax@event": -15.33
+   },
+   "gains": {
+    "peak": 4.96,
+    "rms": 2.38,
+    "integrated": 3.93,
+    "momentaryMax": 3.66,
+    "shortTermMax": 5.03,
+    "momentaryMax@event": 3.19,
+    "iso532_1.max@spl60": 8.23,
+    "iso532_1.max@spl80": 8.54
+   },
+   "spread": 6.16,
+   "isoMinusMaxM": {
+    "spl60": 4.57,
+    "spl80": 4.88
+   },
+   "isoMinusIntegrated": {
+    "spl60": 4.3,
+    "spl80": 4.61
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.94
+   },
+   "converged": true,
+   "levelSensitivity": 0.31
+  },
+  {
+   "path": "misc_cineboom.flac",
+   "duration": 7.923,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 6.908,
+   "lowShare": 0.875,
+   "tail": 2.734,
+   "events": 1,
+   "asFile": {
+    "peak": -2.69,
+    "rms": -17.58,
+    "integrated": -16.3,
+    "momentaryMax": -12.78,
+    "shortTermMax": -14.8,
+    "momentaryMax@event": -12.8
+   },
+   "gains": {
+    "peak": 1.38,
+    "rms": -1.51,
+    "integrated": 1.39,
+    "momentaryMax": 1.12,
+    "shortTermMax": -2.59,
+    "momentaryMax@event": 0.66,
+    "iso532_1.max@spl60": -4.75,
+    "iso532_1.max@spl80": -4.3
+   },
+   "spread": 6.14,
+   "isoMinusMaxM": {
+    "spl60": -5.87,
+    "spl80": -5.42
+   },
+   "isoMinusIntegrated": {
+    "spl60": -6.14,
+    "spl80": -5.69
+   },
+   "phonPerDb": {
+    "spl60": 1.01,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.45
+  },
+  {
+   "path": "ambi_haunted_hum.flac",
+   "duration": 9.782,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 8.858,
+   "lowShare": 0.859,
+   "tail": 3.198,
+   "events": 1,
+   "asFile": {
+    "peak": -8.75,
+    "rms": -25.26,
+    "integrated": -21.15,
+    "momentaryMax": -16.21,
+    "shortTermMax": -18.97,
+    "momentaryMax@event": -16.22
+   },
+   "gains": {
+    "peak": 7.45,
+    "rms": 6.18,
+    "integrated": 6.24,
+    "momentaryMax": 4.55,
+    "shortTermMax": 1.58,
+    "momentaryMax@event": 4.08,
+    "iso532_1.max@spl60": 5.07,
+    "iso532_1.max@spl80": 5.16
+   },
+   "spread": 5.86,
+   "isoMinusMaxM": {
+    "spl60": 0.52,
+    "spl80": 0.61
+   },
+   "isoMinusIntegrated": {
+    "spl60": -1.17,
+    "spl80": -1.08
+   },
+   "phonPerDb": {
+    "spl60": 0.99,
+    "spl80": 0.97
+   },
+   "converged": true,
+   "levelSensitivity": 0.09
+  },
+  {
+   "path": "glitch_bass_g.flac",
+   "duration": 1.931,
+   "channels": 2,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "impulse"
+   },
+   "eventDuration": 0.125,
+   "lowShare": 0.697,
+   "tail": 1.306,
+   "events": 8,
+   "asFile": {
+    "peak": -0.11,
+    "rms": -15.19,
+    "integrated": -14.39,
+    "momentaryMax": -8.69,
+    "shortTermMax": -15.75,
+    "momentaryMax@event": -10.88
+   },
+   "gains": {
+    "peak": -1.2,
+    "rms": -3.9,
+    "integrated": -0.52,
+    "momentaryMax": -2.97,
+    "shortTermMax": -1.64,
+    "momentaryMax@event": -1.26,
+    "iso532_1.max@spl60": 1.8,
+    "iso532_1.max@spl80": 1.78
+   },
+   "spread": 5.69,
+   "isoMinusMaxM": {
+    "spl60": 4.77,
+    "spl80": 4.75
+   },
+   "isoMinusIntegrated": {
+    "spl60": 2.32,
+    "spl80": 2.3
+   },
+   "phonPerDb": {
+    "spl60": 1.1,
+    "spl80": 0.94
+   },
+   "converged": true,
+   "levelSensitivity": -0.02
+  },
+  {
+   "path": "glitch_perc3.flac",
+   "duration": 1.091,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.609,
+   "lowShare": 0.006,
+   "tail": 0.278,
+   "events": 2,
+   "asFile": {
+    "peak": -1.87,
+    "rms": -21.33,
+    "integrated": -16.55,
+    "momentaryMax": -14.37,
+    "shortTermMax": -22.72,
+    "momentaryMax@event": -14.93
+   },
+   "gains": {
+    "peak": 0.56,
+    "rms": 2.24,
+    "integrated": 1.64,
+    "momentaryMax": 2.71,
+    "shortTermMax": 5.33,
+    "momentaryMax@event": 2.79,
+    "iso532_1.max@spl60": -0.33,
+    "iso532_1.max@spl80": 0.39
+   },
+   "spread": 5.66,
+   "isoMinusMaxM": {
+    "spl60": -3.04,
+    "spl80": -2.32
+   },
+   "isoMinusIntegrated": {
+    "spl60": -1.97,
+    "spl80": -1.25
+   },
+   "phonPerDb": {
+    "spl60": 1.01,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.72
+  },
+  {
+   "path": "ambi_dark_woosh.flac",
+   "duration": 3.702,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 3.111,
+   "lowShare": 0.634,
+   "tail": 1.246,
+   "events": 1,
+   "asFile": {
+    "peak": -1.62,
+    "rms": -19.33,
+    "integrated": -16.06,
+    "momentaryMax": -11.75,
+    "shortTermMax": -17.37,
+    "momentaryMax@event": -11.74
+   },
+   "gains": {
+    "peak": 0.31,
+    "rms": 0.24,
+    "integrated": 1.15,
+    "momentaryMax": 0.09,
+    "shortTermMax": -0.02,
+    "momentaryMax@event": -0.4,
+    "iso532_1.max@spl60": 5.22,
+    "iso532_1.max@spl80": 5.18
+   },
+   "spread": 5.62,
+   "isoMinusMaxM": {
+    "spl60": 5.13,
+    "spl80": 5.09
+   },
+   "isoMinusIntegrated": {
+    "spl60": 4.07,
+    "spl80": 4.03
+   },
+   "phonPerDb": {
+    "spl60": 1.04,
+    "spl80": 0.97
+   },
+   "converged": true,
+   "levelSensitivity": -0.04
+  },
+  {
+   "path": "glitch_robot2.flac",
+   "duration": 0.928,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "iterative"
+   },
+   "eventDuration": 0.842,
+   "lowShare": 0.033,
+   "tail": 0.208,
+   "events": 1,
+   "asFile": {
+    "peak": -0.1,
+    "rms": -14.82,
+    "integrated": -9.38,
+    "momentaryMax": -8.2,
+    "shortTermMax": -15.55,
+    "momentaryMax@event": -8.2
+   },
+   "gains": {
+    "peak": -1.21,
+    "rms": -4.27,
+    "integrated": -5.53,
+    "momentaryMax": -3.46,
+    "shortTermMax": -1.84,
+    "momentaryMax@event": -3.94,
+    "iso532_1.max@spl60": -6.78,
+    "iso532_1.max@spl80": -6.33
+   },
+   "spread": 5.57,
+   "isoMinusMaxM": {
+    "spl60": -3.32,
+    "spl80": -2.87
+   },
+   "isoMinusIntegrated": {
+    "spl60": -1.25,
+    "spl80": -0.8
+   },
+   "phonPerDb": {
+    "spl60": 1.02,
+    "spl80": 0.91
+   },
+   "converged": true,
+   "levelSensitivity": 0.45
+  },
+  {
+   "path": "guit_e_slide.flac",
+   "duration": 4.325,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 1.71,
+   "lowShare": 0.004,
+   "tail": 1.184,
+   "events": 1,
+   "asFile": {
+    "peak": -3.1,
+    "rms": -21.42,
+    "integrated": -18.22,
+    "momentaryMax": -11.94,
+    "shortTermMax": -20.2,
+    "momentaryMax@event": -11.94
+   },
+   "gains": {
+    "peak": 1.79,
+    "rms": 2.34,
+    "integrated": 0.3,
+    "momentaryMax": -2.73,
+    "shortTermMax": -0.2,
+    "momentaryMax@event": -3.21,
+    "iso532_1.max@spl60": -0.68,
+    "iso532_1.max@spl80": -0.16
+   },
+   "spread": 5.55,
+   "isoMinusMaxM": {
+    "spl60": 2.05,
+    "spl80": 2.57
+   },
+   "isoMinusIntegrated": {
+    "spl60": -0.98,
+    "spl80": -0.46
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.92
+   },
+   "converged": true,
+   "levelSensitivity": 0.52
+  },
+  {
+   "path": "drum_tom_lo_hard.flac",
+   "duration": 1.0,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.874,
+   "lowShare": 0.903,
+   "tail": 0.376,
+   "events": 1,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -12.25,
+    "integrated": -14.72,
+    "momentaryMax": -10.08,
+    "shortTermMax": -18.6,
+    "momentaryMax@event": -10.08
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -6.84,
+    "integrated": -3.2,
+    "momentaryMax": -4.59,
+    "shortTermMax": -1.8,
+    "momentaryMax@event": -5.07,
+    "iso532_1.max@spl60": -3.11,
+    "iso532_1.max@spl80": -2.41
+   },
+   "spread": 5.53,
+   "isoMinusMaxM": {
+    "spl60": 1.48,
+    "spl80": 2.18
+   },
+   "isoMinusIntegrated": {
+    "spl60": 0.09,
+    "spl80": 0.79
+   },
+   "phonPerDb": {
+    "spl60": 1.02,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.7
+  },
+  {
+   "path": "elec_twang.flac",
+   "duration": 0.624,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 0.601,
+   "lowShare": 0.057,
+   "tail": 0.386,
+   "events": 1,
+   "asFile": {
+    "peak": -4.22,
+    "rms": -22.07,
+    "integrated": -19.58,
+    "momentaryMax": -16.82,
+    "shortTermMax": -25.51,
+    "momentaryMax@event": -16.82
+   },
+   "gains": {
+    "peak": 2.91,
+    "rms": 2.98,
+    "integrated": 4.67,
+    "momentaryMax": 5.16,
+    "shortTermMax": 8.12,
+    "momentaryMax@event": 4.68,
+    "iso532_1.max@spl60": 2.99,
+    "iso532_1.max@spl80": 3.68
+   },
+   "spread": 5.21,
+   "isoMinusMaxM": {
+    "spl60": -2.17,
+    "spl80": -1.48
+   },
+   "isoMinusIntegrated": {
+    "spl60": -1.68,
+    "spl80": -0.99
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 0.69
+  },
+  {
+   "path": "drum_cymbal_open.flac",
+   "duration": 1.804,
+   "channels": 1,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 1.228,
+   "lowShare": 0.0,
+   "tail": 0.924,
+   "events": 2,
+   "asFile": {
+    "peak": -0.14,
+    "rms": -19.21,
+    "integrated": -16.59,
+    "momentaryMax": -10.2,
+    "shortTermMax": -18.47,
+    "momentaryMax@event": -10.2
+   },
+   "gains": {
+    "peak": -1.17,
+    "rms": 0.12,
+    "integrated": -1.33,
+    "momentaryMax": -4.47,
+    "shortTermMax": -1.93,
+    "momentaryMax@event": -4.95,
+    "iso532_1.max@spl60": -4.99,
+    "iso532_1.max@spl80": -3.96
+   },
+   "spread": 5.12,
+   "isoMinusMaxM": {
+    "spl60": -0.52,
+    "spl80": 0.51
+   },
+   "isoMinusIntegrated": {
+    "spl60": -3.66,
+    "spl80": -2.63
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 1.03
+  },
+  {
+   "path": "glitch_robot1.flac",
+   "duration": 1.023,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "iterative"
+   },
+   "eventDuration": 0.964,
+   "lowShare": 0.039,
+   "tail": 0.148,
+   "events": 1,
+   "asFile": {
+    "peak": -0.1,
+    "rms": -17.49,
+    "integrated": -11.74,
+    "momentaryMax": -10.93,
+    "shortTermMax": -17.11,
+    "momentaryMax@event": -10.93
+   },
+   "gains": {
+    "peak": -1.21,
+    "rms": -1.6,
+    "integrated": -3.17,
+    "momentaryMax": -0.73,
+    "shortTermMax": -0.28,
+    "momentaryMax@event": -1.21,
+    "iso532_1.max@spl60": -5.33,
+    "iso532_1.max@spl80": -4.84
+   },
+   "spread": 5.05,
+   "isoMinusMaxM": {
+    "spl60": -4.6,
+    "spl80": -4.11
+   },
+   "isoMinusIntegrated": {
+    "spl60": -2.16,
+    "spl80": -1.67
+   },
+   "phonPerDb": {
+    "spl60": 1.02,
+    "spl80": 0.9
+   },
+   "converged": true,
+   "levelSensitivity": 0.49
+  },
+  {
+   "path": "guit_em9.flac",
+   "duration": 9.972,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 0.755,
+   "lowShare": 0.443,
+   "tail": 3.15,
+   "events": 6,
+   "asFile": {
+    "peak": -2.81,
+    "rms": -19.81,
+    "integrated": -16.16,
+    "momentaryMax": -11.01,
+    "shortTermMax": -14.12,
+    "momentaryMax@event": -11.02
+   },
+   "gains": {
+    "peak": 1.5,
+    "rms": 0.72,
+    "integrated": 1.25,
+    "momentaryMax": -0.65,
+    "shortTermMax": -3.27,
+    "momentaryMax@event": -1.12,
+    "iso532_1.max@spl60": -2.16,
+    "iso532_1.max@spl80": -1.78
+   },
+   "spread": 4.77,
+   "isoMinusMaxM": {
+    "spl60": -1.51,
+    "spl80": -1.13
+   },
+   "isoMinusIntegrated": {
+    "spl60": -3.41,
+    "spl80": -3.03
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 0.38
+  },
+  {
+   "path": "guit_harmonics.flac",
+   "duration": 3.532,
+   "channels": 1,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "iterative"
+   },
+   "eventDuration": 2.885,
+   "lowShare": 0.0,
+   "tail": 0.804,
+   "events": 1,
+   "asFile": {
+    "peak": -5.77,
+    "rms": -27.64,
+    "integrated": -25.74,
+    "momentaryMax": -22.23,
+    "shortTermMax": -27.41,
+    "momentaryMax@event": -22.23
+   },
+   "gains": {
+    "peak": 4.46,
+    "rms": 8.55,
+    "integrated": 7.82,
+    "momentaryMax": 7.56,
+    "shortTermMax": 7.01,
+    "momentaryMax@event": 7.08,
+    "iso532_1.max@spl60": 7.13,
+    "iso532_1.max@spl80": 7.78
+   },
+   "spread": 4.09,
+   "isoMinusMaxM": {
+    "spl60": -0.43,
+    "spl80": 0.22
+   },
+   "isoMinusIntegrated": {
+    "spl60": -0.69,
+    "spl80": -0.04
+   },
+   "phonPerDb": {
+    "spl60": 0.97,
+    "spl80": 0.94
+   },
+   "converged": true,
+   "levelSensitivity": 0.65
+  },
+  {
+   "path": "guit_e_fifths.flac",
+   "duration": 5.972,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 0.502,
+   "lowShare": 0.017,
+   "tail": 2.034,
+   "events": 6,
+   "asFile": {
+    "peak": -2.41,
+    "rms": -20.18,
+    "integrated": -15.45,
+    "momentaryMax": -10.45,
+    "shortTermMax": -14.98,
+    "momentaryMax@event": -10.46
+   },
+   "gains": {
+    "peak": 1.1,
+    "rms": 1.09,
+    "integrated": 0.54,
+    "momentaryMax": -1.21,
+    "shortTermMax": -2.41,
+    "momentaryMax@event": -1.68,
+    "iso532_1.max@spl60": -2.29,
+    "iso532_1.max@spl80": -1.86
+   },
+   "spread": 3.51,
+   "isoMinusMaxM": {
+    "spl60": -1.08,
+    "spl80": -0.65
+   },
+   "isoMinusIntegrated": {
+    "spl60": -2.83,
+    "spl80": -2.4
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 0.43
+  },
+  {
+   "path": "bass_drop_c.flac",
+   "duration": 2.359,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 2.36,
+   "lowShare": 0.55,
+   "tail": 1.382,
+   "events": 1,
+   "asFile": {
+    "peak": -0.37,
+    "rms": -14.66,
+    "integrated": -13.32,
+    "momentaryMax": -10.19,
+    "shortTermMax": -14.41,
+    "momentaryMax@event": -10.19
+   },
+   "gains": {
+    "peak": -0.94,
+    "rms": -4.43,
+    "integrated": -1.59,
+    "momentaryMax": -1.47,
+    "shortTermMax": -2.98,
+    "momentaryMax@event": -1.95,
+    "iso532_1.max@spl60": -4.12,
+    "iso532_1.max@spl80": -3.79
+   },
+   "spread": 3.49,
+   "isoMinusMaxM": {
+    "spl60": -2.65,
+    "spl80": -2.32
+   },
+   "isoMinusIntegrated": {
+    "spl60": -2.53,
+    "spl80": -2.2
+   },
+   "phonPerDb": {
+    "spl60": 1.03,
+    "spl80": 0.91
+   },
+   "converged": true,
+   "levelSensitivity": 0.33
+  },
+  {
+   "path": "drum_roll.flac",
+   "duration": 6.242,
+   "channels": 1,
+   "strata": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": true,
+    "class": "sustained"
+   },
+   "eventDuration": 0.337,
+   "lowShare": 0.017,
+   "tail": 5.882,
+   "events": 2,
+   "asFile": {
+    "peak": -3.1,
+    "rms": -21.2,
+    "integrated": -21.78,
+    "momentaryMax": -18.02,
+    "shortTermMax": -21.03,
+    "momentaryMax@event": -18.87
+   },
+   "gains": {
+    "peak": 1.79,
+    "rms": 2.11,
+    "integrated": 3.86,
+    "momentaryMax": 3.35,
+    "shortTermMax": 0.63,
+    "momentaryMax@event": 3.72,
+    "iso532_1.max@spl60": 0.51,
+    "iso532_1.max@spl80": 0.84
+   },
+   "spread": 3.35,
+   "isoMinusMaxM": {
+    "spl60": -2.84,
+    "spl80": -2.51
+   },
+   "isoMinusIntegrated": {
+    "spl60": -3.35,
+    "spl80": -3.02
+   },
+   "phonPerDb": {
+    "spl60": 1.02,
+    "spl80": 0.94
+   },
+   "converged": true,
+   "levelSensitivity": 0.33
+  },
+  {
+   "path": "loop_mika.flac",
+   "duration": 8.0,
+   "channels": 2,
+   "strata": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true,
+    "class": "iterative"
+   },
+   "eventDuration": 2.508,
+   "lowShare": 0.513,
+   "tail": 2.38,
+   "events": 19,
+   "asFile": {
+    "peak": 0.0,
+    "rms": -15.94,
+    "integrated": -13.92,
+    "momentaryMax": -11.12,
+    "shortTermMax": -13.62,
+    "momentaryMax@event": -11.12
+   },
+   "gains": {
+    "peak": -1.31,
+    "rms": -3.15,
+    "integrated": -0.99,
+    "momentaryMax": -0.54,
+    "shortTermMax": -3.77,
+    "momentaryMax@event": -1.02,
+    "iso532_1.max@spl60": -2.25,
+    "iso532_1.max@spl80": -1.82
+   },
+   "spread": 3.23,
+   "isoMinusMaxM": {
+    "spl60": -1.71,
+    "spl80": -1.28
+   },
+   "isoMinusIntegrated": {
+    "spl60": -1.26,
+    "spl80": -0.83
+   },
+   "phonPerDb": {
+    "spl60": null,
+    "spl80": null
+   },
+   "converged": true,
+   "levelSensitivity": 0.43
+  },
+  {
+   "path": "ambi_choir.flac",
+   "duration": 1.572,
+   "channels": 2,
+   "strata": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false,
+    "class": "sustained"
+   },
+   "eventDuration": 1.515,
+   "lowShare": 0.0,
+   "tail": 0.624,
+   "events": 1,
+   "asFile": {
+    "peak": -4.03,
+    "rms": -19.94,
+    "integrated": -15.59,
+    "momentaryMax": -12.34,
+    "shortTermMax": -20.1,
+    "momentaryMax@event": -12.34
+   },
+   "gains": {
+    "peak": 2.73,
+    "rms": 0.86,
+    "integrated": 0.68,
+    "momentaryMax": 0.68,
+    "shortTermMax": 2.71,
+    "momentaryMax@event": 0.2,
+    "iso532_1.max@spl60": 2.24,
+    "iso532_1.max@spl80": 3.06
+   },
+   "spread": 2.86,
+   "isoMinusMaxM": {
+    "spl60": 1.56,
+    "spl80": 2.38
+   },
+   "isoMinusIntegrated": {
+    "spl60": 1.56,
+    "spl80": 2.38
+   },
+   "phonPerDb": {
+    "spl60": 1.0,
+    "spl80": 0.92
+   },
+   "converged": true,
+   "levelSensitivity": 0.82
+  }
+ ],
+ "stimuli": [
+  {
+   "path": "drum_heavy_kick.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false
+   },
+   "spread": 17.87,
+   "rankInCell": 1
+  },
+  {
+   "path": "vinyl_hiss.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 17.12,
+   "rankInCell": 1
+  },
+  {
+   "path": "bass_woodsy_c.flac",
+   "cell": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 14.38,
+   "rankInCell": 1
+  },
+  {
+   "path": "ambi_piano.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 14.09,
+   "rankInCell": 1
+  },
+  {
+   "path": "elec_blip.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false
+   },
+   "spread": 12.9,
+   "rankInCell": 1
+  },
+  {
+   "path": "perc_bell.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false
+   },
+   "spread": 11.52,
+   "rankInCell": 1
+  },
+  {
+   "path": "ambi_drone.flac",
+   "cell": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": true
+   },
+   "spread": 11.31,
+   "rankInCell": 1
+  },
+  {
+   "path": "vinyl_rewind.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": true
+   },
+   "spread": 8.02,
+   "rankInCell": 1
+  },
+  {
+   "path": "loop_industrial.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": false
+   },
+   "spread": 6.86,
+   "rankInCell": 1
+  },
+  {
+   "path": "guit_harmonics.flac",
+   "cell": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": false
+   },
+   "spread": 4.09,
+   "rankInCell": 1
+  },
+  {
+   "path": "drum_roll.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": true
+   },
+   "spread": 3.35,
+   "rankInCell": 1
+  },
+  {
+   "path": "bass_hit_c.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false
+   },
+   "spread": 13.93,
+   "rankInCell": 2
+  },
+  {
+   "path": "loop_garzul.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 6.31,
+   "rankInCell": 2
+  },
+  {
+   "path": "misc_cineboom.flac",
+   "cell": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 6.14,
+   "rankInCell": 2
+  },
+  {
+   "path": "guit_em9.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 4.77,
+   "rankInCell": 2
+  },
+  {
+   "path": "elec_ping.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false
+   },
+   "spread": 11.58,
+   "rankInCell": 2
+  },
+  {
+   "path": "misc_burp.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": false
+   },
+   "spread": 9.18,
+   "rankInCell": 2
+  },
+  {
+   "path": "ambi_glass_hum.flac",
+   "cell": {
+    "duration": "over 2 s",
+    "lowFrequency": false,
+    "longTail": true
+   },
+   "spread": 10.13,
+   "rankInCell": 2
+  },
+  {
+   "path": "drum_splash_hard.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": false,
+    "longTail": true
+   },
+   "spread": 7.22,
+   "rankInCell": 2
+  },
+  {
+   "path": "glitch_perc2.flac",
+   "cell": {
+    "duration": "0.4 to 2 s",
+    "lowFrequency": true,
+    "longTail": false
+   },
+   "spread": 6.71,
+   "rankInCell": 2
+  },
+  {
+   "path": "loop_breakbeat.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": false
+   },
+   "spread": 11.96,
+   "rankInCell": 3
+  },
+  {
+   "path": "glitch_bass_g.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 5.69,
+   "rankInCell": 3
+  },
+  {
+   "path": "ambi_haunted_hum.flac",
+   "cell": {
+    "duration": "over 2 s",
+    "lowFrequency": true,
+    "longTail": true
+   },
+   "spread": 5.86,
+   "rankInCell": 3
+  },
+  {
+   "path": "drum_snare_hard.flac",
+   "cell": {
+    "duration": "50 to 400 ms",
+    "lowFrequency": false,
+    "longTail": false
+   },
+   "spread": 10.03,
+   "rankInCell": 3
+  }
+ ]
+}

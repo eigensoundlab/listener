@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "listener"
+version = "0.1.0"
+description = "Listener model for sound effects: verified loudness and sound-quality measures per file and per event, conformance fixtures, disagreement reports and a benchmark of published loudness phenomena."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Daniel Sandner" }]
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "soundfile>=0.12",
+  "pyloudnorm==0.2.0",
+  "mosqito==1.2.1",
+  "matplotlib>=3.8",   # MoSQITo 1.2.1 imports it but does not declare it
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+conformance = ["openpyxl>=3.1"]
+
+[project.scripts]
+listener = "listener.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

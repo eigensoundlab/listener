@@ -1,0 +1,83 @@
+{
+ "format": "listener-fixture",
+ "version": 1,
+ "generator": {
+  "name": "listener",
+  "version": "0.1.0"
+ },
+ "created": "2026-11-10T19:23:30Z",
+ "regenerate": "listener conform --iso532-1 <folder> --din45692 <folder> --ecma --fixtures <this folder>",
+ "source": "The sounds that define each unit; build them from the text in each case.",
+ "signals": [
+  {
+   "suite": "reference-tones",
+   "case": "1 sone",
+   "signal": "1 kHz tone, 40 dB SPL (ISO 532-1, free field)",
+   "expected": 1.0,
+   "unit": "sone",
+   "measured": 1.0,
+   "worstDeviation": -0.0,
+   "tolerance": [
+    -0.1,
+    0.1
+   ],
+   "toleranceNote": "ISO 532-1: 5 % or 0.1 sone",
+   "pass": true,
+   "source": "definition of the unit"
+  },
+  {
+   "suite": "reference-tones",
+   "case": "1 acum",
+   "signal": "noise 920-1080 Hz, 60 dB SPL (DIN 45692)",
+   "expected": 1.0,
+   "unit": "acum",
+   "measured": 0.9804,
+   "worstDeviation": -0.0196,
+   "tolerance": [
+    -0.05,
+    0.05
+   ],
+   "toleranceNote": "DIN 45692: 5 % or 0.05 acum",
+   "pass": true,
+   "source": "definition of the unit"
+  },
+  {
+   "suite": "reference-tones",
+   "case": "1 sone_HMS",
+   "signal": "1 kHz tone, 40 dB SPL (ECMA-418-2)",
+   "expected": 1.0,
+   "unit": "sone_HMS",
+   "measured": 1.0,
+   "worstDeviation": 0.0,
+   "tolerance": [
+    -0.05,
+    0.05
+   ],
+   "toleranceNote": "none in the standard; 5 % used",
+   "pass": true,
+   "source": "definition of the unit"
+  },
+  {
+   "suite": "reference-tones",
+   "case": "1 asper_HMS",
+   "signal": "1 kHz tone, 60 dB SPL, 100 % AM at 70 Hz (ECMA-418-2)",
+   "expected": 1.0,
+   "unit": "asper_HMS",
+   "measured": 1.0413,
+   "worstDeviation": 0.0413,
+   "tolerance": [
+    -0.05,
+    0.05
+   ],
+   "toleranceNote": "none in the standard; 5 % used",
+   "pass": true,
+   "source": "definition of the unit"
+  },
+  {
+   "suite": "reference-tones",
+   "case": "1 vacil",
+   "pass": null,
+   "skipped": "ECMA-418-2 Clause 9 (fluctuation strength, 2025): no open implementation found"
+  }
+ ]
+}
