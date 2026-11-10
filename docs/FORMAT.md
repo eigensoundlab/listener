@@ -73,6 +73,13 @@ tail, class). `pairs[]`: range and 5th-to-95th percentile of the difference for 
 the measure would raise sound B to match sound A), `miss`, `verdicts`, `source`, `evidence`, `reconstruction`.
 `kind: "open"` marks contrasts with no listener data: predictions only.
 
+## `listener-recordings`, version 1 (`listener takes`)
+
+`manifest.json` next to the takes: `session` (the session file as given: room, microphone, interface, gain, licence),
+`roomTone` (file and RMS), and per file `id`, `strength`, `take`, `sha256`, `duration`, `sampleRate`, `sampleFormat`,
+`from` (raw file, start, length), `fades`, `levels` (peak, RMS, how far the start and the end are below the peak, peak
+above the room tone) and `flags`. `refused[]` lists rows that were not raw takes, with the reason.
+
 ## Planned: `listener-predictions`, version 1
 
 For fitted models: per event a predicted equal-loudness gain with an interval, the model's `domain`, and

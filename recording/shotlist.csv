@@ -1,0 +1,33 @@
+id,group,sound,how,strengths,takes,distance_cm,notes
+roomtone,reference,the silent room,10 s with nothing moving,-,1,-,at the session's gain; again after any change of gain
+knock-table,impact,knuckles on a wooden table,one knock,soft medium hard,5,40,dry source for tails and reversal
+knock-door,impact,knuckles on a door,one knock,soft medium hard,5,50,
+door-close,impact,a room door closing,one close,soft medium hard,5,100,low content; slam for hard
+book-drop,impact,a book dropped flat on a table,from 5 / 20 / 40 cm,soft medium hard,5,60,
+hammer-wood,impact,a hammer on a wooden board,one blow,soft medium hard,5,60,dry source for compression
+pot-spoon,impact,a wooden spoon on a metal pot,one hit,soft medium hard,5,50,rings: let it die away
+glass-clink,impact,two glasses touching,one clink,soft medium,5,40,
+mug-down,impact,a ceramic mug set down on a table,once,soft medium hard,5,40,
+box-thump,boom,a fist on a large cardboard box,one thump,soft medium hard,5,60,the lowest sound a small microphone records
+mattress-thump,boom,a fist on a mattress or sofa cushion,one thump,medium hard,5,60,
+tub-kick,boom,a foot on a large plastic tub or bin,one kick,medium hard,5,80,
+clap,short,one hand clap,once,soft medium hard,5,60,
+snap,short,one finger snap,once,medium,8,40,under 50 ms
+switch,short,a light switch,on or off,-,8,30,under 50 ms
+key-press,short,one key of a keyboard,once,-,8,25,under 50 ms
+mouse-click,short,one mouse click,once,-,8,20,under 50 ms
+pen-click,short,a retractable pen,once,-,8,20,under 50 ms
+stapler,short,a stapler,once,-,6,30,
+bubble-pop,short,one bubble of bubble wrap,once,-,8,30,
+coin-drop,iterative,a coin dropped on a table,let it settle,-,6,40,bounces: one take is the whole event
+keys-shake,iterative,a bunch of keys,one shake,soft hard,5,40,
+drawer-rattle,iterative,a cutlery drawer pulled open,once,medium,5,60,
+ball-bounce,iterative,a ball dropped on a hard floor,let it come to rest,-,5,80,
+step-hard,rate,one footstep with a hard sole on a hard floor,one step,soft medium hard,8,100,single steps: trains are built by script
+step-soft,rate,one footstep in socks or soft soles,one step,medium,8,100,
+paper-tear,sustained,a sheet of paper torn,one tear,slow fast,5,40,
+bottle-crush,sustained,a plastic bottle crushed,once,medium,5,40,
+zip,sustained,a zip opened or closed,once,slow fast,5,30,
+cloth-swish,whoosh,a towel or jacket swung past the microphone,one pass,slow fast,6,50,off axis: no wind on the capsule
+stick-swish,whoosh,a thin stick swung through the air,one swing,slow fast,6,60,off axis
+water-pour,sustained,water poured into a glass,3 s,-,4,40,

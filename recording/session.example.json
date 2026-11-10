@@ -1,0 +1,14 @@
+{
+  "session": "2026-11-15-a",
+  "date": "2026-11-15",
+  "recordist": { "name": "Daniel Sandner", "orcid": "0000-0002-1041-814X" },
+  "licence": "CC0-1.0",
+  "place": "home studio",
+  "room": "about 4 x 3 x 2.6 m, carpet, curtains, bookshelf; windows closed",
+  "microphone": { "make": "Maono", "model": "", "type": "", "pattern": "", "connection": "XLR" },
+  "interface": { "make": "Native Instruments", "model": "Komplete Audio 1", "input": "1 (XLR)", "phantom": true },
+  "inputGain": "knob at 2 o'clock",
+  "recorder": { "software": "REAPER", "sampleRate": 48000, "format": "WAV 24 bit PCM", "processing": "none" },
+  "distances": "as in shotlist.csv unless noted",
+  "notes": ""
+}

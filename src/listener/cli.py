@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: Apache-2.0
-"""Command line: listener measure | conform | disagree | phenomena | version."""
+"""Command line: listener measure | conform | disagree | phenomena | takes | version."""
 from __future__ import annotations
 
 import argparse
@@ -76,6 +76,12 @@ def main(argv=None):
     p.add_argument("--report", default=None)
     p.add_argument("--pretty", action="store_true")
 
+    t = sub.add_parser("takes", help="cut named takes out of raw recordings, sample for sample, with a manifest")
+    t.add_argument("takes_csv", help="takes.csv written in REAPER by 'Listener - Export take list'")
+    t.add_argument("--out", default="takes", help="folder for the takes and manifest.json (default: takes)")
+    t.add_argument("--session", default=None, help="session.json: room, microphone, gain, distance, licence")
+    t.add_argument("--base", default=None, help="folder that relative file names in takes.csv start from")
+
     sub.add_parser("version")
     a = ap.parse_args(argv)
 
@@ -118,6 +124,11 @@ def main(argv=None):
             with open(a.report, "w", encoding="utf-8") as fh:
                 fh.write(bench.report_markdown(doc))
         return 0
+    if a.cmd == "takes":
+        from . import takes
+        doc = takes.run(a.takes_csv, a.out, a.session, a.base)
+        sys.stderr.write(takes.summary_text(doc))
+        return 0 if not doc["refused"] else 1
     ap.print_help()
     return 2
 

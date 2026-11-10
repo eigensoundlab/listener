@@ -7,7 +7,7 @@ listening data, then a model fitted to them. It supports the research behind
 [Playhead](https://github.com/eigensoundlab/playhead), Kurator, SFX Workbench and the REAPER package.
 
 No published study tests any loudness measure against listeners on sound effects, and the standard measures part by
-many dB exactly where effects live: short, low, or with long tails. `listener` does four things about that:
+many dB exactly where effects live: short, low, or with long tails. `listener` does four things about that, and has a method for recording the sounds the listening test needs:
 
 | Command | What it does |
 |---|---|
@@ -15,6 +15,7 @@ many dB exactly where effects live: short, low, or with long tails. `listener` d
 | `listener conform` | Conformance: EBU Tech 3341 and 3342, ISO 532-1 Annex B, DIN 45692, and the tones that define each unit; writes golden fixtures for Playhead's tests |
 | `listener disagree` | Where the measures part on a corpus, in dB of gain, and which files to put in front of listeners |
 | `listener phenomena` | Every measure against published facts about the loudness of short and changing sounds, and each measure's prediction for the contrasts nobody has measured |
+| `listener takes` | Cuts named takes out of raw recordings, sample for sample, and writes their manifest: the last step of the recording method in [recording/](recording/README.md) |
 
 The results of the first run are in [docs/FIRST_CHECKS.md](docs/FIRST_CHECKS.md). The plan for the model is in
 [docs/MODEL.md](docs/MODEL.md), the listening test in [docs/PILOT_PROTOCOL.md](docs/PILOT_PROTOCOL.md), the file

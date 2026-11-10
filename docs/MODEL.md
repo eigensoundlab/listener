@@ -66,6 +66,7 @@ buy".
 
    What this supports: "reproduces the known loudness of short and changing sounds better than the standard
    measures". What it does not: "predicts the loudness of sound effects". The second claim is the pilot's.
+   The job is specified in `docs/LITERATURE_MODEL_BRIEF.md`.
 2. **On the pilot's matches.** The literature model enters the pilot as the pre-registered prediction, which makes
    the pilot a test of one hypothesis instead of a comparison of nine measures. Then nested models, from Max M (no
    parameters) upward, one parameter at a time: a parameter is kept or re-fitted only if that lowers the error on
