@@ -24,12 +24,15 @@ def test_silence_around_a_sound_changes_nothing():
     assert abs(M.event_level(M.track(hit), P) - M.event_level(M.track(padded), P)) < 0.05
 
 
+def _integration(spl, params):
+    """dB the 5 ms tone lies above the equally loud 200 ms tone, the 5 ms tone held at spl."""
+    return -M.matching_gain(M.track(B.erd_tone(spl, .005)), M.track(B.erd_tone(spl, .200)), params)
+
+
 def test_level_dependence_comes_from_the_loudness_function():
-    a, b = M.track(B.tone_burst(56, .2)), M.track(B.tone_burst(56, .005))
-    a2, b2 = M.track(B.tone_burst(100, .2)), M.track(B.tone_burst(100, .005))
-    assert M.matching_gain(a, b, P) - M.matching_gain(a2, b2, P) > 4.0          # more integration at the moderate level
+    assert _integration(56, P) - _integration(100, P) > 4.0          # more integration at the moderate level
     flat = M.Params(beta=P.beta, t_half=P.t_half, loudness="power")
-    assert abs(M.matching_gain(a, b, flat) - M.matching_gain(a2, b2, flat)) < 0.2  # none without the inflected function
+    assert abs(_integration(56, flat) - _integration(100, flat)) < 0.2  # none without the inflected function
 
 
 def test_matching_gain_is_antisymmetric_enough():
@@ -43,8 +46,8 @@ def test_matching_gain_is_antisymmetric_enough():
 def test_the_stored_fit_is_reproduced():
     doc = json.load(open(RESULTS))
     assert abs(doc["parameters"]["beta"] - P.beta) < 1e-6 and abs(doc["parameters"]["t_half"] - P.t_half) < 1e-6
-    f1 = M.matching_gain(M.track(B.tone_burst(56, .2)), M.track(B.tone_burst(56, .005)), P)
-    assert abs(f1 - doc["fit"]["F1"]["predicted"]) < 0.06
-    ramp = B.level_ramp_tone(60.0, 75.0)
-    f6 = M.matching_gain(M.track(ramp), M.track(ramp[::-1].copy()), P)
+    rows = {r["id"]: r for r in B.phenomena()}
+    assert abs(_integration(56, P) - doc["fit"]["F1"]["predicted"]) < 0.06
+    ramp = rows["rise-fall-asymmetry"]
+    f6 = M.matching_gain(M.track(ramp["a"]), M.track(ramp["b"]), P)
     assert abs(f6 - doc["fit"]["F6"]["predicted"]) < 0.06

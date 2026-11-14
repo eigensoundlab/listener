@@ -56,3 +56,22 @@ Planned: four (the exponent of loudness against duration, the strength of decay 
 level-dominant mean, the low-frequency shelf). Fitted in the end: three (two for growth with duration, and the
 shelf); `docs/LITERATURE_MODEL.md` says what was dropped and why. Eight numbers set them. Seven results test the
 outcome, four of them numbers from one paper at a frequency the model was not fitted at.
+
+## Revision 2, 14 November 2026: after the papers were read
+
+The author approved fetching the papers. Seven were read; Florentine et al. (1996) is behind a paywall and Ogura et
+al. (1991) could not be fetched, so for those two only the abstracts were read. The sets did not change. What changed:
+
+- **The sounds of F1 to F5.** In the 1996 paper the level named for the largest temporal integration is the short
+  sound's. Each row now holds the 5 ms sound at the named level and asks how far the equally loud 200 ms sound lies
+  under it. The tones have the gating the same laboratory states (Buus et al. 1999). F5 puts the 200 ms tone at
+  37.5 dB SPL, its level when as loud as the 5 ms tone at 56 dB SPL.
+- **The sounds of H1 to H4**: linear 2 ms ramps, as the 1997 paper says.
+- **The sounds of H5 and H6**: the envelopes, carriers and level of Stecker & Hafter (2000).
+- **The sounds of F8**: octave bands through the filter order of Fenton & Lee (2017).
+- **Six results added to the test set, after fitting**: the same paper's octave bands at 125 Hz to 8 kHz (H8 to H13).
+  No model was ever fitted to them. Their listeners' values are derived from the paper's table of BS.1770 errors.
+- **The model was refitted** on the corrected fit set with the same three free parameters. Its form (which parts
+  it has) was chosen on the first revision's stimuli and was not chosen again.
+
+The first revision's results are in `results/literature-model/revision-1/`.

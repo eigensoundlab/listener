@@ -158,6 +158,11 @@ needs a sound-effects corpus, which this set is not):
 
 ## Published loudness phenomena against the measures
 
+*This is the benchmark's first revision (10 November 2026), with stimuli rebuilt from the research notes. On 14
+November the papers were read and the benchmark revised to eighteen results: `results/literature-model/phenomena.md`
+and `docs/LITERATURE_MODEL.md`. The largest change for the standard measures: with the levels the paper names, the
+ISO 532-1 maximum reads 11.8 dB for the largest temporal integration of a tone, where this table has 9.0.*
+
 Each value: the dB by which a measure would raise sound B to make it as loud as sound A, beside what listeners did.
 Blank: within 1 dB of the published range, or the right sign. ~: within 3 dB. ✗: further, no effect, or the wrong sign.
 

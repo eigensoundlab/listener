@@ -3,13 +3,13 @@
  "version": 1,
  "model": "L0",
  "parameters": {
-  "beta": 0.5333,
-  "t_half": 0.0738,
+  "beta": 0.5265,
+  "t_half": 0.0484,
   "kappa": 0.0,
   "q": 0.0,
   "onset": 0.0,
   "tau_onset": 0.25,
-  "shelf_db": -10.8092,
+  "shelf_db": -10.7026,
   "loudness": "inex",
   "bands": false
  },
@@ -18,51 +18,51 @@
   "t_half",
   "shelf_db"
  ],
- "fitRms": 2.072,
+ "fitRms": 1.933,
  "fit": {
   "F1": {
-   "what": "1 kHz tone, 5 against 200 ms, 56 dB SPL",
+   "what": "1 kHz tone, 5 against 200 ms, the 5 ms tone at 56 dB SPL",
    "published": [
-    18,
-    19
+    18.0,
+    19.0
    ],
-   "predicted": 18.7,
-   "miss": 0.0
+   "predicted": 19.8,
+   "miss": 0.85
   },
   "F2": {
-   "what": "the same, 100 dB SPL",
+   "what": "the same, the 5 ms tone at 100 dB SPL",
    "published": [
-    9,
-    11
+    9.0,
+    11.0
    ],
-   "predicted": 13.5,
-   "miss": 2.5
+   "predicted": 12.3,
+   "miss": 1.25
   },
   "F3": {
-   "what": "noise, 5 against 200 ms, 76 dB SPL",
+   "what": "noise, 5 against 200 ms, the 5 ms noise at 76 dB SPL",
    "published": [
-    18,
-    19
+    18.0,
+    19.0
    ],
-   "predicted": 14.8,
-   "miss": -3.22
+   "predicted": 14.7,
+   "miss": -3.3
   },
   "F4": {
-   "what": "the same, 100 dB SPL",
+   "what": "the same, the 5 ms noise at 100 dB SPL",
    "published": [
-    12,
-    14
+    12.0,
+    14.0
    ],
-   "predicted": 13.0,
+   "predicted": 12.9,
    "miss": 0.0
   },
   "F5": {
-   "what": "1 kHz tone, 30 against 200 ms, 56 dB SPL",
+   "what": "1 kHz tone, 30 against 200 ms, the 200 ms tone at 37.5 dB SPL",
    "published": [
-    6,
-    8
+    6.0,
+    8.0
    ],
-   "predicted": 7.8,
+   "predicted": 7.7,
    "miss": 0.0
   },
   "F6": {
@@ -71,16 +71,16 @@
     3.1,
     5.3
    ],
-   "predicted": 2.2,
-   "miss": -0.88
+   "predicted": 1.9,
+   "miss": -1.19
   },
   "F7": {
    "what": "impulses 4 s apart against one",
    "published": [
-    -1,
-    1
+    -1.0,
+    1.0
    ],
-   "predicted": 0.0,
+   "predicted": -0.0,
    "miss": 0.0
   },
   "F8": {
@@ -95,181 +95,181 @@
  },
  "leaveOneOut": {
   "F1": {
-   "predicted": 18.8,
-   "miss": 0.0,
+   "predicted": 20.5,
+   "miss": 1.53,
    "parameters": {
-    "beta": 0.542,
-    "t_half": 0.071
+    "beta": 0.535,
+    "t_half": 0.052
    }
   },
   "F2": {
-   "predicted": 14.5,
-   "miss": 3.53,
+   "predicted": 12.7,
+   "miss": 1.68,
    "parameters": {
-    "beta": 0.724,
-    "t_half": 0.039
+    "beta": 0.547,
+    "t_half": 0.049
    }
   },
   "F3": {
    "predicted": 13.4,
-   "miss": -4.57,
+   "miss": -4.61,
    "parameters": {
-    "beta": 0.406,
-    "t_half": 0.149
+    "beta": 0.365,
+    "t_half": 0.106
    }
   },
   "F4": {
-   "predicted": 13.0,
+   "predicted": 12.9,
    "miss": 0.0,
    "parameters": {
-    "beta": 0.532,
-    "t_half": 0.074
+    "beta": 0.528,
+    "t_half": 0.048
    }
   },
   "F5": {
-   "predicted": 9.9,
-   "miss": 1.88,
+   "predicted": 10.4,
+   "miss": 2.39,
    "parameters": {
-    "beta": 0.384,
+    "beta": 0.315,
     "t_half": 0.6
    }
   },
   "F6": {
-   "predicted": 2.0,
-   "miss": -1.12,
+   "predicted": 1.9,
+   "miss": -1.23,
    "parameters": {
-    "beta": 0.628,
-    "t_half": 0.045
+    "beta": 0.546,
+    "t_half": 0.044
    }
   },
   "F7": {
    "predicted": 0.0,
    "miss": 0.0,
    "parameters": {
-    "beta": 0.533,
-    "t_half": 0.074
+    "beta": 0.526,
+    "t_half": 0.048
    }
   }
  },
  "ablations": {
   "full model": {
-   "rms": 2.07,
-   "worst": 3.7,
-   "within1": 5,
+   "rms": 1.93,
+   "worst": 3.8,
+   "within1": 4,
    "predictions": {
-    "F1": 18.7,
-    "F2": 13.5,
-    "F3": 14.8,
-    "F4": 13.0,
-    "F5": 7.8,
-    "F6": 2.2,
-    "F7": 0.0
+    "F1": 19.8,
+    "F2": 12.3,
+    "F3": 14.7,
+    "F4": 12.9,
+    "F5": 7.7,
+    "F6": 1.9,
+    "F7": -0.0
    },
    "parameters": {
-    "beta": 0.533,
-    "t_half": 0.074,
+    "beta": 0.526,
+    "t_half": 0.048,
     "kappa": 0.0,
     "q": 0.0
    }
   },
   "loudness doubles every 10 dB at all levels": {
-   "rms": 2.77,
-   "worst": 5.0,
-   "within1": 4,
+   "rms": 2.72,
+   "worst": 4.5,
+   "within1": 3,
    "predictions": {
-    "F1": 15.0,
-    "F2": 15.0,
-    "F3": 15.0,
-    "F4": 15.0,
-    "F5": 7.2,
+    "F1": 14.5,
+    "F2": 14.5,
+    "F3": 15.4,
+    "F4": 15.4,
+    "F5": 7.1,
     "F6": 3.8,
     "F7": 0.0
    },
    "parameters": {
-    "beta": 0.297,
+    "beta": 0.293,
     "t_half": 0.6,
     "kappa": 0.0,
     "q": 0.0
    }
   },
   "loudness formed per critical band and summed": {
-   "rms": 3.56,
-   "worst": 6.0,
-   "within1": 3,
+   "rms": 3.18,
+   "worst": 6.5,
+   "within1": 4,
    "predictions": {
-    "F1": 12.5,
-    "F2": 11.9,
-    "F3": 21.8,
-    "F4": 18.7,
-    "F5": 4.8,
-    "F6": 3.8,
+    "F1": 12.0,
+    "F2": 11.1,
+    "F3": 22.5,
+    "F4": 16.1,
+    "F5": 6.5,
+    "F6": 2.8,
     "F7": -0.0
    },
    "parameters": {
-    "beta": 0.499,
-    "t_half": 0.6,
+    "beta": 0.434,
+    "t_half": 0.182,
     "kappa": 0.0,
     "q": 0.0
    }
   },
   "with decay suppression (one more parameter)": {
-   "rms": 2.05,
-   "worst": 3.8,
+   "rms": 1.92,
+   "worst": 3.9,
    "within1": 5,
    "predictions": {
-    "F1": 18.7,
-    "F2": 13.6,
-    "F3": 14.7,
-    "F4": 12.9,
-    "F5": 7.9,
-    "F6": 2.8,
+    "F1": 19.9,
+    "F2": 12.3,
+    "F3": 14.6,
+    "F4": 12.8,
+    "F5": 7.7,
+    "F6": 2.3,
     "F7": 0.0
    },
    "parameters": {
-    "beta": 0.538,
-    "t_half": 0.073,
-    "kappa": 0.75,
+    "beta": 0.526,
+    "t_half": 0.049,
+    "kappa": 0.602,
     "q": 0.0
    }
   },
   "growth with duration as a plain power law (no saturation before 3 s)": {
-   "rms": 2.29,
-   "worst": 4.1,
-   "within1": 4,
+   "rms": 2.22,
+   "worst": 4.4,
+   "within1": 5,
    "predictions": {
-    "F1": 18.4,
-    "F2": 13.1,
-    "F3": 14.4,
-    "F4": 12.5,
-    "F5": 10.1,
-    "F6": 5.0,
+    "F1": 19.3,
+    "F2": 11.5,
+    "F3": 14.1,
+    "F4": 12.3,
+    "F5": 10.4,
+    "F6": 4.8,
     "F7": 0.0
    },
    "parameters": {
-    "beta": 0.343,
+    "beta": 0.276,
     "t_half": 1000000000.0,
     "kappa": 0.0,
     "q": 0.0
    }
   },
   "a level-dominant mean instead of the maximum (one more parameter)": {
-   "rms": 2.17,
-   "worst": 3.7,
+   "rms": 2.09,
+   "worst": 4.0,
    "within1": 4,
    "predictions": {
-    "F1": 18.9,
-    "F2": 13.7,
-    "F3": 14.8,
-    "F4": 13.0,
-    "F5": 7.6,
+    "F1": 19.9,
+    "F2": 12.3,
+    "F3": 14.5,
+    "F4": 12.7,
+    "F5": 8.3,
     "F6": 1.6,
     "F7": 0.0
    },
    "parameters": {
-    "beta": 0.613,
-    "t_half": 0.05,
+    "beta": 0.484,
+    "t_half": 0.062,
     "kappa": 0.0,
-    "q": 12.0
+    "q": 10.374
    }
   }
  },
@@ -277,104 +277,253 @@
   "H1": {
    "what": "5 kHz tone, 50 against 250 ms, most integration over level",
    "published": "about 9",
-   "predicted": 7.0,
+   "predicted": 5.4,
    "atLevel": 40.0,
    "byLevel": {
-    "15": 2.2,
-    "20": 3.2,
-    "25": 4.6,
-    "30": 6.1,
-    "35": 6.9,
-    "40": 7.0,
-    "45": 6.6,
-    "50": 6.0,
-    "55": 5.4,
-    "60": 4.9,
-    "65": 4.5,
-    "70": 4.2
+    "10": 1.2,
+    "15": 1.7,
+    "20": 2.4,
+    "25": 3.4,
+    "30": 4.5,
+    "35": 5.3,
+    "40": 5.4,
+    "45": 5.1,
+    "50": 4.6,
+    "55": 4.2,
+    "60": 3.8,
+    "65": 3.5,
+    "70": 3.2
    }
   },
   "H2": {
    "what": "5 kHz tone, 10 against 250 ms, most integration over level",
    "published": "about 22",
-   "predicted": 19.2,
+   "predicted": 16.6,
    "atLevel": 35.0,
    "byLevel": {
-    "15": 7.9,
-    "20": 12.1,
-    "25": 16.6,
-    "30": 19.0,
-    "35": 19.2,
-    "40": 18.3,
-    "45": 17.0,
-    "50": 15.6,
-    "55": 14.3,
-    "60": 13.3,
-    "65": 12.5,
-    "70": 11.9
+    "10": 4.4,
+    "15": 6.5,
+    "20": 9.7,
+    "25": 13.6,
+    "30": 16.0,
+    "35": 16.6,
+    "40": 15.9,
+    "45": 14.7,
+    "50": 13.5,
+    "55": 12.4,
+    "60": 11.4,
+    "65": 10.7,
+    "70": 10.2
    }
   },
   "H3": {
    "what": "5 kHz tone, 2 against 250 ms, most integration over level",
    "published": "about 40",
-   "predicted": 31.6,
+   "predicted": 29.0,
    "atLevel": 30.0,
    "byLevel": {
-    "15": 17.9,
-    "20": 25.7,
-    "25": 30.4,
-    "30": 31.6,
-    "35": 30.9,
-    "40": 29.3,
-    "45": 27.5,
-    "50": 25.8,
-    "55": 24.2,
-    "60": 22.9,
-    "65": 22.0,
-    "70": 21.3
+    "10": 11.5,
+    "15": 15.8,
+    "20": 22.3,
+    "25": 27.3,
+    "30": 29.0,
+    "35": 28.6,
+    "40": 27.2,
+    "45": 25.6,
+    "50": 23.9,
+    "55": 22.4,
+    "60": 21.2,
+    "65": 20.3,
+    "70": 19.7
    }
   },
   "H4": {
-   "what": "5 kHz tone, 2 against 250 ms, 60 dB above threshold (63 dB SPL)",
+   "what": "5 kHz tone, 2 against 250 ms, the 250 ms tone 60 dB above threshold (63 dB SPL)",
    "published": "20 to 25",
-   "predicted": 22.3
+   "predicted": 20.6
   },
   "H5": {
-   "what": "reversed envelope against impact-like one, tone",
-   "published": "negative (reverse louder); -1 to -3 from one listener",
-   "predicted": -5.0
+   "what": "reversed envelope against impact-like one, 330 Hz tone",
+   "published": "negative; 1 to 3 dB from one listener",
+   "predicted": -3.1
   },
   "H6": {
    "what": "reversed envelope against impact-like one, noise",
-   "published": "negative (reverse louder); -1 to -3 from one listener",
-   "predicted": -5.0
+   "published": "negative; 1 to 3 dB from one listener",
+   "predicted": -2.8
   },
   "H7": {
    "what": "impulses 0.2 s apart against one",
    "published": "negative (train louder)",
-   "predicted": -0.9
+   "predicted": -0.6
+  },
+  "H8": {
+   "what": "125 Hz octave band against a 1 kHz band",
+   "published": "3.9 to 6.9",
+   "range": [
+    3.9,
+    6.9
+   ],
+   "predicted": 5.1,
+   "addedAfterFitting": true
+  },
+  "H9": {
+   "what": "250 Hz octave band against a 1 kHz band",
+   "published": "0.6 to 3.6",
+   "range": [
+    0.6,
+    3.6
+   ],
+   "predicted": 0.1,
+   "addedAfterFitting": true
+  },
+  "H10": {
+   "what": "500 Hz octave band against a 1 kHz band",
+   "published": "-3.8 to -0.8",
+   "range": [
+    -3.8,
+    -0.8
+   ],
+   "predicted": 0.3,
+   "addedAfterFitting": true
+  },
+  "H11": {
+   "what": "2 kHz octave band against a 1 kHz band",
+   "published": "-4.7 to -1.7",
+   "range": [
+    -4.7,
+    -1.7
+   ],
+   "predicted": -1.9,
+   "addedAfterFitting": true
+  },
+  "H12": {
+   "what": "4 kHz octave band against a 1 kHz band",
+   "published": "-5.8 to -2.8",
+   "range": [
+    -5.8,
+    -2.8
+   ],
+   "predicted": -2.6,
+   "addedAfterFitting": true
+  },
+  "H13": {
+   "what": "8 kHz octave band against a 1 kHz band",
+   "published": "-3.6 to -0.6",
+   "range": [
+    -3.6,
+    -0.6
+   ],
+   "predicted": -2.6,
+   "addedAfterFitting": true
   }
  },
  "otherMeasures": {
+  "F1": {
+   "momentaryMax": 16.04,
+   "integrated": 4.1,
+   "iso532_1.max": 11.78
+  },
+  "F2": {
+   "momentaryMax": 16.04,
+   "integrated": 4.1,
+   "iso532_1.max": 11.83
+  },
+  "F3": {
+   "momentaryMax": 16.28,
+   "integrated": 4.34,
+   "iso532_1.max": 15.4
+  },
+  "F4": {
+   "momentaryMax": 16.28,
+   "integrated": 4.34,
+   "iso532_1.max": 16.45
+  },
   "F5": {
-   "momentaryMax": 8.27,
-   "iso532_1.max": 5.14
+   "momentaryMax": 8.25,
+   "integrated": 0.89,
+   "iso532_1.max": 5.17
+  },
+  "F6": {
+   "momentaryMax": 0.0,
+   "integrated": 0.0,
+   "iso532_1.max": 1.39
+  },
+  "F7": {
+   "momentaryMax": 0.0,
+   "integrated": 9.03,
+   "iso532_1.max": 0.0
+  },
+  "F8": {
+   "momentaryMax": 1.64,
+   "integrated": 3.49,
+   "iso532_1.max": 12.45
   },
   "H1": {
-   "momentaryMax": 7.03,
-   "iso532_1.max": 4.35
+   "momentaryMax": 7.04,
+   "integrated": 0.18,
+   "iso532_1.max": 4.36
   },
   "H2": {
-   "momentaryMax": 14.2,
-   "iso532_1.max": 9.88
+   "momentaryMax": 14.28,
+   "integrated": 1.05,
+   "iso532_1.max": 9.9
   },
   "H3": {
-   "momentaryMax": 22.27,
-   "iso532_1.max": 19.46
+   "momentaryMax": 22.79,
+   "integrated": 4.79,
+   "iso532_1.max": 19.63
   },
   "H4": {
-   "momentaryMax": 22.27,
-   "iso532_1.max": 19.32
+   "momentaryMax": 22.79,
+   "integrated": 4.79,
+   "iso532_1.max": 19.52
+  },
+  "H5": {
+   "momentaryMax": 0.0,
+   "integrated": 0.0,
+   "iso532_1.max": -1.2
+  },
+  "H6": {
+   "momentaryMax": 0.12,
+   "integrated": 0.12,
+   "iso532_1.max": -2.84
+  },
+  "H7": {
+   "momentaryMax": -3.01,
+   "integrated": 6.02,
+   "iso532_1.max": -0.42
+  },
+  "H8": {
+   "momentaryMax": 1.03,
+   "integrated": 1.61,
+   "iso532_1.max": 8.13
+  },
+  "H9": {
+   "momentaryMax": 0.32,
+   "integrated": 0.96,
+   "iso532_1.max": 4.58
+  },
+  "H10": {
+   "momentaryMax": 0.46,
+   "integrated": 0.81,
+   "iso532_1.max": 2.3
+  },
+  "H11": {
+   "momentaryMax": -2.18,
+   "integrated": -2.17,
+   "iso532_1.max": -3.02
+  },
+  "H12": {
+   "momentaryMax": -3.02,
+   "integrated": -3.12,
+   "iso532_1.max": -3.77
+  },
+  "H13": {
+   "momentaryMax": -2.98,
+   "integrated": -3.22,
+   "iso532_1.max": 3.98
   }
- }
+ },
+ "benchmarkRevision": 2
 }

@@ -1,21 +1,24 @@
 {
  "format": "listener-phenomena",
  "version": 1,
+ "revision": 2,
  "generator": {
   "name": "listener",
   "version": "0.1.0"
  },
- "created": "2026-11-14T02:40:40Z",
+ "created": "2026-11-14T03:47:20Z",
  "implementations": {
   "bs1770": "pyloudnorm 0.2.0 (K-weighting filter, loudness range); listener 0.1.0 (gating on complete blocks, 0.4 s and 3 s windows, true peak, spans)",
   "iso532_1": "MoSQITo 1.2.1 loudness_zwtv stages (ISO 532-1:2017 time-varying, free field)",
   "din45692": "MoSQITo 1.2.1 sharpness_din_from_loudness on the ISO 532-1 specific loudness",
   "ecma418_2": "sottek-hearing-model, as a separate process",
-  "iso532_3": null
+  "iso532_3": null,
+  "literatureL0": "listener 0.1.0 model/literature.py, parameters 0.5265, 0.0484 s, -10.7026 dB"
  },
- "ecmaReusedFrom": "2026-11-10T18:56:34Z",
- "rule": "Each value: dB by which a measure would raise sound B to make it as loud as sound A. 'agrees': within 1 dB of the published range (or the right sign, at least 0.5 dB); 'near': within 3 dB; 'off': further; 'no effect': under 0.5 dB where a sign is expected; 'opposite': the wrong sign.",
- "caution": "Stimuli are rebuilt from descriptions; the published ranges come from small panels. This constrains a model. It does not validate one for sound effects.",
+ "ecmaReusedFrom": "2026-11-14T02:40:40Z",
+ "ecmaReusedRows": 6,
+ "rule": "Each value: dB by which a measure would raise sound B to make it as loud as sound A, or the level difference the row's question names. 'agrees': within 1 dB of the published range (or the right sign, at least 0.5 dB); 'near': within 3 dB; 'off': further; 'no effect': under 0.5 dB where a sign is expected; 'opposite': the wrong sign.",
+ "caution": "Each row says what was read of its paper and what was assumed. The published ranges come from small panels, and for the largest temporal integration later studies of the same laboratory found more. This constrains a model. It does not validate one for sound effects.",
  "measures": [
   "peak",
   "rms",
@@ -29,58 +32,59 @@
  ],
  "score": {
   "peak": {
-   "agrees": 1,
-   "near": 0,
-   "of": 11
+   "agrees": 2,
+   "near": 4,
+   "of": 18
   },
   "rms": {
-   "agrees": 0,
-   "near": 0,
-   "of": 11
+   "agrees": 3,
+   "near": 2,
+   "of": 18
   },
   "integrated": {
-   "agrees": 0,
-   "near": 0,
-   "of": 11
-  },
-  "momentaryMax": {
-   "agrees": 2,
-   "near": 3,
-   "of": 11
-  },
-  "shortTermMax": {
-   "agrees": 2,
-   "near": 3,
-   "of": 11
-  },
-  "iso532_1.max": {
-   "agrees": 6,
-   "near": 1,
-   "of": 11
-  },
-  "iso532_1.n5": {
    "agrees": 4,
    "near": 2,
-   "of": 11
+   "of": 18
+  },
+  "momentaryMax": {
+   "agrees": 7,
+   "near": 5,
+   "of": 18
+  },
+  "shortTermMax": {
+   "agrees": 7,
+   "near": 5,
+   "of": 18
+  },
+  "iso532_1.max": {
+   "agrees": 8,
+   "near": 5,
+   "of": 18
+  },
+  "iso532_1.n5": {
+   "agrees": 5,
+   "near": 7,
+   "of": 18
   },
   "literature.L0": {
-   "agrees": 8,
-   "near": 1,
-   "of": 11
+   "agrees": 13,
+   "near": 3,
+   "of": 18
   },
   "ecma418_2.max": {
-   "agrees": 4,
+   "agrees": 6,
    "near": 1,
-   "of": 11
+   "of": 18
   }
  },
  "literatureModel": {
-  "note": "literature.L0 was set from the rows in 'fitted'; only the rows in 'heldOut' test it; 'notModelled' it is expected to fail",
+  "note": "literature.L0 was set from the rows in 'fitted'; only the rows in 'heldOut' test it; those in 'addedAfterFitting' entered the benchmark after the model was fitted and were never fitted; 'notModelled' it is expected to fail",
   "fitted": [
    "integration-tone-moderate",
    "integration-tone-high",
    "integration-noise-moderate",
    "integration-noise-high",
+   "integration-tone-30ms",
    "rise-fall-asymmetry",
    "repetition-slow",
    "low-frequency-band"
@@ -88,58 +92,110 @@
   "heldOut": [
    "decay-suppression-tone",
    "decay-suppression-noise",
-   "repetition-fast"
+   "repetition-fast",
+   "band-125",
+   "band-250",
+   "band-500",
+   "band-2000",
+   "band-4000",
+   "band-8000"
+  ],
+  "addedAfterFitting": [
+   "band-125",
+   "band-250",
+   "band-500",
+   "band-2000",
+   "band-4000",
+   "band-8000"
   ],
   "notModelled": [
    "primacy"
   ],
   "scoreHeldOut": {
-   "peak": 0,
-   "rms": 0,
-   "integrated": 0,
-   "momentaryMax": 1,
-   "shortTermMax": 1,
-   "iso532_1.max": 2,
-   "iso532_1.n5": 2,
-   "literature.L0": 3,
-   "ecma418_2.max": 3
+   "peak": {
+    "agrees": 1,
+    "near": 4,
+    "of": 9
+   },
+   "rms": {
+    "agrees": 3,
+    "near": 2,
+    "of": 9
+   },
+   "integrated": {
+    "agrees": 4,
+    "near": 2,
+    "of": 9
+   },
+   "momentaryMax": {
+    "agrees": 5,
+    "near": 2,
+    "of": 9
+   },
+   "shortTermMax": {
+    "agrees": 5,
+    "near": 2,
+    "of": 9
+   },
+   "iso532_1.max": {
+    "agrees": 5,
+    "near": 1,
+    "of": 9
+   },
+   "iso532_1.n5": {
+    "agrees": 4,
+    "near": 2,
+    "of": 9
+   },
+   "literature.L0": {
+    "agrees": 8,
+    "near": 1,
+    "of": 9
+   },
+   "ecma418_2.max": {
+    "agrees": 5,
+    "near": 0,
+    "of": 9
+   }
   }
  },
  "phenomena": [
   {
    "id": "integration-tone-moderate",
    "kind": "value",
-   "title": "Temporal integration, 1 kHz tone, moderate level",
-   "question": "dB the 5 ms tone must be raised to match the 200 ms tone",
+   "title": "Temporal integration, 1 kHz tone, where it is largest",
+   "question": "dB the 5 ms tone lies above the equally loud 200 ms tone, the 5 ms tone held at 56 dB SPL",
    "published": [
     18.0,
     19.0
    ],
    "expectedSign": null,
-   "source": "Florentine, Buus & Poulsen (1996), JASA 99(3):1633-1644; 6 listeners",
+   "source": "Florentine, Buus & Poulsen (1996), JASA 99(3):1633-1644; 6 listeners, adaptive two-interval matching: a peak of 18 to 19 dB when the 5 ms tone is about 56 dB SPL",
    "evidence": "established",
-   "reconstruction": "both tones at 56 dB SPL before matching; 1 ms raised-cosine ramps",
+   "stimulusFrom": "abstract (journal and 1995 meeting); the tones' gating from Buus, Florentine & Poulsen (1999), which says the 1996 study used the same; the paper itself is behind a paywall and was not read",
+   "reconstruction": "later studies of the same laboratory with a roving-level procedure found maxima of 26 to 27 dB (Buus et al. 1999)",
+   "stimulusHash": "68a4fc6bc328b189",
    "predictions": {
-    "peak": 0.0,
-    "rms": 1.0,
-    "integrated": 0.98,
-    "momentaryMax": 16.23,
-    "shortTermMax": 16.23,
-    "iso532_1.max": 8.97,
-    "iso532_1.n5": 8.99,
-    "literature.L0": 18.67,
-    "ecma418_2.max": 29.51
+    "peak": -0.0,
+    "rms": 4.1,
+    "integrated": 4.1,
+    "momentaryMax": 16.04,
+    "shortTermMax": 16.03,
+    "iso532_1.max": 11.78,
+    "iso532_1.n5": 12.06,
+    "literature.L0": 19.85,
+    "ecma418_2.max": 31.14
    },
    "miss": {
     "peak": -18.0,
-    "rms": -17.0,
-    "integrated": -17.02,
-    "momentaryMax": -1.77,
-    "shortTermMax": -1.77,
-    "iso532_1.max": -9.03,
-    "iso532_1.n5": -9.01,
-    "literature.L0": 0.0,
-    "ecma418_2.max": 10.51
+    "rms": -13.9,
+    "integrated": -13.9,
+    "momentaryMax": -1.96,
+    "shortTermMax": -1.97,
+    "iso532_1.max": -6.22,
+    "iso532_1.n5": -5.94,
+    "literature.L0": 0.85,
+    "ecma418_2.max": 12.14
    },
    "verdicts": {
     "peak": "off",
@@ -157,36 +213,38 @@
    "id": "integration-tone-high",
    "kind": "value",
    "title": "Temporal integration, 1 kHz tone, high level",
-   "question": "dB the 5 ms tone must be raised",
+   "question": "dB the 5 ms tone lies above the equally loud 200 ms tone, the 5 ms tone held at 100 dB SPL",
    "published": [
     9.0,
     11.0
    ],
    "expectedSign": null,
-   "source": "Florentine, Buus & Poulsen (1996): about 10 dB near 100 dB SPL",
+   "source": "Florentine, Buus & Poulsen (1996), JASA 99(3):1633-1644; 6 listeners, adaptive two-interval matching: about 10 dB near 100 dB SPL",
    "evidence": "established",
-   "reconstruction": "both tones at 100 dB SPL; 'about 10 dB' taken as 9 to 11",
+   "stimulusFrom": "abstract (journal and 1995 meeting); the tones' gating from Buus, Florentine & Poulsen (1999), which says the 1996 study used the same; the paper itself is behind a paywall and was not read",
+   "reconstruction": "'about 10 dB' taken as 9 to 11; 'near 100 dB SPL' taken as the 5 ms tone's level (Buus et al. 1999 give 11 dB with the 200 ms tone at 90)",
+   "stimulusHash": "d4cf1f8a13dbbe3f",
    "predictions": {
-    "peak": 0.0,
-    "rms": 1.0,
-    "integrated": 0.98,
-    "momentaryMax": 16.23,
-    "shortTermMax": 16.23,
-    "iso532_1.max": 11.13,
-    "iso532_1.n5": 11.23,
-    "literature.L0": 13.5,
-    "ecma418_2.max": 22.55
+    "peak": -0.0,
+    "rms": 4.1,
+    "integrated": 4.1,
+    "momentaryMax": 16.04,
+    "shortTermMax": 16.03,
+    "iso532_1.max": 11.83,
+    "iso532_1.n5": 12.08,
+    "literature.L0": 12.25,
+    "ecma418_2.max": 31.68
    },
    "miss": {
     "peak": -9.0,
-    "rms": -8.0,
-    "integrated": -8.02,
-    "momentaryMax": 5.23,
-    "shortTermMax": 5.23,
-    "iso532_1.max": 0.13,
-    "iso532_1.n5": 0.23,
-    "literature.L0": 2.5,
-    "ecma418_2.max": 11.55
+    "rms": -4.9,
+    "integrated": -4.9,
+    "momentaryMax": 5.04,
+    "shortTermMax": 5.03,
+    "iso532_1.max": 0.83,
+    "iso532_1.n5": 1.08,
+    "literature.L0": 1.25,
+    "ecma418_2.max": 20.68
    },
    "verdicts": {
     "peak": "off",
@@ -195,7 +253,7 @@
     "momentaryMax": "off",
     "shortTermMax": "off",
     "iso532_1.max": "agrees",
-    "iso532_1.n5": "agrees",
+    "iso532_1.n5": "near",
     "literature.L0": "near",
     "ecma418_2.max": "off"
    }
@@ -203,37 +261,39 @@
   {
    "id": "integration-noise-moderate",
    "kind": "value",
-   "title": "Temporal integration, broadband noise, moderate level",
-   "question": "dB the 5 ms noise must be raised",
+   "title": "Temporal integration, broadband noise, where it is largest",
+   "question": "dB the 5 ms noise lies above the equally loud 200 ms noise, the 5 ms noise held at 76 dB SPL",
    "published": [
     18.0,
     19.0
    ],
    "expectedSign": null,
-   "source": "Florentine, Buus & Poulsen (1996): 18-19 dB near 76 dB SPL for noise",
+   "source": "Florentine, Buus & Poulsen (1996), JASA 99(3):1633-1644; 6 listeners, adaptive two-interval matching: a peak of 18 to 19 dB when the 5 ms noise is about 76 dB SPL",
    "evidence": "established",
-   "reconstruction": "noise 20 Hz to 20 kHz at 76 dB SPL; 1 ms ramps",
+   "stimulusFrom": "abstract (journal and 1995 meeting); the tones' gating from Buus, Florentine & Poulsen (1999), which says the 1996 study used the same; the paper itself is behind a paywall and was not read",
+   "reconstruction": "noise 20 Hz to 20 kHz, gated like the tones: the noise's bandwidth and gating were not available",
+   "stimulusHash": "83020b4f3207adf4",
    "predictions": {
-    "peak": 2.34,
-    "rms": 0.93,
-    "integrated": 0.88,
-    "momentaryMax": 16.13,
-    "shortTermMax": 16.13,
-    "iso532_1.max": 17.32,
-    "iso532_1.n5": 17.32,
-    "literature.L0": 14.78,
-    "ecma418_2.max": 36.52
+    "peak": 3.55,
+    "rms": 4.35,
+    "integrated": 4.34,
+    "momentaryMax": 16.28,
+    "shortTermMax": 16.28,
+    "iso532_1.max": 15.4,
+    "iso532_1.n5": 15.65,
+    "literature.L0": 14.72,
+    "ecma418_2.max": 31.55
    },
    "miss": {
-    "peak": -15.66,
-    "rms": -17.07,
-    "integrated": -17.12,
-    "momentaryMax": -1.87,
-    "shortTermMax": -1.87,
-    "iso532_1.max": -0.68,
-    "iso532_1.n5": -0.68,
-    "literature.L0": -3.22,
-    "ecma418_2.max": 17.52
+    "peak": -14.45,
+    "rms": -13.65,
+    "integrated": -13.66,
+    "momentaryMax": -1.72,
+    "shortTermMax": -1.72,
+    "iso532_1.max": -2.6,
+    "iso532_1.n5": -2.35,
+    "literature.L0": -3.28,
+    "ecma418_2.max": 12.55
    },
    "verdicts": {
     "peak": "off",
@@ -241,8 +301,8 @@
     "integrated": "off",
     "momentaryMax": "near",
     "shortTermMax": "near",
-    "iso532_1.max": "agrees",
-    "iso532_1.n5": "agrees",
+    "iso532_1.max": "near",
+    "iso532_1.n5": "near",
     "literature.L0": "off",
     "ecma418_2.max": "off"
    }
@@ -251,36 +311,38 @@
    "id": "integration-noise-high",
    "kind": "value",
    "title": "Temporal integration, broadband noise, high level",
-   "question": "dB the 5 ms noise must be raised",
+   "question": "dB the 5 ms noise lies above the equally loud 200 ms noise, the 5 ms noise held at 100 dB SPL",
    "published": [
     12.0,
     14.0
    ],
    "expectedSign": null,
-   "source": "Florentine, Buus & Poulsen (1996): about 13 dB near 100 dB SPL for noise",
+   "source": "Florentine, Buus & Poulsen (1996), JASA 99(3):1633-1644; 6 listeners, adaptive two-interval matching: about 13 dB near 100 dB SPL",
    "evidence": "established",
-   "reconstruction": "noise at 100 dB SPL; 'about 13 dB' taken as 12 to 14",
+   "stimulusFrom": "abstract (journal and 1995 meeting); the tones' gating from Buus, Florentine & Poulsen (1999), which says the 1996 study used the same; the paper itself is behind a paywall and was not read",
+   "reconstruction": "'about 13 dB' taken as 12 to 14; bandwidth and gating as in the row above",
+   "stimulusHash": "4943cde8af7549c3",
    "predictions": {
-    "peak": 2.34,
-    "rms": 0.93,
-    "integrated": 0.88,
-    "momentaryMax": 16.13,
-    "shortTermMax": 16.13,
-    "iso532_1.max": 17.9,
-    "iso532_1.n5": 17.93,
-    "literature.L0": 12.97,
-    "ecma418_2.max": 28.21
+    "peak": 3.55,
+    "rms": 4.35,
+    "integrated": 4.34,
+    "momentaryMax": 16.28,
+    "shortTermMax": 16.28,
+    "iso532_1.max": 16.45,
+    "iso532_1.n5": 16.82,
+    "literature.L0": 12.91,
+    "ecma418_2.max": 36.47
    },
    "miss": {
-    "peak": -9.66,
-    "rms": -11.07,
-    "integrated": -11.12,
-    "momentaryMax": 2.13,
-    "shortTermMax": 2.13,
-    "iso532_1.max": 3.9,
-    "iso532_1.n5": 3.93,
+    "peak": -8.45,
+    "rms": -7.65,
+    "integrated": -7.66,
+    "momentaryMax": 2.28,
+    "shortTermMax": 2.28,
+    "iso532_1.max": 2.45,
+    "iso532_1.n5": 2.82,
     "literature.L0": 0.0,
-    "ecma418_2.max": 14.21
+    "ecma418_2.max": 22.47
    },
    "verdicts": {
     "peak": "off",
@@ -288,8 +350,57 @@
     "integrated": "off",
     "momentaryMax": "near",
     "shortTermMax": "near",
-    "iso532_1.max": "off",
-    "iso532_1.n5": "off",
+    "iso532_1.max": "near",
+    "iso532_1.n5": "near",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "integration-tone-30ms",
+   "kind": "value",
+   "title": "Temporal integration, 1 kHz tone, 30 against 200 ms",
+   "question": "dB the 30 ms tone must be raised to match the 200 ms tone",
+   "published": [
+    6.0,
+    8.0
+   ],
+   "expectedSign": null,
+   "source": "Buus, Florentine & Poulsen (1997), JASA 101(2):669-680, on the 1996 data: a maximum of about 7 dB",
+   "evidence": "established",
+   "stimulusFrom": "Buus et al. (1997), read in the paper, for the number; gating as in the rows above",
+   "reconstruction": "the 200 ms tone at 37.5 dB SPL, its level when as loud as the 5 ms tone at 56 dB SPL; the paper gives no level for this maximum",
+   "stimulusHash": "940a738d4774aa3d",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 0.89,
+    "integrated": 0.89,
+    "momentaryMax": 8.25,
+    "shortTermMax": 8.24,
+    "iso532_1.max": 5.17,
+    "iso532_1.n5": 5.22,
+    "literature.L0": 7.68,
+    "ecma418_2.max": 17.63
+   },
+   "miss": {
+    "peak": -6.0,
+    "rms": -5.11,
+    "integrated": -5.11,
+    "momentaryMax": 0.25,
+    "shortTermMax": 0.24,
+    "iso532_1.max": -0.83,
+    "iso532_1.n5": -0.78,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 9.63
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "agrees",
+    "shortTermMax": "agrees",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "agrees",
     "literature.L0": "agrees",
     "ecma418_2.max": "off"
    }
@@ -304,9 +415,11 @@
     5.3
    ],
    "expectedSign": null,
-   "source": "Ponsot, Susini & Meunier (2015), Atten. Percept. Psychophys. 77(3):907-920; 10 to 16 listeners, two methods",
+   "source": "Ponsot, Susini & Meunier (2015), Atten. Percept. Psychophys. 77(3):907-920: 3.4 and 3.2 dB by matching (10 and 12 listeners), 5.3 and 3.1 dB by magnitude estimation (16 each)",
    "evidence": "established",
-   "reconstruction": "1 kHz, 2 s, 60 to 75 dB SPL linear in dB (the paper used 15 dB ramps within 45-90 dB SPL)",
+   "stimulusFrom": "the paper (publisher's page)",
+   "reconstruction": "1 kHz, 2 s, 60 to 75 dB SPL linear in dB, 10 ms gating: one of the paper's seven ranges; the asymmetry was smaller for the ramps reaching 80 to 90 dB SPL",
+   "stimulusHash": "48f7380ea1143451",
    "predictions": {
     "peak": 0.0,
     "rms": 0.0,
@@ -315,7 +428,7 @@
     "shortTermMax": 0.0,
     "iso532_1.max": 1.39,
     "iso532_1.n5": 0.78,
-    "literature.L0": 2.22,
+    "literature.L0": 1.91,
     "ecma418_2.max": 0.54
    },
    "miss": {
@@ -326,7 +439,7 @@
     "shortTermMax": -3.1,
     "iso532_1.max": -1.71,
     "iso532_1.n5": -2.32,
-    "literature.L0": -0.88,
+    "literature.L0": -1.19,
     "ecma418_2.max": -2.56
    },
    "verdicts": {
@@ -337,7 +450,7 @@
     "shortTermMax": "off",
     "iso532_1.max": "near",
     "iso532_1.n5": "near",
-    "literature.L0": "agrees",
+    "literature.L0": "near",
     "ecma418_2.max": "near"
    }
   },
@@ -345,25 +458,27 @@
    "id": "decay-suppression-tone",
    "kind": "sign",
    "title": "An impact-like envelope is softer than its time reverse (tone)",
-   "question": "dB the reversed (slow attack, fast decay) sound must be lowered to match the impact-like one",
+   "question": "dB the slow-attack, fast-decay sound must be lowered to match the impact-like one",
    "published": [
     -3.0,
     -1.0
    ],
    "expectedSign": -1,
-   "source": "Stecker & Hafter (2000), JASA 107(6):3358-3368; 250 ms envelopes of equal energy; about 1-3 dB for one listener",
+   "source": "Stecker & Hafter (2000), JASA 107(6):3358-3368: 1 to 3 dB for one listener after impact-like standards, under 1 dB after the others; the same sign by magnitude estimation for tones and noise (8 listeners each) and from 330 Hz to 6 kHz",
    "evidence": "single study; the sign is the finding, the size is weak",
-   "reconstruction": "2 ms attack, exponential decay of 40 dB over 250 ms; the paper's time constants were not available",
+   "stimulusFrom": "the paper (authors' reprint)",
+   "reconstruction": "250 ms, the paper's envelope family with sharpness 3 and peak-time parameter 3, 330 Hz tone, peak equal to a sinusoid's at 80 dB SPL; one line of the envelope's equation was unreadable in the copy and was completed from the properties the paper states",
+   "stimulusHash": "443c3b275bb078fd",
    "predictions": {
     "peak": 0.0,
-    "rms": 0.0,
+    "rms": -0.01,
     "integrated": 0.0,
     "momentaryMax": 0.0,
     "shortTermMax": 0.0,
-    "iso532_1.max": -4.85,
-    "iso532_1.n5": -3.53,
-    "literature.L0": -4.99,
-    "ecma418_2.max": -2.11
+    "iso532_1.max": -1.2,
+    "iso532_1.n5": -0.68,
+    "literature.L0": -3.09,
+    "ecma418_2.max": -1.91
    },
    "miss": {
     "peak": null,
@@ -392,25 +507,27 @@
    "id": "decay-suppression-noise",
    "kind": "sign",
    "title": "An impact-like envelope is softer than its time reverse (noise)",
-   "question": "dB the reversed (slow attack, fast decay) sound must be lowered to match the impact-like one",
+   "question": "dB the slow-attack, fast-decay sound must be lowered to match the impact-like one",
    "published": [
     -3.0,
     -1.0
    ],
    "expectedSign": -1,
-   "source": "Stecker & Hafter (2000), JASA 107(6):3358-3368; 250 ms envelopes of equal energy; about 1-3 dB for one listener",
+   "source": "Stecker & Hafter (2000), JASA 107(6):3358-3368: 1 to 3 dB for one listener after impact-like standards, under 1 dB after the others; the same sign by magnitude estimation for tones and noise (8 listeners each) and from 330 Hz to 6 kHz",
    "evidence": "single study; the sign is the finding, the size is weak",
-   "reconstruction": "2 ms attack, exponential decay of 40 dB over 250 ms; the paper's time constants were not available",
+   "stimulusFrom": "the paper (authors' reprint)",
+   "reconstruction": "250 ms, the paper's envelope family with sharpness 3 and peak-time parameter 3, white noise, peak equal to a sinusoid's at 80 dB SPL; one line of the envelope's equation was unreadable in the copy and was completed from the properties the paper states",
+   "stimulusHash": "d3ec5610af62af9e",
    "predictions": {
-    "peak": 0.0,
-    "rms": 0.0,
-    "integrated": 0.0,
-    "momentaryMax": 0.0,
-    "shortTermMax": 0.0,
-    "iso532_1.max": -4.89,
-    "iso532_1.n5": -3.76,
-    "literature.L0": -5.03,
-    "ecma418_2.max": -1.93
+    "peak": 0.97,
+    "rms": 0.16,
+    "integrated": 0.12,
+    "momentaryMax": 0.12,
+    "shortTermMax": 0.12,
+    "iso532_1.max": -2.84,
+    "iso532_1.n5": -1.22,
+    "literature.L0": -2.78,
+    "ecma418_2.max": -0.56
    },
    "miss": {
     "peak": null,
@@ -424,7 +541,7 @@
     "ecma418_2.max": null
    },
    "verdicts": {
-    "peak": "no effect",
+    "peak": "opposite",
     "rms": "no effect",
     "integrated": "no effect",
     "momentaryMax": "no effect",
@@ -447,7 +564,9 @@
    "expectedSign": null,
    "source": "Ogura, Suzuki & Sone (1991), J. Acoust. Soc. Jpn (E) 12(1):1-11: no change up to 0.2-0.7 impulses a second",
    "evidence": "single study",
+   "stimulusFrom": "abstract only: the paper's file could not be fetched (the journal's site refuses automated reading)",
    "reconstruction": "noise impulse of 50 ms, three of them 4 s apart (0.25 a second); 'as loud' taken as within 1 dB",
+   "stimulusHash": "7b87de1a1931580a",
    "predictions": {
     "peak": 0.0,
     "rms": 17.3,
@@ -456,7 +575,7 @@
     "shortTermMax": 0.0,
     "iso532_1.max": 0.0,
     "iso532_1.n5": 41.41,
-    "literature.L0": 0.0,
+    "literature.L0": -0.0,
     "ecma418_2.max": -0.24
    },
    "miss": {
@@ -491,7 +610,9 @@
    "expectedSign": -1,
    "source": "Ogura, Suzuki & Sone (1991): above the critical rate loudness grows with rate",
    "evidence": "single study; sign only",
+   "stimulusFrom": "abstract only: the paper's file could not be fetched (the journal's site refuses automated reading)",
    "reconstruction": "the same impulse, ten of them 0.2 s apart (5 a second)",
+   "stimulusHash": "0fb7b74f956fddc3",
    "predictions": {
     "peak": 0.0,
     "rms": 5.68,
@@ -500,7 +621,7 @@
     "shortTermMax": -10.0,
     "iso532_1.max": -0.42,
     "iso532_1.n5": 0.0,
-    "literature.L0": -0.95,
+    "literature.L0": -0.58,
     "ecma418_2.max": -1.03
    },
    "miss": {
@@ -536,30 +657,32 @@
     11.0
    ],
    "expectedSign": null,
-   "source": "Fenton & Lee (2017), AES 143rd Convention: listeners gave 9.98 dB where BS.1770 gives 2.73; 13 listeners, loudspeakers",
+   "source": "Fenton & Lee (2017), AES 143rd Convention: 13 listeners, method of adjustment, one loudspeaker at 2 m, the 1 kHz band at 75 dB; listeners gave about 9.98 dB at 63 Hz",
    "evidence": "single study",
-   "reconstruction": "octave bands of pink noise, both at 75 dB SPL; 9.98 dB taken as 9 to 11",
+   "stimulusFrom": "the paper (authors' preprint)",
+   "reconstruction": "octave bands of pink noise through 8th-order filters, both at 75 dB SPL, 2 s (the paper looped them); 9.98 dB taken as 9 to 11",
+   "stimulusHash": "ee01b1fc2e995bc4",
    "predictions": {
-    "peak": 0.08,
-    "rms": 0.0,
-    "integrated": 3.56,
-    "momentaryMax": 1.56,
-    "shortTermMax": 3.57,
-    "iso532_1.max": 11.5,
-    "iso532_1.n5": 12.84,
-    "literature.L0": 9.98,
-    "ecma418_2.max": 18.35
+    "peak": 1.59,
+    "rms": -0.04,
+    "integrated": 3.49,
+    "momentaryMax": 1.64,
+    "shortTermMax": 3.51,
+    "iso532_1.max": 12.45,
+    "iso532_1.n5": 13.56,
+    "literature.L0": 9.97,
+    "ecma418_2.max": 18.01
    },
    "miss": {
-    "peak": -8.92,
-    "rms": -9.0,
-    "integrated": -5.44,
-    "momentaryMax": -7.44,
-    "shortTermMax": -5.43,
-    "iso532_1.max": 0.5,
-    "iso532_1.n5": 1.84,
+    "peak": -7.41,
+    "rms": -9.04,
+    "integrated": -5.51,
+    "momentaryMax": -7.36,
+    "shortTermMax": -5.49,
+    "iso532_1.max": 1.45,
+    "iso532_1.n5": 2.56,
     "literature.L0": 0.0,
-    "ecma418_2.max": 7.35
+    "ecma418_2.max": 7.01
    },
    "verdicts": {
     "peak": "off",
@@ -567,8 +690,302 @@
     "integrated": "off",
     "momentaryMax": "off",
     "shortTermMax": "off",
+    "iso532_1.max": "near",
+    "iso532_1.n5": "near",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "band-125",
+   "kind": "value",
+   "title": "A 125 Hz octave band of noise against a 1 kHz band",
+   "question": "dB the 125 Hz band must be raised to match the 1 kHz band",
+   "published": [
+    3.9,
+    6.9
+   ],
+   "expectedSign": null,
+   "source": "Fenton & Lee (2017), AES 143rd Convention: 13 listeners, method of adjustment, one loudspeaker at 2 m, the 1 kHz band at 75 dB; Table 1 gives BS.1770's error for this band (-3.79 dB)",
+   "evidence": "single study; the value is derived",
+   "stimulusFrom": "the paper (authors' preprint)",
+   "reconstruction": "the listeners' gain is derived: BS.1770's gain as computed here (+1.63 dB) minus the paper's error; the paper's own BS.1770 value is printed for 63 Hz only and is 0.8 dB under this project's, so 1.5 dB either side is allowed",
+   "stimulusHash": "aa044dabe3861338",
+   "predictions": {
+    "peak": 2.4,
+    "rms": 0.0,
+    "integrated": 1.61,
+    "momentaryMax": 1.03,
+    "shortTermMax": 1.62,
+    "iso532_1.max": 8.13,
+    "iso532_1.n5": 8.1,
+    "literature.L0": 5.08,
+    "ecma418_2.max": 15.3
+   },
+   "miss": {
+    "peak": -1.5,
+    "rms": -3.9,
+    "integrated": -2.29,
+    "momentaryMax": -2.87,
+    "shortTermMax": -2.28,
+    "iso532_1.max": 1.23,
+    "iso532_1.n5": 1.2,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 8.4
+   },
+   "verdicts": {
+    "peak": "near",
+    "rms": "off",
+    "integrated": "near",
+    "momentaryMax": "near",
+    "shortTermMax": "near",
+    "iso532_1.max": "near",
+    "iso532_1.n5": "near",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "band-250",
+   "kind": "value",
+   "title": "A 250 Hz octave band of noise against a 1 kHz band",
+   "question": "dB the 250 Hz band must be raised to match the 1 kHz band",
+   "published": [
+    0.6,
+    3.6
+   ],
+   "expectedSign": null,
+   "source": "Fenton & Lee (2017), AES 143rd Convention: 13 listeners, method of adjustment, one loudspeaker at 2 m, the 1 kHz band at 75 dB; Table 1 gives BS.1770's error for this band (-1.11 dB)",
+   "evidence": "single study; the value is derived",
+   "stimulusFrom": "the paper (authors' preprint)",
+   "reconstruction": "the listeners' gain is derived: BS.1770's gain as computed here (+1.03 dB) minus the paper's error; the paper's own BS.1770 value is printed for 63 Hz only and is 0.8 dB under this project's, so 1.5 dB either side is allowed",
+   "stimulusHash": "379c310d9d9b3dd1",
+   "predictions": {
+    "peak": 1.26,
+    "rms": -0.04,
+    "integrated": 0.96,
+    "momentaryMax": 0.32,
+    "shortTermMax": 0.99,
+    "iso532_1.max": 4.58,
+    "iso532_1.n5": 4.87,
+    "literature.L0": 0.13,
+    "ecma418_2.max": 8.4
+   },
+   "miss": {
+    "peak": 0.0,
+    "rms": -0.64,
+    "integrated": 0.0,
+    "momentaryMax": -0.28,
+    "shortTermMax": 0.0,
+    "iso532_1.max": 0.98,
+    "iso532_1.n5": 1.27,
+    "literature.L0": -0.47,
+    "ecma418_2.max": 4.8
+   },
+   "verdicts": {
+    "peak": "agrees",
+    "rms": "agrees",
+    "integrated": "agrees",
+    "momentaryMax": "agrees",
+    "shortTermMax": "agrees",
     "iso532_1.max": "agrees",
     "iso532_1.n5": "near",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "band-500",
+   "kind": "value",
+   "title": "A 500 Hz octave band of noise against a 1 kHz band",
+   "question": "dB the 500 Hz band must be raised to match the 1 kHz band",
+   "published": [
+    -3.8,
+    -0.8
+   ],
+   "expectedSign": null,
+   "source": "Fenton & Lee (2017), AES 143rd Convention: 13 listeners, method of adjustment, one loudspeaker at 2 m, the 1 kHz band at 75 dB; Table 1 gives BS.1770's error for this band (+3.05 dB)",
+   "evidence": "single study; the value is derived",
+   "stimulusFrom": "the paper (authors' preprint)",
+   "reconstruction": "the listeners' gain is derived: BS.1770's gain as computed here (+0.80 dB) minus the paper's error; the paper's own BS.1770 value is printed for 63 Hz only and is 0.8 dB under this project's, so 1.5 dB either side is allowed",
+   "stimulusHash": "24685471a43909c4",
+   "predictions": {
+    "peak": 1.49,
+    "rms": -0.03,
+    "integrated": 0.81,
+    "momentaryMax": 0.46,
+    "shortTermMax": 0.77,
+    "iso532_1.max": 2.3,
+    "iso532_1.n5": 2.47,
+    "literature.L0": 0.26,
+    "ecma418_2.max": 3.17
+   },
+   "miss": {
+    "peak": 2.29,
+    "rms": 0.77,
+    "integrated": 1.61,
+    "momentaryMax": 1.26,
+    "shortTermMax": 1.57,
+    "iso532_1.max": 3.1,
+    "iso532_1.n5": 3.27,
+    "literature.L0": 1.06,
+    "ecma418_2.max": 3.97
+   },
+   "verdicts": {
+    "peak": "near",
+    "rms": "agrees",
+    "integrated": "near",
+    "momentaryMax": "near",
+    "shortTermMax": "near",
+    "iso532_1.max": "off",
+    "iso532_1.n5": "off",
+    "literature.L0": "near",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "band-2000",
+   "kind": "value",
+   "title": "A 2 kHz octave band of noise against a 1 kHz band",
+   "question": "dB the 2000 Hz band must be raised to match the 1 kHz band",
+   "published": [
+    -4.7,
+    -1.7
+   ],
+   "expectedSign": null,
+   "source": "Fenton & Lee (2017), AES 143rd Convention: 13 listeners, method of adjustment, one loudspeaker at 2 m, the 1 kHz band at 75 dB; Table 1 gives BS.1770's error for this band (+1.09 dB)",
+   "evidence": "single study; the value is derived",
+   "stimulusFrom": "the paper (authors' preprint)",
+   "reconstruction": "the listeners' gain is derived: BS.1770's gain as computed here (-2.14 dB) minus the paper's error; the paper's own BS.1770 value is printed for 63 Hz only and is 0.8 dB under this project's, so 1.5 dB either side is allowed",
+   "stimulusHash": "534967dc379fec70",
+   "predictions": {
+    "peak": -0.67,
+    "rms": -0.01,
+    "integrated": -2.17,
+    "momentaryMax": -2.18,
+    "shortTermMax": -2.15,
+    "iso532_1.max": -3.02,
+    "iso532_1.n5": -3.28,
+    "literature.L0": -1.88,
+    "ecma418_2.max": -2.89
+   },
+   "miss": {
+    "peak": 1.03,
+    "rms": 1.69,
+    "integrated": 0.0,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": 0.0,
+    "iso532_1.n5": 0.0,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 0.0
+   },
+   "verdicts": {
+    "peak": "near",
+    "rms": "near",
+    "integrated": "agrees",
+    "momentaryMax": "agrees",
+    "shortTermMax": "agrees",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "agrees",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "agrees"
+   }
+  },
+  {
+   "id": "band-4000",
+   "kind": "value",
+   "title": "A 4 kHz octave band of noise against a 1 kHz band",
+   "question": "dB the 4000 Hz band must be raised to match the 1 kHz band",
+   "published": [
+    -5.8,
+    -2.8
+   ],
+   "expectedSign": null,
+   "source": "Fenton & Lee (2017), AES 143rd Convention: 13 listeners, method of adjustment, one loudspeaker at 2 m, the 1 kHz band at 75 dB; Table 1 gives BS.1770's error for this band (+1.18 dB)",
+   "evidence": "single study; the value is derived",
+   "stimulusFrom": "the paper (authors' preprint)",
+   "reconstruction": "the listeners' gain is derived: BS.1770's gain as computed here (-3.08 dB) minus the paper's error; the paper's own BS.1770 value is printed for 63 Hz only and is 0.8 dB under this project's, so 1.5 dB either side is allowed",
+   "stimulusHash": "34369a6325f5dc89",
+   "predictions": {
+    "peak": 0.53,
+    "rms": -0.02,
+    "integrated": -3.12,
+    "momentaryMax": -3.02,
+    "shortTermMax": -3.1,
+    "iso532_1.max": -3.77,
+    "iso532_1.n5": -3.95,
+    "literature.L0": -2.56,
+    "ecma418_2.max": -3.32
+   },
+   "miss": {
+    "peak": 3.33,
+    "rms": 2.78,
+    "integrated": 0.0,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": 0.0,
+    "iso532_1.n5": 0.0,
+    "literature.L0": 0.24,
+    "ecma418_2.max": 0.0
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "near",
+    "integrated": "agrees",
+    "momentaryMax": "agrees",
+    "shortTermMax": "agrees",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "agrees",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "agrees"
+   }
+  },
+  {
+   "id": "band-8000",
+   "kind": "value",
+   "title": "An 8 kHz octave band of noise against a 1 kHz band",
+   "question": "dB the 8000 Hz band must be raised to match the 1 kHz band",
+   "published": [
+    -3.6,
+    -0.6
+   ],
+   "expectedSign": null,
+   "source": "Fenton & Lee (2017), AES 143rd Convention: 13 listeners, method of adjustment, one loudspeaker at 2 m, the 1 kHz band at 75 dB; Table 1 gives BS.1770's error for this band (-1.04 dB)",
+   "evidence": "single study; the value is derived",
+   "stimulusFrom": "the paper (authors' preprint)",
+   "reconstruction": "the listeners' gain is derived: BS.1770's gain as computed here (-3.18 dB) minus the paper's error; the paper's own BS.1770 value is printed for 63 Hz only and is 0.8 dB under this project's, so 1.5 dB either side is allowed",
+   "stimulusHash": "94b9196cdc39f869",
+   "predictions": {
+    "peak": 0.48,
+    "rms": -0.01,
+    "integrated": -3.22,
+    "momentaryMax": -2.98,
+    "shortTermMax": -3.19,
+    "iso532_1.max": 3.98,
+    "iso532_1.n5": 3.61,
+    "literature.L0": -2.57,
+    "ecma418_2.max": 4.84
+   },
+   "miss": {
+    "peak": 1.08,
+    "rms": 0.59,
+    "integrated": 0.0,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": 4.58,
+    "iso532_1.n5": 4.21,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 5.44
+   },
+   "verdicts": {
+    "peak": "near",
+    "rms": "agrees",
+    "integrated": "agrees",
+    "momentaryMax": "agrees",
+    "shortTermMax": "agrees",
+    "iso532_1.max": "off",
+    "iso532_1.n5": "off",
     "literature.L0": "agrees",
     "ecma418_2.max": "off"
    }
@@ -580,19 +997,21 @@
    "question": "dB the sound with the louder middle must be raised to match the one with the louder beginning",
    "published": null,
    "expectedSign": 1,
-   "source": "Fischenich, Hots, Verhey, Guldan & Oberfeld (2021), PLoS ONE 16(12):e0261001: onset weight 4-5 times the later weight, time constant 200-300 ms",
+   "source": "Fischenich, Hots, Verhey, Guldan & Oberfeld (2021), PLoS ONE 16(12):e0261001: for contiguous 100 ms segments the first weighs 4 to 5 times a later one, falling off over 200 to 300 ms; no primacy when the segments are 500 ms apart. Pedersen & Ellermeier (2008), JASA 123(2):963-972: the same without feedback, and flat weights for listeners given feedback",
    "evidence": "established; sign only",
-   "reconstruction": "1 s noise at 65 dB SPL, 6 dB more in the first 100 ms or from 500 to 600 ms",
+   "stimulusFrom": "both papers (open copies)",
+   "reconstruction": "1 s white noise in ten 100 ms segments at 55 dB SPL, 5 dB more in the first or in the sixth; the papers measured weights from random level changes of 2 to 2.5 dB, not this contrast; with their weights it would be worth about 1 dB",
+   "stimulusHash": "dabc01d0c48c08ab",
    "predictions": {
     "peak": -0.78,
-    "rms": -0.09,
-    "integrated": -1.17,
-    "momentaryMax": -0.25,
-    "shortTermMax": -0.09,
-    "iso532_1.max": -2.02,
-    "iso532_1.n5": -2.49,
-    "literature.L0": -2.47,
-    "ecma418_2.max": -1.79
+    "rms": -0.07,
+    "integrated": -0.89,
+    "momentaryMax": -0.22,
+    "shortTermMax": -0.08,
+    "iso532_1.max": -1.94,
+    "iso532_1.n5": -2.33,
+    "literature.L0": -2.5,
+    "ecma418_2.max": -1.67
    },
    "miss": {
     "peak": null,
@@ -626,7 +1045,9 @@
    "expectedSign": null,
    "source": "no listener data found (perception_and_measures.md, section 3)",
    "evidence": "open question",
+   "stimulusFrom": "this project",
    "reconstruction": "noise impact of 0.3 s; tail 12 dB under its peak, decaying 60 dB in 2 s",
+   "stimulusHash": "8aa5b5adb3698d14",
    "predictions": {
     "peak": -1.44,
     "rms": 4.71,
@@ -635,7 +1056,7 @@
     "shortTermMax": -3.53,
     "iso532_1.max": -2.2,
     "iso532_1.n5": -1.07,
-    "literature.L0": -2.1,
+    "literature.L0": -1.7,
     "ecma418_2.max": -4.58
    },
    "miss": {
@@ -670,7 +1091,9 @@
    "expectedSign": null,
    "source": "no listener data found (perception_and_measures.md, section 4)",
    "evidence": "open question",
+   "stimulusFrom": "this project",
    "reconstruction": "click 30 ms; boom 1.2 s with a 250 ms decay; both built from noise of the stated level",
+   "stimulusHash": "b4af03443d982b3c",
    "predictions": {
     "peak": 6.97,
     "rms": 11.23,
@@ -679,7 +1102,7 @@
     "shortTermMax": 0.71,
     "iso532_1.max": 16.84,
     "iso532_1.n5": 20.03,
-    "literature.L0": 8.55,
+    "literature.L0": 9.36,
     "ecma418_2.max": 18.69
    },
    "miss": {
@@ -714,7 +1137,9 @@
    "expectedSign": null,
    "source": "no listener data found (perception_and_measures.md, section 4)",
    "evidence": "open question",
+   "stimulusFrom": "this project",
    "reconstruction": "click 30 ms; boom 1.2 s with a 250 ms decay; both built from noise of the stated level",
+   "stimulusHash": "63970d825c1aceaa",
    "predictions": {
     "peak": 6.97,
     "rms": 11.23,
@@ -723,7 +1148,7 @@
     "shortTermMax": 0.71,
     "iso532_1.max": 12.91,
     "iso532_1.n5": 16.07,
-    "literature.L0": 9.97,
+    "literature.L0": 10.46,
     "ecma418_2.max": 13.09
    },
    "miss": {

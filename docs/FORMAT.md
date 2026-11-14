@@ -73,6 +73,10 @@ tail, class). `pairs[]`: range and 5th-to-95th percentile of the difference for 
 `phenomena[]`: `published` (dB range from the literature) or `expectedSign`, `predictions` per measure (dB by which
 the measure would raise sound B to match sound A), `miss`, `verdicts`, `source`, `evidence`, `reconstruction`.
 `kind: "open"` marks contrasts with no listener data: predictions only.
+Since revision 2 (`revision` at the top): `stimulusFrom` (what was read of the paper), `stimulusHash` (of the two
+sounds; ECMA-418-2 values are reused from an earlier file only where it is unchanged), and
+`literatureModel.addedAfterFitting`. Rows on temporal integration hold the short sound at the published level and
+report how far the equally loud long sound lies under it.
 
 ## `listener-recordings`, version 1 (`listener takes`)
 

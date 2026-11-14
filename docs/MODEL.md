@@ -14,7 +14,7 @@ can build on. Section 5 lists the additions; the first three were built in this 
 | A measure tested on one-shots | BS.1770 was validated on programme; ISO 532-1 and ISO 532-3 on tones, noises and technical sounds | An event-level measure scored on held-out listeners and items, with the standard measures beside it |
 | Agreement on what a short sound's single value is | ISO 532-1's own N5 values for its short test signals follow no single rule (docs/FIRST_CHECKS.md); ECMA-418-2's skip the first 300 ms | A stated event rule, with the padding dependence of the others measured |
 | A way to compare measures in the listener's unit | Comparisons are usually phon against dB | Equal-loudness gain in dB for every measure (`listener disagree`) |
-| A shared test of what any event-loudness model must reproduce | Each paper tests its own phenomenon | `listener phenomena`: eleven published results and three open contrasts, runnable against any measure |
+| A shared test of what any event-loudness model must reproduce | Each paper tests its own phenomenon | `listener phenomena`: eighteen published results (eleven in its first revision) and three open contrasts, runnable against any measure |
 
 ## 2. What the model outputs
 
@@ -135,7 +135,11 @@ The literature-constrained model exists: `docs/LITERATURE_MODEL.md`. Of the six 
 survived as two fitted numbers; its level dependence (parameter 2) needs no parameter, because it follows from a
 published loudness function; the low-frequency shelf (6) survived. Weighting of what follows the peak (3) and
 carry-over between events (5) bought nothing on the published results used. Onset weighting (4) was not achieved.
-On held-out tone durations its mean miss is 3.3 dB, against 6.9 dB for Max M and 9.5 dB for ISO 532-1.
+
+The same day the papers behind the benchmark were read and the benchmark revised: stimuli as the papers give them,
+and six more results (octave bands of noise), so eighteen in all. Refitted, the model's mean miss on held-out tone
+durations is 5.0 dB, against 6.7 dB for Max M and 9.4 dB for ISO 532-1. On the first revision's rebuilt stimuli it
+had been 3.3 dB.
 
 ## 6. What is deliberately not done
 

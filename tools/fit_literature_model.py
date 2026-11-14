@@ -2,7 +2,7 @@
 """Fit the literature model on the fit set, test it on the held-out set, and write the results.
 
 usage: python tools/fit_literature_model.py [out folder]     (default: results/literature-model)
-The sets are those of docs/LITERATURE_SPLIT.md. Writes fit.json, and src/listener/model/fitted.py with the values.
+The sets are those of docs/LITERATURE_SPLIT.md; the sounds are the benchmark's (listener.phenomena.bench). Writes fit.json, and src/listener/model/fitted.py with the values.
 """
 import json
 import os
@@ -24,45 +24,55 @@ def pair(a, b, shelf=0.0):
     return M.track(a, shelf), M.track(b, shelf)
 
 
+ROWS = {r["id"]: r for r in B.phenomena()}     # the benchmark's sounds are the only definition of each result
+FIT_IDS = {"F1": "integration-tone-moderate", "F2": "integration-tone-high", "F3": "integration-noise-moderate",
+           "F4": "integration-noise-high", "F5": "integration-tone-30ms", "F6": "rise-fall-asymmetry", "F7": "repetition-slow"}
+WHAT = {"F1": "1 kHz tone, 5 against 200 ms, the 5 ms tone at 56 dB SPL", "F2": "the same, the 5 ms tone at 100 dB SPL",
+        "F3": "noise, 5 against 200 ms, the 5 ms noise at 76 dB SPL", "F4": "the same, the 5 ms noise at 100 dB SPL",
+        "F5": "1 kHz tone, 30 against 200 ms, the 200 ms tone at 37.5 dB SPL", "F6": "1 kHz tone falling against rising 15 dB",
+        "F7": "impulses 4 s apart against one"}
+
+
 def fit_items():
-    ramp = B.level_ramp_tone(60.0, 75.0)
-    burst = B.decaying(B.noise(0.05, seed=SEED + 3), 80.0, 1.0, 40.0)
-    return {
-        "F1": dict(what="1 kHz tone, 5 against 200 ms, 56 dB SPL", lo=18, hi=19, ab=(B.tone_burst(56, .2), B.tone_burst(56, .005))),
-        "F2": dict(what="the same, 100 dB SPL", lo=9, hi=11, ab=(B.tone_burst(100, .2), B.tone_burst(100, .005))),
-        "F3": dict(what="noise, 5 against 200 ms, 76 dB SPL", lo=18, hi=19, ab=(B.noise_burst(76, .2, seed=SEED + 1), B.noise_burst(76, .005, seed=SEED + 2))),
-        "F4": dict(what="the same, 100 dB SPL", lo=12, hi=14, ab=(B.noise_burst(100, .2, seed=SEED + 1), B.noise_burst(100, .005, seed=SEED + 2))),
-        "F5": dict(what="1 kHz tone, 30 against 200 ms, 56 dB SPL", lo=6, hi=8, ab=(B.tone_burst(56, .2), B.tone_burst(56, .03))),
-        "F6": dict(what="1 kHz tone falling against rising 15 dB", lo=3.1, hi=5.3, ab=(ramp, ramp[::-1].copy())),
-        "F7": dict(what="impulses 4 s apart against one", lo=-1, hi=1, ab=(burst, B.train(burst, 4.0, 3))),
-    }
+    out = {}
+    for key, rid in FIT_IDS.items():
+        r = ROWS[rid]
+        out[key] = dict(what=WHAT[key], lo=r["published"][0], hi=r["published"][1], ab=(r["a"], r["b"]), sign=-1.0 if r.get("negate") else 1.0)
+    return out
 
 
 def lf_pair():
-    return (B._ramp(B._amp(75.0) * B.noise(4.0, 707.0, 1414.0, pink=True, seed=SEED + 4), 20.0),
-            B._ramp(B._amp(75.0) * B.noise(4.0, 44.5, 89.0, pink=True, seed=SEED + 4), 20.0))
+    r = ROWS["low-frequency-band"]
+    return r["a"], r["b"]
+
+
+def buus(level, seconds):
+    return B.linear_gated_tone(level, seconds, 5000.0)
 
 
 def held_out(p):
     """Predictions for the held-out set."""
     rows = {}
-    long_levels = np.arange(15.0, 70.1, 5.0)
+    long_levels = np.arange(10.0, 70.1, 5.0)
     for key, short, published in (("H1", 0.050, "about 9"), ("H2", 0.010, "about 22"), ("H3", 0.002, "about 40")):
-        vals = [M.matching_gain(*pair(B.tone_burst(L, .25, 5000.0, 2.0), B.tone_burst(L, short, 5000.0, 2.0)), p) for L in long_levels]
+        vals = [M.matching_gain(*pair(buus(L, .25), buus(L, short)), p) for L in long_levels]
         i = int(np.argmax(vals))
         rows[key] = dict(what=f"5 kHz tone, {short * 1000:g} against 250 ms, most integration over level", published=published,
                          predicted=round(max(vals), 1), atLevel=float(long_levels[i]),
                          byLevel={f"{L:g}": round(v, 1) for L, v in zip(long_levels, vals)})
-    rows["H4"] = dict(what="5 kHz tone, 2 against 250 ms, 60 dB above threshold (63 dB SPL)", published="20 to 25",
-                      predicted=round(M.matching_gain(*pair(B.tone_burst(63, .25, 5000.0, 2.0), B.tone_burst(63, .002, 5000.0, 2.0)), p), 1))
-    tone = np.sin(2 * np.pi * 1000 * np.arange(int(0.25 * B.SR)) / B.SR)
-    for key, name, carrier in (("H5", "tone", tone), ("H6", "noise", B.noise(0.25, seed=SEED + 5))):
-        fs = B.decaying(carrier, 75.0, 2.0, 40.0)
-        rows[key] = dict(what=f"reversed envelope against impact-like one, {name}", published="negative (reverse louder); -1 to -3 from one listener",
-                         predicted=round(M.matching_gain(*pair(fs, fs[::-1].copy()), p), 1))
-    burst = B.decaying(B.noise(0.05, seed=SEED + 3), 80.0, 1.0, 40.0)
-    rows["H7"] = dict(what="impulses 0.2 s apart against one", published="negative (train louder)",
-                      predicted=round(M.matching_gain(*pair(burst, B.train(burst, 0.2, 10)), p), 1))
+    rows["H4"] = dict(what="5 kHz tone, 2 against 250 ms, the 250 ms tone 60 dB above threshold (63 dB SPL)", published="20 to 25",
+                      predicted=round(M.matching_gain(*pair(buus(63.4, .25), buus(63.4, .002)), p), 1))
+    for key, rid, what in (("H5", "decay-suppression-tone", "reversed envelope against impact-like one, 330 Hz tone"),
+                           ("H6", "decay-suppression-noise", "reversed envelope against impact-like one, noise"),
+                           ("H7", "repetition-fast", "impulses 0.2 s apart against one")):
+        r = ROWS[rid]
+        rows[key] = dict(what=what, published="negative; 1 to 3 dB from one listener" if key != "H7" else "negative (train louder)",
+                         predicted=round(M.matching_gain(*pair(r["a"], r["b"], p.shelf_db), p), 1))
+    for n, rid in enumerate(B.ADDED_AFTER_FITTING, start=8):
+        r = ROWS[rid]
+        v = M.matching_gain(*pair(r["a"], r["b"], p.shelf_db), p)
+        rows[f"H{n}"] = dict(what=r["title"].split(" ", 1)[1].replace(" of noise", ""), published=f"{r['published'][0]:g} to {r['published'][1]:g}",
+                             range=list(r["published"]), predicted=round(v, 1), addedAfterFitting=True)
     return rows
 
 
@@ -74,7 +84,7 @@ half = np.array([max((items[k]["hi"] - items[k]["lo"]) / 2, 1.0) for k in keys])
 
 
 def predict(p, which=keys):
-    return np.array([M.matching_gain(*tracks[k], p) for k in which])
+    return np.array([items[k]["sign"] * M.matching_gain(*tracks[k], p) for k in which])
 
 
 def fit(base, free, which=keys):
@@ -126,7 +136,7 @@ loo = {}
 for k in keys:
     others = [x for x in keys if x != k]
     p_k, _ = fit(start, FREE, others)
-    v = float(M.matching_gain(*tracks[k], p_k))
+    v = float(items[k]["sign"] * M.matching_gain(*tracks[k], p_k))
     loo[k] = dict(predicted=round(v, 1), miss=miss_of(v, items[k]["lo"], items[k]["hi"]),
                   parameters={n: round(getattr(p_k, n), 3) for n in FREE})
 doc["leaveOneOut"] = loo
@@ -151,18 +161,23 @@ doc["ablations"] = abl
 doc["heldOut"] = held_out(best)
 
 
-def others(a, b):
-    """Max M and the ISO 532-1 maximum for a pair, as the benchmark computes them."""
+def others(a, b, sign=1.0):
+    """Max M, integrated loudness and the ISO 532-1 maximum for a pair, as the benchmark computes them."""
     pr = B.predictions(a, b, None)
-    return {"momentaryMax": pr["momentaryMax"], "iso532_1.max": pr["iso532_1.max"]}
+    return {m: (None if pr[m] is None else round(sign * pr[m], 2)) for m in ("momentaryMax", "integrated", "iso532_1.max")}
 
 
-cmp_rows = {"F5": others(*items["F5"]["ab"])}
+cmp_rows = {k: others(*items[k]["ab"], items[k]["sign"]) for k in keys}
+cmp_rows["F8"] = others(*lf_pair())
 for key, short in (("H1", 0.050), ("H2", 0.010), ("H3", 0.002)):
-    per = [others(B.tone_burst(L, .25, 5000.0, 2.0), B.tone_burst(L, short, 5000.0, 2.0)) for L in (25.0, 45.0, 65.0)]
+    per = [others(buus(L, .25), buus(L, short)) for L in (25.0, 45.0, 65.0)]
     cmp_rows[key] = {m: max(v[m] for v in per if v[m] is not None) for m in per[0]}
-cmp_rows["H4"] = others(B.tone_burst(63, .25, 5000.0, 2.0), B.tone_burst(63, .002, 5000.0, 2.0))
+cmp_rows["H4"] = others(buus(63.4, .25), buus(63.4, .002))
+for key, rid in [("H5", "decay-suppression-tone"), ("H6", "decay-suppression-noise"), ("H7", "repetition-fast")] + \
+        [(f"H{n}", rid) for n, rid in enumerate(B.ADDED_AFTER_FITTING, start=8)]:
+    cmp_rows[key] = others(ROWS[rid]["a"], ROWS[rid]["b"])
 doc["otherMeasures"] = cmp_rows
+doc["benchmarkRevision"] = B.REVISION
 with open(os.path.join(out, "fit.json"), "w", encoding="utf-8") as fh:
     json.dump(doc, fh, indent=1)
 with open(os.path.join(os.path.dirname(M.__file__), "fitted.py"), "w", encoding="utf-8") as fh:

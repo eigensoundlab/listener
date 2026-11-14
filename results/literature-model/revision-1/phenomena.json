@@ -1,0 +1,753 @@
+{
+ "format": "listener-phenomena",
+ "version": 1,
+ "generator": {
+  "name": "listener",
+  "version": "0.1.0"
+ },
+ "created": "2026-11-14T02:40:40Z",
+ "implementations": {
+  "bs1770": "pyloudnorm 0.2.0 (K-weighting filter, loudness range); listener 0.1.0 (gating on complete blocks, 0.4 s and 3 s windows, true peak, spans)",
+  "iso532_1": "MoSQITo 1.2.1 loudness_zwtv stages (ISO 532-1:2017 time-varying, free field)",
+  "din45692": "MoSQITo 1.2.1 sharpness_din_from_loudness on the ISO 532-1 specific loudness",
+  "ecma418_2": "sottek-hearing-model, as a separate process",
+  "iso532_3": null
+ },
+ "ecmaReusedFrom": "2026-11-10T18:56:34Z",
+ "rule": "Each value: dB by which a measure would raise sound B to make it as loud as sound A. 'agrees': within 1 dB of the published range (or the right sign, at least 0.5 dB); 'near': within 3 dB; 'off': further; 'no effect': under 0.5 dB where a sign is expected; 'opposite': the wrong sign.",
+ "caution": "Stimuli are rebuilt from descriptions; the published ranges come from small panels. This constrains a model. It does not validate one for sound effects.",
+ "measures": [
+  "peak",
+  "rms",
+  "integrated",
+  "momentaryMax",
+  "shortTermMax",
+  "iso532_1.max",
+  "iso532_1.n5",
+  "literature.L0",
+  "ecma418_2.max"
+ ],
+ "score": {
+  "peak": {
+   "agrees": 1,
+   "near": 0,
+   "of": 11
+  },
+  "rms": {
+   "agrees": 0,
+   "near": 0,
+   "of": 11
+  },
+  "integrated": {
+   "agrees": 0,
+   "near": 0,
+   "of": 11
+  },
+  "momentaryMax": {
+   "agrees": 2,
+   "near": 3,
+   "of": 11
+  },
+  "shortTermMax": {
+   "agrees": 2,
+   "near": 3,
+   "of": 11
+  },
+  "iso532_1.max": {
+   "agrees": 6,
+   "near": 1,
+   "of": 11
+  },
+  "iso532_1.n5": {
+   "agrees": 4,
+   "near": 2,
+   "of": 11
+  },
+  "literature.L0": {
+   "agrees": 8,
+   "near": 1,
+   "of": 11
+  },
+  "ecma418_2.max": {
+   "agrees": 4,
+   "near": 1,
+   "of": 11
+  }
+ },
+ "literatureModel": {
+  "note": "literature.L0 was set from the rows in 'fitted'; only the rows in 'heldOut' test it; 'notModelled' it is expected to fail",
+  "fitted": [
+   "integration-tone-moderate",
+   "integration-tone-high",
+   "integration-noise-moderate",
+   "integration-noise-high",
+   "rise-fall-asymmetry",
+   "repetition-slow",
+   "low-frequency-band"
+  ],
+  "heldOut": [
+   "decay-suppression-tone",
+   "decay-suppression-noise",
+   "repetition-fast"
+  ],
+  "notModelled": [
+   "primacy"
+  ],
+  "scoreHeldOut": {
+   "peak": 0,
+   "rms": 0,
+   "integrated": 0,
+   "momentaryMax": 1,
+   "shortTermMax": 1,
+   "iso532_1.max": 2,
+   "iso532_1.n5": 2,
+   "literature.L0": 3,
+   "ecma418_2.max": 3
+  }
+ },
+ "phenomena": [
+  {
+   "id": "integration-tone-moderate",
+   "kind": "value",
+   "title": "Temporal integration, 1 kHz tone, moderate level",
+   "question": "dB the 5 ms tone must be raised to match the 200 ms tone",
+   "published": [
+    18.0,
+    19.0
+   ],
+   "expectedSign": null,
+   "source": "Florentine, Buus & Poulsen (1996), JASA 99(3):1633-1644; 6 listeners",
+   "evidence": "established",
+   "reconstruction": "both tones at 56 dB SPL before matching; 1 ms raised-cosine ramps",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 1.0,
+    "integrated": 0.98,
+    "momentaryMax": 16.23,
+    "shortTermMax": 16.23,
+    "iso532_1.max": 8.97,
+    "iso532_1.n5": 8.99,
+    "literature.L0": 18.67,
+    "ecma418_2.max": 29.51
+   },
+   "miss": {
+    "peak": -18.0,
+    "rms": -17.0,
+    "integrated": -17.02,
+    "momentaryMax": -1.77,
+    "shortTermMax": -1.77,
+    "iso532_1.max": -9.03,
+    "iso532_1.n5": -9.01,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 10.51
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "near",
+    "shortTermMax": "near",
+    "iso532_1.max": "off",
+    "iso532_1.n5": "off",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "integration-tone-high",
+   "kind": "value",
+   "title": "Temporal integration, 1 kHz tone, high level",
+   "question": "dB the 5 ms tone must be raised",
+   "published": [
+    9.0,
+    11.0
+   ],
+   "expectedSign": null,
+   "source": "Florentine, Buus & Poulsen (1996): about 10 dB near 100 dB SPL",
+   "evidence": "established",
+   "reconstruction": "both tones at 100 dB SPL; 'about 10 dB' taken as 9 to 11",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 1.0,
+    "integrated": 0.98,
+    "momentaryMax": 16.23,
+    "shortTermMax": 16.23,
+    "iso532_1.max": 11.13,
+    "iso532_1.n5": 11.23,
+    "literature.L0": 13.5,
+    "ecma418_2.max": 22.55
+   },
+   "miss": {
+    "peak": -9.0,
+    "rms": -8.0,
+    "integrated": -8.02,
+    "momentaryMax": 5.23,
+    "shortTermMax": 5.23,
+    "iso532_1.max": 0.13,
+    "iso532_1.n5": 0.23,
+    "literature.L0": 2.5,
+    "ecma418_2.max": 11.55
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "off",
+    "shortTermMax": "off",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "agrees",
+    "literature.L0": "near",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "integration-noise-moderate",
+   "kind": "value",
+   "title": "Temporal integration, broadband noise, moderate level",
+   "question": "dB the 5 ms noise must be raised",
+   "published": [
+    18.0,
+    19.0
+   ],
+   "expectedSign": null,
+   "source": "Florentine, Buus & Poulsen (1996): 18-19 dB near 76 dB SPL for noise",
+   "evidence": "established",
+   "reconstruction": "noise 20 Hz to 20 kHz at 76 dB SPL; 1 ms ramps",
+   "predictions": {
+    "peak": 2.34,
+    "rms": 0.93,
+    "integrated": 0.88,
+    "momentaryMax": 16.13,
+    "shortTermMax": 16.13,
+    "iso532_1.max": 17.32,
+    "iso532_1.n5": 17.32,
+    "literature.L0": 14.78,
+    "ecma418_2.max": 36.52
+   },
+   "miss": {
+    "peak": -15.66,
+    "rms": -17.07,
+    "integrated": -17.12,
+    "momentaryMax": -1.87,
+    "shortTermMax": -1.87,
+    "iso532_1.max": -0.68,
+    "iso532_1.n5": -0.68,
+    "literature.L0": -3.22,
+    "ecma418_2.max": 17.52
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "near",
+    "shortTermMax": "near",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "agrees",
+    "literature.L0": "off",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "integration-noise-high",
+   "kind": "value",
+   "title": "Temporal integration, broadband noise, high level",
+   "question": "dB the 5 ms noise must be raised",
+   "published": [
+    12.0,
+    14.0
+   ],
+   "expectedSign": null,
+   "source": "Florentine, Buus & Poulsen (1996): about 13 dB near 100 dB SPL for noise",
+   "evidence": "established",
+   "reconstruction": "noise at 100 dB SPL; 'about 13 dB' taken as 12 to 14",
+   "predictions": {
+    "peak": 2.34,
+    "rms": 0.93,
+    "integrated": 0.88,
+    "momentaryMax": 16.13,
+    "shortTermMax": 16.13,
+    "iso532_1.max": 17.9,
+    "iso532_1.n5": 17.93,
+    "literature.L0": 12.97,
+    "ecma418_2.max": 28.21
+   },
+   "miss": {
+    "peak": -9.66,
+    "rms": -11.07,
+    "integrated": -11.12,
+    "momentaryMax": 2.13,
+    "shortTermMax": 2.13,
+    "iso532_1.max": 3.9,
+    "iso532_1.n5": 3.93,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 14.21
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "near",
+    "shortTermMax": "near",
+    "iso532_1.max": "off",
+    "iso532_1.n5": "off",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "rise-fall-asymmetry",
+   "kind": "value",
+   "title": "A rising tone is louder than the same tone falling",
+   "question": "dB the falling tone must be raised to match the rising one",
+   "published": [
+    3.1,
+    5.3
+   ],
+   "expectedSign": null,
+   "source": "Ponsot, Susini & Meunier (2015), Atten. Percept. Psychophys. 77(3):907-920; 10 to 16 listeners, two methods",
+   "evidence": "established",
+   "reconstruction": "1 kHz, 2 s, 60 to 75 dB SPL linear in dB (the paper used 15 dB ramps within 45-90 dB SPL)",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 0.0,
+    "integrated": 0.0,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": 1.39,
+    "iso532_1.n5": 0.78,
+    "literature.L0": 2.22,
+    "ecma418_2.max": 0.54
+   },
+   "miss": {
+    "peak": -3.1,
+    "rms": -3.1,
+    "integrated": -3.1,
+    "momentaryMax": -3.1,
+    "shortTermMax": -3.1,
+    "iso532_1.max": -1.71,
+    "iso532_1.n5": -2.32,
+    "literature.L0": -0.88,
+    "ecma418_2.max": -2.56
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "off",
+    "shortTermMax": "off",
+    "iso532_1.max": "near",
+    "iso532_1.n5": "near",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "near"
+   }
+  },
+  {
+   "id": "decay-suppression-tone",
+   "kind": "sign",
+   "title": "An impact-like envelope is softer than its time reverse (tone)",
+   "question": "dB the reversed (slow attack, fast decay) sound must be lowered to match the impact-like one",
+   "published": [
+    -3.0,
+    -1.0
+   ],
+   "expectedSign": -1,
+   "source": "Stecker & Hafter (2000), JASA 107(6):3358-3368; 250 ms envelopes of equal energy; about 1-3 dB for one listener",
+   "evidence": "single study; the sign is the finding, the size is weak",
+   "reconstruction": "2 ms attack, exponential decay of 40 dB over 250 ms; the paper's time constants were not available",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 0.0,
+    "integrated": 0.0,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": -4.85,
+    "iso532_1.n5": -3.53,
+    "literature.L0": -4.99,
+    "ecma418_2.max": -2.11
+   },
+   "miss": {
+    "peak": null,
+    "rms": null,
+    "integrated": null,
+    "momentaryMax": null,
+    "shortTermMax": null,
+    "iso532_1.max": null,
+    "iso532_1.n5": null,
+    "literature.L0": null,
+    "ecma418_2.max": null
+   },
+   "verdicts": {
+    "peak": "no effect",
+    "rms": "no effect",
+    "integrated": "no effect",
+    "momentaryMax": "no effect",
+    "shortTermMax": "no effect",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "agrees",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "agrees"
+   }
+  },
+  {
+   "id": "decay-suppression-noise",
+   "kind": "sign",
+   "title": "An impact-like envelope is softer than its time reverse (noise)",
+   "question": "dB the reversed (slow attack, fast decay) sound must be lowered to match the impact-like one",
+   "published": [
+    -3.0,
+    -1.0
+   ],
+   "expectedSign": -1,
+   "source": "Stecker & Hafter (2000), JASA 107(6):3358-3368; 250 ms envelopes of equal energy; about 1-3 dB for one listener",
+   "evidence": "single study; the sign is the finding, the size is weak",
+   "reconstruction": "2 ms attack, exponential decay of 40 dB over 250 ms; the paper's time constants were not available",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 0.0,
+    "integrated": 0.0,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": -4.89,
+    "iso532_1.n5": -3.76,
+    "literature.L0": -5.03,
+    "ecma418_2.max": -1.93
+   },
+   "miss": {
+    "peak": null,
+    "rms": null,
+    "integrated": null,
+    "momentaryMax": null,
+    "shortTermMax": null,
+    "iso532_1.max": null,
+    "iso532_1.n5": null,
+    "literature.L0": null,
+    "ecma418_2.max": null
+   },
+   "verdicts": {
+    "peak": "no effect",
+    "rms": "no effect",
+    "integrated": "no effect",
+    "momentaryMax": "no effect",
+    "shortTermMax": "no effect",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "agrees",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "agrees"
+   }
+  },
+  {
+   "id": "repetition-slow",
+   "kind": "value",
+   "title": "A slow train of impulses is as loud as one impulse",
+   "question": "dB the train must be raised to match the single impulse (none)",
+   "published": [
+    -1.0,
+    1.0
+   ],
+   "expectedSign": null,
+   "source": "Ogura, Suzuki & Sone (1991), J. Acoust. Soc. Jpn (E) 12(1):1-11: no change up to 0.2-0.7 impulses a second",
+   "evidence": "single study",
+   "reconstruction": "noise impulse of 50 ms, three of them 4 s apart (0.25 a second); 'as loud' taken as within 1 dB",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 17.3,
+    "integrated": 9.03,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": 0.0,
+    "iso532_1.n5": 41.41,
+    "literature.L0": 0.0,
+    "ecma418_2.max": -0.24
+   },
+   "miss": {
+    "peak": 0.0,
+    "rms": 16.3,
+    "integrated": 8.03,
+    "momentaryMax": 0.0,
+    "shortTermMax": 0.0,
+    "iso532_1.max": 0.0,
+    "iso532_1.n5": 40.41,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 0.0
+   },
+   "verdicts": {
+    "peak": "agrees",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "agrees",
+    "shortTermMax": "agrees",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "off",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "agrees"
+   }
+  },
+  {
+   "id": "repetition-fast",
+   "kind": "sign",
+   "title": "A fast train of impulses is louder than one impulse",
+   "question": "dB the train must be lowered to match the single impulse",
+   "published": null,
+   "expectedSign": -1,
+   "source": "Ogura, Suzuki & Sone (1991): above the critical rate loudness grows with rate",
+   "evidence": "single study; sign only",
+   "reconstruction": "the same impulse, ten of them 0.2 s apart (5 a second)",
+   "predictions": {
+    "peak": 0.0,
+    "rms": 5.68,
+    "integrated": 6.02,
+    "momentaryMax": -3.01,
+    "shortTermMax": -10.0,
+    "iso532_1.max": -0.42,
+    "iso532_1.n5": 0.0,
+    "literature.L0": -0.95,
+    "ecma418_2.max": -1.03
+   },
+   "miss": {
+    "peak": null,
+    "rms": null,
+    "integrated": null,
+    "momentaryMax": null,
+    "shortTermMax": null,
+    "iso532_1.max": null,
+    "iso532_1.n5": null,
+    "literature.L0": null,
+    "ecma418_2.max": null
+   },
+   "verdicts": {
+    "peak": "no effect",
+    "rms": "opposite",
+    "integrated": "opposite",
+    "momentaryMax": "agrees",
+    "shortTermMax": "agrees",
+    "iso532_1.max": "no effect",
+    "iso532_1.n5": "no effect",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "agrees"
+   }
+  },
+  {
+   "id": "low-frequency-band",
+   "kind": "value",
+   "title": "A 63 Hz octave band of noise against a 1 kHz band",
+   "question": "dB the 63 Hz band must be raised to match the 1 kHz band",
+   "published": [
+    9.0,
+    11.0
+   ],
+   "expectedSign": null,
+   "source": "Fenton & Lee (2017), AES 143rd Convention: listeners gave 9.98 dB where BS.1770 gives 2.73; 13 listeners, loudspeakers",
+   "evidence": "single study",
+   "reconstruction": "octave bands of pink noise, both at 75 dB SPL; 9.98 dB taken as 9 to 11",
+   "predictions": {
+    "peak": 0.08,
+    "rms": 0.0,
+    "integrated": 3.56,
+    "momentaryMax": 1.56,
+    "shortTermMax": 3.57,
+    "iso532_1.max": 11.5,
+    "iso532_1.n5": 12.84,
+    "literature.L0": 9.98,
+    "ecma418_2.max": 18.35
+   },
+   "miss": {
+    "peak": -8.92,
+    "rms": -9.0,
+    "integrated": -5.44,
+    "momentaryMax": -7.44,
+    "shortTermMax": -5.43,
+    "iso532_1.max": 0.5,
+    "iso532_1.n5": 1.84,
+    "literature.L0": 0.0,
+    "ecma418_2.max": 7.35
+   },
+   "verdicts": {
+    "peak": "off",
+    "rms": "off",
+    "integrated": "off",
+    "momentaryMax": "off",
+    "shortTermMax": "off",
+    "iso532_1.max": "agrees",
+    "iso532_1.n5": "near",
+    "literature.L0": "agrees",
+    "ecma418_2.max": "off"
+   }
+  },
+  {
+   "id": "primacy",
+   "kind": "sign",
+   "title": "A louder beginning counts for more than a louder middle",
+   "question": "dB the sound with the louder middle must be raised to match the one with the louder beginning",
+   "published": null,
+   "expectedSign": 1,
+   "source": "Fischenich, Hots, Verhey, Guldan & Oberfeld (2021), PLoS ONE 16(12):e0261001: onset weight 4-5 times the later weight, time constant 200-300 ms",
+   "evidence": "established; sign only",
+   "reconstruction": "1 s noise at 65 dB SPL, 6 dB more in the first 100 ms or from 500 to 600 ms",
+   "predictions": {
+    "peak": -0.78,
+    "rms": -0.09,
+    "integrated": -1.17,
+    "momentaryMax": -0.25,
+    "shortTermMax": -0.09,
+    "iso532_1.max": -2.02,
+    "iso532_1.n5": -2.49,
+    "literature.L0": -2.47,
+    "ecma418_2.max": -1.79
+   },
+   "miss": {
+    "peak": null,
+    "rms": null,
+    "integrated": null,
+    "momentaryMax": null,
+    "shortTermMax": null,
+    "iso532_1.max": null,
+    "iso532_1.n5": null,
+    "literature.L0": null,
+    "ecma418_2.max": null
+   },
+   "verdicts": {
+    "peak": "opposite",
+    "rms": "no effect",
+    "integrated": "opposite",
+    "momentaryMax": "no effect",
+    "shortTermMax": "no effect",
+    "iso532_1.max": "opposite",
+    "iso532_1.n5": "opposite",
+    "literature.L0": "opposite",
+    "ecma418_2.max": "opposite"
+   }
+  },
+  {
+   "id": "open-dry-wet",
+   "kind": "open",
+   "title": "The same impact dry and with a 2 s reverberant tail",
+   "question": "dB the wet version would be raised (negative: lowered) to match the dry one",
+   "published": null,
+   "expectedSign": null,
+   "source": "no listener data found (perception_and_measures.md, section 3)",
+   "evidence": "open question",
+   "reconstruction": "noise impact of 0.3 s; tail 12 dB under its peak, decaying 60 dB in 2 s",
+   "predictions": {
+    "peak": -1.44,
+    "rms": 4.71,
+    "integrated": 3.65,
+    "momentaryMax": -3.35,
+    "shortTermMax": -3.53,
+    "iso532_1.max": -2.2,
+    "iso532_1.n5": -1.07,
+    "literature.L0": -2.1,
+    "ecma418_2.max": -4.58
+   },
+   "miss": {
+    "peak": null,
+    "rms": null,
+    "integrated": null,
+    "momentaryMax": null,
+    "shortTermMax": null,
+    "iso532_1.max": null,
+    "iso532_1.n5": null,
+    "literature.L0": null,
+    "ecma418_2.max": null
+   },
+   "verdicts": {
+    "peak": "prediction",
+    "rms": "prediction",
+    "integrated": "prediction",
+    "momentaryMax": "prediction",
+    "shortTermMax": "prediction",
+    "iso532_1.max": "prediction",
+    "iso532_1.n5": "prediction",
+    "literature.L0": "prediction",
+    "ecma418_2.max": "prediction"
+   }
+  },
+  {
+   "id": "open-boom-click-60",
+   "kind": "open",
+   "title": "A 30-150 Hz boom against a 2-6 kHz click, around 60 dB SPL",
+   "question": "dB the boom would be raised to match the click",
+   "published": null,
+   "expectedSign": null,
+   "source": "no listener data found (perception_and_measures.md, section 4)",
+   "evidence": "open question",
+   "reconstruction": "click 30 ms; boom 1.2 s with a 250 ms decay; both built from noise of the stated level",
+   "predictions": {
+    "peak": 6.97,
+    "rms": 11.23,
+    "integrated": 17.17,
+    "momentaryMax": 1.09,
+    "shortTermMax": 0.71,
+    "iso532_1.max": 16.84,
+    "iso532_1.n5": 20.03,
+    "literature.L0": 8.55,
+    "ecma418_2.max": 18.69
+   },
+   "miss": {
+    "peak": null,
+    "rms": null,
+    "integrated": null,
+    "momentaryMax": null,
+    "shortTermMax": null,
+    "iso532_1.max": null,
+    "iso532_1.n5": null,
+    "literature.L0": null,
+    "ecma418_2.max": null
+   },
+   "verdicts": {
+    "peak": "prediction",
+    "rms": "prediction",
+    "integrated": "prediction",
+    "momentaryMax": "prediction",
+    "shortTermMax": "prediction",
+    "iso532_1.max": "prediction",
+    "iso532_1.n5": "prediction",
+    "literature.L0": "prediction",
+    "ecma418_2.max": "prediction"
+   }
+  },
+  {
+   "id": "open-boom-click-80",
+   "kind": "open",
+   "title": "A 30-150 Hz boom against a 2-6 kHz click, around 80 dB SPL",
+   "question": "dB the boom would be raised to match the click",
+   "published": null,
+   "expectedSign": null,
+   "source": "no listener data found (perception_and_measures.md, section 4)",
+   "evidence": "open question",
+   "reconstruction": "click 30 ms; boom 1.2 s with a 250 ms decay; both built from noise of the stated level",
+   "predictions": {
+    "peak": 6.97,
+    "rms": 11.23,
+    "integrated": 17.17,
+    "momentaryMax": 1.09,
+    "shortTermMax": 0.71,
+    "iso532_1.max": 12.91,
+    "iso532_1.n5": 16.07,
+    "literature.L0": 9.97,
+    "ecma418_2.max": 13.09
+   },
+   "miss": {
+    "peak": null,
+    "rms": null,
+    "integrated": null,
+    "momentaryMax": null,
+    "shortTermMax": null,
+    "iso532_1.max": null,
+    "iso532_1.n5": null,
+    "literature.L0": null,
+    "ecma418_2.max": null
+   },
+   "verdicts": {
+    "peak": "prediction",
+    "rms": "prediction",
+    "integrated": "prediction",
+    "momentaryMax": "prediction",
+    "shortTermMax": "prediction",
+    "iso532_1.max": "prediction",
+    "iso532_1.n5": "prediction",
+    "literature.L0": "prediction",
+    "ecma418_2.max": "prediction"
+   }
+  }
+ ]
+}
