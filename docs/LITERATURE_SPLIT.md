@@ -26,10 +26,14 @@ benchmark's rebuilt ones (`listener phenomena`), and the numbers are the notes'.
 |---|---|---|
 | The loudness function's shape: flattest at moderate levels | exponent near 0.25 at moderate and 0.43 at high levels for 1 kHz | *Buus 1997*; the function used is the "inflected exponential" one of Buus & Florentine, see `literature.py` |
 | That a short and a long sound differ by a constant loudness ratio at all levels | the equal-loudness-ratio model | *Buus 1997* |
-| Onset weight and its decay | first 100 ms weighted 4 to 5 times, time constant 200 to 300 ms: a = 3.5, 250 ms | Fischenich et al. 2021 |
 | How long loudness keeps growing with duration | 0.4 s (growth is still seen from 50 to 250 ms) | *Buus 1997*; Tech 3341's window |
 
-The benchmark's "primacy" row is therefore a consistency check, not a test.
+**Changed on 14 November 2026, before fitting and before any held-out result was computed.** This table first held a
+third line: an onset weight (the beginning counting 4 to 5 times, decaying over 0.25 s, from Fischenich et al. 2021).
+A check on steady tones, which are in no set, showed that with it a steady tone's value depended on its duration by
+1.5 dB, and on the fit set's rising and falling tones it made the published result unreachable. Onset weighting is
+left out of this version and reported as not modelled. The benchmark's "primacy" row is a test the model is
+expected to fail.
 
 ## Tests the model (held out)
 
@@ -48,6 +52,7 @@ against click at two levels).
 
 ## Fitted parameters
 
-Four: the exponent of loudness against duration, the strength of decay suppression, the order of the level-dominant
-mean, and the low-frequency shelf. Eight numbers set them. Seven results test the outcome, four of them numbers
-from one paper at a frequency the model was not fitted at.
+Planned: four (the exponent of loudness against duration, the strength of decay suppression, the order of a
+level-dominant mean, the low-frequency shelf). Fitted in the end: three (two for growth with duration, and the
+shelf); `docs/LITERATURE_MODEL.md` says what was dropped and why. Eight numbers set them. Seven results test the
+outcome, four of them numbers from one paper at a frequency the model was not fitted at.

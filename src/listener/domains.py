@@ -22,6 +22,11 @@ DOMAINS = {
         "outside": "short and impulsive sounds: no test signals exist; roughness on spans under 0.5 s",
         "level": "depends on the playback level",
     },
+    "literatureL0": {
+        "validatedOn": "set from eight published results on tones and noises (duration at two levels, rising against falling, repetition, one low band); tested on seven it was not set from (docs/LITERATURE_MODEL.md)",
+        "outside": "sound effects: it has never met a listener's judgement of one. No onset weighting; no masking or loudness summation across frequency; the spectrum enters as one K-weighted level with a fixed low shelf",
+        "level": "depends on the playback level; the low-frequency shelf holds near 75 dB SPL",
+    },
     "iso532_3": {
         "validatedOn": "dichotic tones, noise bands, switched noise and amplitude-modulated tones (Moore et al. 2016)",
         "outside": "impact sounds are in its scope but not in its validation data; no single value above 5 s",

@@ -17,7 +17,8 @@ many dB exactly where effects live: short, low, or with long tails. `listener` d
 | `listener phenomena` | Every measure against published facts about the loudness of short and changing sounds, and each measure's prediction for the contrasts nobody has measured |
 | `listener takes` | Cuts named takes out of raw recordings, sample for sample, and writes their manifest: the last step of the recording method in [recording/](recording/README.md) |
 
-The results of the first run are in [docs/FIRST_CHECKS.md](docs/FIRST_CHECKS.md). The plan for the model is in
+The results of the first run are in [docs/FIRST_CHECKS.md](docs/FIRST_CHECKS.md). A first model, set from published
+listener results and tested on others, is in [docs/LITERATURE_MODEL.md](docs/LITERATURE_MODEL.md). The plan for the model is in
 [docs/MODEL.md](docs/MODEL.md), the listening test in [docs/PILOT_PROTOCOL.md](docs/PILOT_PROTOCOL.md), the file
 formats in [docs/FORMAT.md](docs/FORMAT.md).
 
@@ -71,8 +72,8 @@ ISO 532-1 tools). Every level-dependent number sits under its level's id.
 
 - **ISO 532-3** (Moore, Glasberg and Schlittenlacher): no open implementation exists; the output has a place for it.
 - **ECMA-418-2 fluctuation strength** (4th edition, 2025): no open implementation was found.
-- **The model itself.** Version 2 fits an event-level loudness model to the pilot's matches. Until then every
-  number here is a standard measure or a comparison of standard measures.
+- **A model fitted to sound effects.** The literature model (`literatureL0` in the output) is set from published
+  results on tones and noises. Version 2 fits an event-level model to the pilot's matches.
 
 ## Citing
 

@@ -12,6 +12,7 @@ from importlib.metadata import PackageNotFoundError, version
 import numpy as np
 
 from . import __version__, bs1770, ecma, spans as spans_mod, zwicker
+from .model import literature
 from .audio import ear_signals, load, to_model_rate
 from .calibration import Level
 from .domains import DOMAINS, NOTES
@@ -35,6 +36,7 @@ def implementations(ecma_python: str | None) -> dict:
         "din45692": f"MoSQITo {_pkg('mosqito')} sharpness_din_from_loudness on the ISO 532-1 specific loudness",
         "ecma418_2": "sottek-hearing-model, as a separate process" if ecma_python else None,
         "iso532_3": None,
+        "literatureL0": f"listener {__version__} model/literature.py, parameters {literature.FITTED.beta:g}, {literature.FITTED.t_half:g} s, {literature.FITTED.shelf_db:g} dB",
     }
 
 
@@ -106,6 +108,10 @@ def measure_file(path: str, levels: list[Level], docs_dir: str | None = None, ec
             stats = zwicker.span_stats(curve, sp.start, sp.end, sharp)
             sharp_stats = stats.pop("sharpness", None)
             rec["byLevel"][lv.id] = {"iso532_1": stats}
+            a48, b48 = int(round(sp.start * 48000)), max(int(round(sp.end * 48000)), int(round(sp.start * 48000)) + 48)
+            lit = literature.level_of_ears([sig[a48:b48] * lv.pa_per_fs for sig, _ in ears])
+            if np.isfinite(lit):
+                rec["byLevel"][lv.id]["literatureL0"] = {"level": round(lit, 2)}
             if sharp_stats:
                 rec["byLevel"][lv.id]["din45692"] = sharp_stats
         if curves:
@@ -179,7 +185,8 @@ def measure(paths: list[str], levels: list[Level], docs_dir: str | None = None, 
         "domains": DOMAINS,
         "notes": NOTES,
         "units": {"bs1770": "LUFS (peak, rms: dBFS)", "iso532_1": "nMax, n5: sone; levelMax, level5: phon",
-                  "din45692": "acum", "ecma418_2": "loudness: sone_HMS; tonality: tu_HMS; roughness: asper_HMS"},
+                  "din45692": "acum", "ecma418_2": "loudness: sone_HMS; tonality: tu_HMS; roughness: asper_HMS",
+                  "literatureL0": "level: dB, the level of a steady 1 kHz tone predicted to be as loud as the span"},
         "files": results,
     }
 

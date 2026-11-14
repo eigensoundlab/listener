@@ -129,9 +129,17 @@ buy".
     that puts it a median 17 phon above the full method with a rank correlation of 0.72. The fixtures written here
     are what a full port would be tested against.
 
+## 5a. What version L0 found (14 November 2026)
+
+The literature-constrained model exists: `docs/LITERATURE_MODEL.md`. Of the six parameters in section 3, integration
+survived as two fitted numbers; its level dependence (parameter 2) needs no parameter, because it follows from a
+published loudness function; the low-frequency shelf (6) survived. Weighting of what follows the peak (3) and
+carry-over between events (5) bought nothing on the published results used. Onset weighting (4) was not achieved.
+On held-out tone durations its mean miss is 3.3 dB, against 6.9 dB for Max M and 9.5 dB for ISO 532-1.
+
 ## 6. What is deliberately not done
 
-- No model was fitted in version 0.1. The literature-constrained model of section 4 is the next step; its results
+- No model has been fitted to sound effects: there are no listener data for them yet. The literature model's results
   are reported apart from any claim about sound effects until the pilot's data exist.
 - Partial loudness, salience, learned metrics, annoyance and hearing-impaired models stay deferred, as in the brief,
   until the pilot shows which loudness representation to build on.

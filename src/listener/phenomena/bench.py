@@ -21,6 +21,7 @@ import datetime
 import numpy as np
 
 from .. import __version__, bs1770, ecma, zwicker
+from ..model import literature
 from ..calibration import P0
 from ..measure import implementations
 
@@ -97,6 +98,8 @@ def train(burst: np.ndarray, period_s: float, count: int) -> np.ndarray:
 # ------------------------------------------------------------------ measures: "raise B by how much to match A?"
 
 LINEAR = ("peak", "rms", "integrated", "momentaryMax", "shortTermMax")
+LITERATURE_FITTED = ["integration-tone-moderate", "integration-tone-high", "integration-noise-moderate", "integration-noise-high",
+                     "rise-fall-asymmetry", "repetition-slow", "low-frequency-band"]
 MODEL = ("iso532_1.max", "iso532_1.n5")
 
 
@@ -133,6 +136,8 @@ def predictions(a: np.ndarray, b: np.ndarray, ecma_python: str | None, ecma_know
         target = float(zwicker.sone_to_phon(stat(na, za)))
         g, ok = _secant(lambda gain: float(zwicker.sone_to_phon(stat(zb.curve(1.0, gain).n, zb))), target)
         out[key] = round(g, 2) if ok else None
+    lp = literature.FITTED
+    out["literature.L0"] = round(literature.matching_gain(literature.track(a, lp.shelf_db), literature.track(b, lp.shelf_db), lp), 2)
     if ecma_known is not None:
         out["ecma418_2.max"] = ecma_known
     elif ecma_python:
@@ -311,14 +316,22 @@ def run(levels=None, ecma_python: str | None = None, ecma_from: dict | None = No
         **({"ecmaReusedFrom": ecma_from.get("created")} if known else {}),
         "rule": "Each value: dB by which a measure would raise sound B to make it as loud as sound A. 'agrees': within 1 dB of the published range (or the right sign, at least 0.5 dB); 'near': within 3 dB; 'off': further; 'no effect': under 0.5 dB where a sign is expected; 'opposite': the wrong sign.",
         "caution": "Stimuli are rebuilt from descriptions; the published ranges come from small panels. This constrains a model. It does not validate one for sound effects.",
-        "measures": measures, "score": score, "phenomena": rows,
+        "measures": measures, "score": score,
+        "literatureModel": {
+            "note": "literature.L0 was set from the rows in 'fitted'; only the rows in 'heldOut' test it; 'notModelled' it is expected to fail",
+            "fitted": LITERATURE_FITTED, "heldOut": [r["id"] for r in tested if r["id"] not in LITERATURE_FITTED and r["id"] != "primacy"],
+            "notModelled": ["primacy"],
+            "scoreHeldOut": {m: sum(1 for r in tested if r["id"] not in LITERATURE_FITTED and r["verdicts"][m] == "agrees") for m in measures},
+        },
+        "phenomena": rows,
     }
 
 
 def report_markdown(doc: dict) -> str:
     ms = doc["measures"]
     short = {"peak": "Peak", "rms": "RMS", "integrated": "LUFS-I", "momentaryMax": "Max M", "shortTermMax": "Max S",
-             "iso532_1.max": "ISO 532-1 Nmax", "iso532_1.n5": "ISO 532-1 N5", "ecma418_2.max": "ECMA-418-2 max"}
+             "iso532_1.max": "ISO 532-1 Nmax", "iso532_1.n5": "ISO 532-1 N5", "ecma418_2.max": "ECMA-418-2 max",
+             "literature.L0": "Literature model L0"}
     mark = {"agrees": "", "near": " ~", "off": " ✗", "no effect": " ✗ (none)", "opposite": " ✗ (opposite)", "prediction": "", "no value": ""}
     L = ["# Published loudness phenomena against the measures\n", doc["rule"] + "\n", doc["caution"] + "\n",
          "| Phenomenon | Listeners | " + " | ".join(short.get(m, m) for m in ms) + " |", "|---|---|" + "---|" * len(ms)]
@@ -327,10 +340,13 @@ def report_markdown(doc: dict) -> str:
             continue
         pub = (f"{r['published'][0]:g} to {r['published'][1]:g}" if r["published"] else "") if r["kind"] == "value" else \
               (("positive" if r["expectedSign"] > 0 else "negative") + (f" ({r['published'][0]:g} to {r['published'][1]:g})" if r["published"] else ""))
-        L.append(f"| {r['title']} | {pub} | " + " | ".join(
+        fitted = r["id"] in doc.get("literatureModel", {}).get("fitted", [])
+        L.append(f"| {r['title']}{' †' if fitted else ''} | {pub} | " + " | ".join(
             ("–" if r["predictions"][m] is None else f"{r['predictions'][m]:+.1f}") + mark[r["verdicts"][m]] for m in ms) + " |")
     L.append("| **Agrees (near)** | | " + " | ".join(f"**{doc['score'][m]['agrees']}** ({doc['score'][m]['near']}) of {doc['score'][m]['of']}" for m in ms) + " |")
     L.append("\n✗: more than 3 dB from the published range, no effect where one is expected, or the wrong sign. ~: within 3 dB.\n")
+    if "literatureModel" in doc:
+        L.append("†: a result the literature model was set from. For that model only the rows without † are a test, and it has no onset weighting, so the last row is expected to fail.\n")
     L.append("## Contrasts nobody has measured: the predictions on record\n")
     L.append("| Contrast | " + " | ".join(short.get(m, m) for m in ms) + " | Spread |")
     L.append("|---|" + "---|" * (len(ms) + 1))

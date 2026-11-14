@@ -46,6 +46,7 @@ produced each family of numbers). Numbers that depend on the playback level sit 
   at the loudest frame, its median and its 95th percentile over the frames at least a quarter as loud as the span's
   maximum; with `--ecma`, ECMA-418-2 loudness (maximum and 90th percentile, in sone_HMS), tonality and roughness. The
   standard's own single values appear on the `file` span only, labelled: they skip about the first 300 ms.
+  `literatureL0.level` is the literature model's event loudness level in dB (docs/LITERATURE_MODEL.md).
 - **Ears.** The hearing models take ear signals. A mono file feeds both ears; a stereo file's two channels feed one
   ear each, and the file's loudness is the mean of the two (ISO 532-1) or their quadratic mean (ECMA-418-2).
 - **Curves.** `--curves` adds the loudness curves at 100 values a second.
