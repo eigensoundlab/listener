@@ -131,7 +131,7 @@ predictions as valid near 75 dB SPL only.
 
 ## What limits this version
 
-- **Two papers still unread.** Florentine et al. (1996) sets four of the eight fit results and Ogura et al. (1991) one.
+- **Two papers still unread.** Florentine et al. (1996) gives five of the eight fit results (one of them through Buus et al. 1997) and Ogura et al. (1991) one.
 - **The loudness function's coefficients were recalled, not read.** Three checks against sources that were read
   hold (1.000 sone at 40 dB SPL; local exponents 0.25 and 0.41 where Buus et al. give about 0.25 and 0.43).
 - **One loudness function for all sounds.** It is the 1 kHz tone's. The misses on noise and at 5 kHz point at this.
